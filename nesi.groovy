@@ -797,7 +797,7 @@ canterbury_dev8_1 = new Queue(
 		)
 
 
-
+/**
 small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
 		groups:[nesi],
@@ -812,3 +812,4 @@ small_canterbury_ng2 = new Queue(
 		clockspeedInHz:3000000000,
 		description:'Suitable for testing and serial jobs'
 		)
+*/
