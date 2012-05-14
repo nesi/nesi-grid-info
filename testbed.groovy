@@ -1,4 +1,5 @@
 import grisu.jcommons.model.info.*
+import grisu.jcommons.utils.WalltimeUtils;
 
 
 
@@ -38,11 +39,25 @@ akl_fs = new FileSystem(
 		site:testbed
 		)
 
+df = new FileSystem(
+		host:'irods-dev.ceres.auckland.ac.nz',
+		protocol:'gsiftp',
+		port:2811,
+		site:testbed
+		)
+
 
 // directories
 akl_home = new Directory(
 		filesystem:akl_fs,
 		groups:[nesi, demo, none],
+		path:"/~/",
+		shared:false,
+		volatileDirectory:false)
+
+df_home = new Directory(
+		filesystem:df,
+		groups:[none],
 		path:"/~/",
 		shared:false,
 		volatileDirectory:false)
@@ -55,7 +70,7 @@ testbed_gram52 = new Gateway(
 		host:'globus.test.nesi.org.nz',
 		middleware:gram52
 		)
-		
+
 // applications
 java = new Application(
 		name:'Java'
@@ -100,7 +115,7 @@ python26 = new Package(
 
 // updaters
 defaultUpdater = new DefaultQueueUpdater()
-		
+
 // queues
 batch = new Queue(
 	gateway:testbed_gram52,
@@ -117,6 +132,7 @@ test1 = new Queue(
 	groups:[nesi, none],
 	directories:[akl_home],
 	packages:[java15],
-	updater:defaultUpdater
+	updater:defaultUpdater,
+	walltimeInMinutes:10
 	)
 
