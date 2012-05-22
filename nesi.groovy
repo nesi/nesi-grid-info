@@ -133,9 +133,9 @@ bestgrid = new Group(
 		fqan = '/nz/bestgrid'
 		)
 
-uoc = new Group(
-		vo = arcs,
-		fqan = '/ARCS/LocalAccounts/CanterburyHPC'
+bluefern = new Group(
+		vo = nz,
+		fqan = '/nz/bluefern'
 		)
 
 // filesystems
@@ -179,8 +179,8 @@ canterbury_ng2sge_fs = new FileSystem(
 	site:canterbury
 	)
 
-canterbury_ng2hpc_fs = new FileSystem(
-	host:'ng2hpc.canterbury.ac.nz',
+canterbury_gram5bgp_fs = new FileSystem(
+	host:'gram5bgp.canterbury.ac.nz',
 	site:canterbury
 	)
 
@@ -249,35 +249,35 @@ auckland_sbs_group = new Directory(
 
 canterbury_ng1_home = new Directory(
 	filesystem:canterbury_ng1_fs,
-	groups:[nesi],
+	groups:[nesi, bestgrid],
 	path:"/~/",
 	volatileDirectory:true
 	)
 
 canterbury_ng2_home = new Directory(
 	filesystem:canterbury_ng2_fs,
-	groups:[nesi],
+	groups:[nesi, bestgrid],
 	path:"/~/",
 	volatileDirectory:true
 	)
 
 canterbury_gram5p7_home = new Directory(
 	filesystem:canterbury_gram5p7_fs,
-	groups:[bestgrid, uoc],
+	groups:[nesi, bestgrid, bluefern],
 	path:"/~/",
 	volatileDirectory:true
 	)
 
 canterbury_ng2sge_home = new Directory(
 	filesystem:canterbury_ng2sge_fs,
-	groups:[bestgrid],
+	groups:[nesi, bestgrid],
 	path:"/~/",
 	volatileDirectory:true
 	)
 
-canterbury_ng2hpc_home = new Directory(
-	filesystem:canterbury_ng2hpc_fs,
-	groups:[bestgrid, uoc],
+canterbury_gram5bgp_home = new Directory(
+	filesystem:canterbury_gram5bgp_fs,
+	groups:[nesi, bluefern],
 	path:"/~/",
 	volatileDirectory:true
 	)
@@ -319,10 +319,10 @@ canterbury_gram5p7 = new Gateway(
 	middleware:globus5
 	)
 
-canterbury_ng2hpc = new Gateway(
+canterbury_gram5bgp = new Gateway(
 	site:canterbury,
-	host:'ng2hpc.canterbury.ac.nz',
-	middleware:globus4
+	host:"gram5bgp.canterbury.ac.nz",
+	middleware:globus5
 	)
 
 
@@ -471,6 +471,11 @@ namd_2_6 = new Package(
 	version:Version.get('2.6')
 	)
 
+namd_2_7b1 = new Package(
+	application:namd,
+	version:Version.get('2.7b1')
+	)
+
 octave_3_0_3 = new Package(
 	application:octave,
 	version:Version.get('3.0.3'),
@@ -480,6 +485,12 @@ octave_3_0_3 = new Package(
 octave_3_0_5 = new Package(
 	application:octave,
 	version:Version.get('3.0.5'),
+	executables:[Executable.get('octave')]
+	)
+
+octave_3_4_2 = new Package(
+	application:octave,
+	version:Version.get('3.4.2'),
 	executables:[Executable.get('octave')]
 	)
 
@@ -623,7 +634,9 @@ gram5p7_common_packages = [mr_bayes_3_2_1, bayesphylogenies_1_0, modeltest_3_7, 
 gram5p7_aix = [sas_9_2, namd_2_6, wrf_1_0, r_2_5, parswms_aug06, python_2_6_2, best_2_3_1] + gram5p7_common_packages
 gram5p7_linux = [lamarc_2_1, r_2_14, meme_4_1, infernal_1_0, python_2_6] + gram5p7_common_packages
 
-ng2sge_local_software = [mr_bayes_3_1_2, r_2_11, rmpisnow_2_11, unixcommands_5]
+gram5bgp_packages = [mr_bayes_3_2_1, namd_2_7b1, mpiblast_1_6]
+
+ng2sge_local_software = [mr_bayes_3_1_2, r_2_11, rmpisnow_2_11, unixcommands_5, octave_3_4_2]
 small_ngcompute = [mr_bayes_3_1_2, bayesphylogenies_1_0, lamarc_2_1, modeltest_3_7, beast_1_6_1, clustalw_1_83, clustalwparallel_0_13, paup_4_0_beta, unixcommands_5, java_1_6, meme_4_1, blender_2_49a, r_2_13_1, rmpisnow_2_13_1, python_2_4, best_2_3_1]
 
 ng2hpc_local_software = [beast_1_6_1, best_2_3_1, blast_2_2_21, bayesphylogenies_1_0, clustalw_1_83, clustalwparallel_0_13, java_1_6, lamarc_2_1, meme_4_1, modeltest_3_7, mr_bayes_3_1_2, namd_2_6, parswms_aug06, paup_4_0_beta, r_2_11, r_2_13_1, r_2_5, r_2_14, sas_9_2, unixcommands_5, wrf_1_0, infernal_1_0, mpiblast_1_6, python_2_4, python_2_5, python_2_6, python_2_6_2, teiresias_18aug2004]
@@ -760,7 +773,7 @@ canterbury_p7aix = new Queue(
 		gateway:canterbury_gram5p7,
 		directories:[canterbury_gram5p7_home],
 		name:'p7aix',
-		groups:[bestgrid, uoc],
+		groups:[nesi, bestgrid, bluefern],
 		packages:gram5p7_aix,
 		hosts:11,
 		cpus:352,
@@ -776,7 +789,7 @@ canterbury_p7linux = new Queue(
 		gateway:canterbury_gram5p7,
 		directories:[canterbury_gram5p7_home],
 		name:'p7linux',
-		groups:[bestgrid, uoc],
+		groups:[nesi, bestgrid, bluefern],
 		packages:gram5p7_linux,
 		hosts:2,
 		cpus:64,
@@ -788,19 +801,26 @@ canterbury_p7linux = new Queue(
 		description:'Power7 running SLES 11.1 Linux, 32 CPUs and 128GB RAM per node - for memory intensive or parallel jobs. 72 hours wall clock limit.'
 		)
 
-canterbury_dev8_1 = new Queue(
-		gateway:canterbury_ng2hpc,
-		directories:[canterbury_ng2hpc_home],
-		name:'dev8_1',
-		groups:[uoc],
-		packages:ng2hpc_local_software
+canterbury_bgp = new Queue(
+		gateway:canterbury_gram5bgp,
+		directories:[canterbury_gram5bgp_home],
+		name:'bgp',
+		groups:[nesi, bluefern],
+		packages:gram5bgp_packages,
+		hosts:2048,
+		cpus:8192,
+		cpusPerHost:4,
+		memoryInBytes:4294967296,
+		virtualMemoryInBytes:4294967296,
+		clockspeedInHz:850000000,
+		walltimeInMinutes:4320,
+		description:'BlueGene/P. Available to NeSI users with BlueGene/P allocation.  Only suitable for highly scalable jobs.'
 		)
-
 
 
 small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
-		groups:[nesi],
+		groups:[nesi, bestgrid],
 		name:'small',
 		directories:[canterbury_ng2_home],
 		packages: small_ngcompute,
@@ -810,5 +830,23 @@ small_canterbury_ng2 = new Queue(
 		memoryInBytes:2147483648,
 		virtualMemoryInBytes:2147483648,
 		clockspeedInHz:3000000000,
+		walltimeInMinutes:30240,
 		description:'Suitable for testing and serial jobs'
 		)
+
+medium64_oldesparky_canterbury_ng2sge = new Queue(
+		gateway:canterbury_ng2sge,
+		groups:[nesi, bestgrid],
+		name:'small',
+		directories:[canterbury_ng2sge_home],
+		packages: ng2sge_local_software,
+		hosts:16,
+		cpus:88,
+		cpusPerHost:8,
+		memoryInBytes:8589934592,
+		virtualMemoryInBytes:8589934592,
+		clockspeedInHz:2000000000,
+		walltimeInMinutes:14400,
+		description:'x86_64 AMD cluster, 88 cores over 16 nodes (4-way and 8-way), suitable for serial and medium-size parallel jobs'
+		)
+
