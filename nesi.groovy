@@ -837,7 +837,7 @@ small_canterbury_ng2 = new Queue(
 medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
 		groups:[nesi, bestgrid],
-		name:'small',
+		name:'medium64',
 		directories:[canterbury_ng2sge_home],
 		packages: ng2sge_local_software,
 		hosts:16,
