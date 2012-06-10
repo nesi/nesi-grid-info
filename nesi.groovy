@@ -1,4 +1,3 @@
-
 import grisu.jcommons.model.info.*
 
 
@@ -666,15 +665,15 @@ gram5p7_aix = [
 	r_2_5,
 	parswms_aug06,
 	python_2_6_2,
-	best_2_3_1]
-+ gram5p7_common_packages
+	best_2_3_1
+] + gram5p7_common_packages
 gram5p7_linux = [
 	lamarc_2_1,
 	r_2_14,
 	meme_4_1,
 	infernal_1_0,
-	python_2_6]
-+ gram5p7_common_packages
+	python_2_6
+] + gram5p7_common_packages
 
 gram5bgp_packages = [
 	mr_bayes_3_2_1,
@@ -762,7 +761,7 @@ default_gram5 = new Queue(
 		)
 
 pan_pan = new Queue(
-		gateway:gram5,
+		gateway:pan,
 		name:'pan',
 		groups:[demo, nesi],
 		directories:[auckland_pan],
@@ -770,7 +769,9 @@ pan_pan = new Queue(
 		description:'Suitable for any jobs by NeSI members',
 		hosts:80,
 		cpus:960,
-		cpusPerHost:12
+		cpusPerHost:12,
+		memoryInBytes:103079215104,
+		virtualMemoryInBytes:103079215104
 		)
 
 
@@ -956,7 +957,7 @@ medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
 		groups:[nesi, bestgrid],
 		name:'medium64',
-                factoryType:'SGE',
+		factoryType:'SGE',
 		directories:[canterbury_ng2sge_home],
 		packages: ng2sge_local_software,
 		hosts:16,
