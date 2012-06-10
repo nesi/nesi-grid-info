@@ -1,30 +1,29 @@
-import com.google.common.collect.Sets;
 
 import grisu.jcommons.model.info.*
 
 
 // sites
 auckland = new Site(
-	name = 'Auckland'
-	)
+		name = 'Auckland'
+		)
 
 canterbury = new Site(
-	name = 'Canterbury'
-	)
+		name = 'Canterbury'
+		)
 
 // vos
 nz = new VO(
-	voName = 'nz',
-	host = 'voms.bestgrid.org',
-	port = 15000,
-	hostDN = '/C=NZ/O=BeSTGRID/OU=The University of Auckland/CN=voms.bestgrid.org'
-	)
+		voName = 'nz',
+		host = 'voms.bestgrid.org',
+		port = 15000,
+		hostDN = '/C=NZ/O=BeSTGRID/OU=The University of Auckland/CN=voms.bestgrid.org'
+		)
 arcs = new VO(
-	voName = 'ARCS',
-	host = 'vomrs.arcs.org.au',
-	port = 15001,
-	hostDN = '/C=AU/O=APACGrid/OU=ARCS/CN=vomrs.arcs.org.au'
-	)
+		voName = 'ARCS',
+		host = 'vomrs.arcs.org.au',
+		port = 15001,
+		hostDN = '/C=AU/O=APACGrid/OU=ARCS/CN=vomrs.arcs.org.au'
+		)
 
 // groups
 nesi = new Group(
@@ -145,9 +144,9 @@ auckland_gram5_fs = new FileSystem(
 		)
 
 auckland_gram52_fs = new FileSystem(
-	host:'gram52.ceres.auckland.ac.nz',
-	site:auckland
-	)
+		host:'gram52.ceres.auckland.ac.nz',
+		site:auckland
+		)
 
 auckland_df_fs = new FileSystem(
 		host:'df.auckland.ac.nz',
@@ -160,56 +159,70 @@ auckland_df_fs = new FileSystem(
 //		)
 
 auckland_pan_fs = new FileSystem(
-		host:'pandora.nesi.org.nz',
+		host:'pan.nesi.org.nz',
 		site:auckland
 		)
 
 canterbury_ng1_fs = new FileSystem(
-	host:'ng1.canterbury.ac.nz',
-	site:canterbury
-	)
+		host:'ng1.canterbury.ac.nz',
+		site:canterbury
+		)
 
 canterbury_ng2_fs = new FileSystem(
-	host:'ng2.canterbury.ac.nz',
-	site:canterbury
-	)
+		host:'ng2.canterbury.ac.nz',
+		site:canterbury
+		)
 
 canterbury_ng2sge_fs = new FileSystem(
-	host:'ng2sge.canterbury.ac.nz',
-	site:canterbury
-	)
+		host:'ng2sge.canterbury.ac.nz',
+		site:canterbury
+		)
 
 canterbury_gram5bgp_fs = new FileSystem(
-	host:'gram5bgp.canterbury.ac.nz',
-	site:canterbury
-	)
+		host:'gram5bgp.canterbury.ac.nz',
+		site:canterbury
+		)
 
 canterbury_gram5p7_fs = new FileSystem(
-	host:'gram5p7.canterbury.ac.nz',
-	site:canterbury
-	)
+		host:'gram5p7.canterbury.ac.nz',
+		site:canterbury
+		)
 
 // directories (make sure to always have a trailing slash for the path element
 
 auckland_home = new Directory(
 		filesystem:auckland_gram5_fs,
-		groups:[demo, grid_dev, nesi, uoa, uoa_comp_chem, uoa_gaussian, uoa_comp_evol, uoa_eng_sci, uoa_math, uoa_mech_eng, uoa_qoptics, uoa_stats, uoa_vs_jobs],
+		groups:[
+			demo,
+			grid_dev,
+			nesi,
+			uoa,
+			uoa_comp_chem,
+			uoa_gaussian,
+			uoa_comp_evol,
+			uoa_eng_sci,
+			uoa_math,
+			uoa_mech_eng,
+			uoa_qoptics,
+			uoa_stats,
+			uoa_vs_jobs
+		],
 		path:"/~/",
 		volatileDirectory:true
 		)
 
 auckland_home_gt52 = new Directory(
-	filesystem:auckland_gram52_fs,
-	groups:[nesi],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:auckland_gram52_fs,
+		groups:[nesi],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
-auckland_pandora = new Directory(
-	filesystem:auckland_pan_fs,
-	groups:[nesi],
-	volatileDirectory:true
-	)
+auckland_pan = new Directory(
+		filesystem:auckland_pan_fs,
+		groups:[nesi],
+		volatileDirectory:true
+		)
 
 
 auckland_df_home = new Directory(
@@ -248,39 +261,39 @@ auckland_sbs_group = new Directory(
 //	)
 
 canterbury_ng1_home = new Directory(
-	filesystem:canterbury_ng1_fs,
-	groups:[nesi, bestgrid],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:canterbury_ng1_fs,
+		groups:[nesi, bestgrid],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
 canterbury_ng2_home = new Directory(
-	filesystem:canterbury_ng2_fs,
-	groups:[nesi, bestgrid],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:canterbury_ng2_fs,
+		groups:[nesi, bestgrid],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
 canterbury_gram5p7_home = new Directory(
-	filesystem:canterbury_gram5p7_fs,
-	groups:[nesi, bestgrid, bluefern],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:canterbury_gram5p7_fs,
+		groups:[nesi, bestgrid, bluefern],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
 canterbury_ng2sge_home = new Directory(
-	filesystem:canterbury_ng2sge_fs,
-	groups:[nesi, bestgrid],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:canterbury_ng2sge_fs,
+		groups:[nesi, bestgrid],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
 canterbury_gram5bgp_home = new Directory(
-	filesystem:canterbury_gram5bgp_fs,
-	groups:[nesi, bluefern],
-	path:"/~/",
-	volatileDirectory:true
-	)
+		filesystem:canterbury_gram5bgp_fs,
+		groups:[nesi, bluefern],
+		path:"/~/",
+		volatileDirectory:true
+		)
 
 globus4 = Middleware.get("Globus", "4.0.0")
 globus5 = Middleware.get("Globus", "5.0")
@@ -288,10 +301,17 @@ globus5 = Middleware.get("Globus", "5.0")
 
 // gateways
 gram5 = new Gateway(
-	site:auckland,
-	host:"gram5.ceres.auckland.ac.nz",
-	middleware:globus5
-	)
+		site:auckland,
+		host:"gram5.ceres.auckland.ac.nz",
+		middleware:globus5
+		)
+
+// gateways
+pan = new Gateway(
+		site:auckland,
+		host:"pan.nesi.org.nz",
+		middleware:globus5
+		)
 
 
 canterbury_ng2 = new Gateway(
@@ -314,16 +334,16 @@ canterbury_ng2sge = new Gateway(
 		)
 
 canterbury_gram5p7 = new Gateway(
-	site:canterbury,
-	host:"gram5p7.canterbury.ac.nz",
-	middleware:globus5
-	)
+		site:canterbury,
+		host:"gram5p7.canterbury.ac.nz",
+		middleware:globus5
+		)
 
 canterbury_gram5bgp = new Gateway(
-	site:canterbury,
-	host:"gram5bgp.canterbury.ac.nz",
-	middleware:globus5
-	)
+		site:canterbury,
+		host:"gram5bgp.canterbury.ac.nz",
+		middleware:globus5
+		)
 
 
 
@@ -365,222 +385,206 @@ wrf = Application.get('WRF')
 abaqus_68ef2 = new Package(
 		application:abaqus,
 		version:Version.get('6.8-EF2'),
-		executables:[Executable.get('abaqus')]
-		)
+		executables:[Executable.get('abaqus')])
 
 beast_1_6_1 = new Package(
-	application: beast,
-	version:Version.get('1.6.1'),
-	executables:[Executable.get('beast')]
-	)
+		application: beast,
+		version:Version.get('1.6.1'),
+		executables:[Executable.get('beast')])
 
 best_2_3_1 = new Package(
-	application:best,
-	version:Version.get('2.3.1')
-	)
+		application:best,
+		version:Version.get('2.3.1')
+		)
 
 blast_2_2_21 = new Package(
-	application:blast,
-	version:Version.get('2.2.21')
-	)
+		application:blast,
+		version:Version.get('2.2.21')
+		)
 
 bayesphylogenies_1_0 = new Package(
-	application:bayesphylogenies,
-	version:Version.get('1.0')
-	)
+		application:bayesphylogenies,
+		version:Version.get('1.0')
+		)
 
 blender_2_49a = new Package(
-	application:blender,
-	version:Version.get('2.49a'),
-	executables:[Executable.get('blender')]
-	)
+		application:blender,
+		version:Version.get('2.49a'),
+		executables:[Executable.get('blender')])
 
 clustalw_1_83 = new Package(
-	application:clustalw,
-	version:Version.get('1.83')
-	)
+		application:clustalw,
+		version:Version.get('1.83')
+		)
 
 clustalwparallel_0_13 = new Package(
-	application:clustalwparallel,
-	version:Version.get('0.13')
-	)
+		application:clustalwparallel,
+		version:Version.get('0.13')
+		)
 
 gold_5_1 = new Package(
-	application:gold,
-	version:Version.get('5.1'),
-	executables:[Executable.get('parallel_gold_auto')]
-	)
+		application:gold,
+		version:Version.get('5.1'),
+		executables:[
+			Executable.get('parallel_gold_auto')]
+		)
 
 ilog_12_2 = new Package(
-	application:ilog,
-	version:Version.get('12.2'),
-	executables:[Executable.get('oplrun')]
-	)
+		application:ilog,
+		version:Version.get('12.2'),
+		executables:[Executable.get('oplrun')])
 
 infernal_1_0 = new Package(
-	application:infernal,
-	version:Version.get('1.0')
-	)
+		application:infernal,
+		version:Version.get('1.0')
+		)
 
 java_1_6 = new Package(
-	application:java,
-	version:Version.get('1.6'),
-	executables:Executable.getList('java', 'javac')
-	)
+		application:java,
+		version:Version.get('1.6'),
+		executables:Executable.getList('java', 'javac')
+		)
 
 lamarc_2_1 = new Package(
-	application:lamarc,
-	version:Version.get('2.1')
-	)
+		application:lamarc,
+		version:Version.get('2.1')
+		)
 
 meme_4_1 = new Package(
-	application:meme,
-	version:Version.get('4.1.0')
-	)
+		application:meme,
+		version:Version.get('4.1.0')
+		)
 
 modeltest_3_7 = new Package(
-	application:modeltest,
-	version:Version.get('3.7')
-	)
+		application:modeltest,
+		version:Version.get('3.7')
+		)
 
 mpiblast_1_5 = new Package(
-	application:mpiblast,
-	version:Version.get('1.5.0'),
-	executables:[Executable.get('mpiblast')]
-	)
+		application:mpiblast,
+		version:Version.get('1.5.0'),
+		executables:[Executable.get('mpiblast')])
 
 mpiblast_1_6 = new Package(
-	application:mpiblast,
-	version:Version.get('1.6.0')
-	)
+		application:mpiblast,
+		version:Version.get('1.6.0')
+		)
 
 mr_bayes_3_1_2 = new Package(
-	application:mrbayes,
-	version:Version.get('3.1.2'),
-	executables:[Executable.get('mb')]
-	)
+		application:mrbayes,
+		version:Version.get('3.1.2'),
+		executables:[Executable.get('mb')])
 
 mr_bayes_3_2_1 = new Package(
-	application:mrbayes,
-	version:Version.get('3.2.1'),
-	executables:[Executable.get('mb')]
-	)
+		application:mrbayes,
+		version:Version.get('3.2.1'),
+		executables:[Executable.get('mb')])
 
 namd_2_6 = new Package(
-	application:namd,
-	version:Version.get('2.6')
-	)
+		application:namd,
+		version:Version.get('2.6')
+		)
 
 namd_2_7b1 = new Package(
-	application:namd,
-	version:Version.get('2.7b1')
-	)
+		application:namd,
+		version:Version.get('2.7b1')
+		)
 
 octave_3_0_3 = new Package(
-	application:octave,
-	version:Version.get('3.0.3'),
-	executables:[Executable.get('octave')]
-	)
+		application:octave,
+		version:Version.get('3.0.3'),
+		executables:[Executable.get('octave')])
 
 octave_3_0_5 = new Package(
-	application:octave,
-	version:Version.get('3.0.5'),
-	executables:[Executable.get('octave')]
-	)
+		application:octave,
+		version:Version.get('3.0.5'),
+		executables:[Executable.get('octave')])
 
 octave_3_4_2 = new Package(
-	application:octave,
-	version:Version.get('3.4.2'),
-	executables:[Executable.get('octave')]
-	)
+		application:octave,
+		version:Version.get('3.4.2'),
+		executables:[Executable.get('octave')])
 
 parswms_aug06 = new Package(
-	application:parswms,
-	version:Version.get('Aug06')
-	)
+		application:parswms,
+		version:Version.get('Aug06')
+		)
 
 paup_4_0_beta = new Package(
-	application:paup,
-	version:Version.get('4.0 beta')
-	)
+		application:paup,
+		version:Version.get('4.0 beta')
+		)
 
 python_2_4 = new Package(
-	application: python,
-	version:Version.get('2.4'),
-	executables:[Executable.get('python')]
-	)
+		application: python,
+		version:Version.get('2.4'),
+		executables:[Executable.get('python')])
 
 python_2_5 = new Package(
-	application: python,
-	version:Version.get('2.5'),
-	executables:[Executable.get('python')]
-	)
+		application: python,
+		version:Version.get('2.5'),
+		executables:[Executable.get('python')])
 
 python_2_6 = new Package(
-	application: python,
-	version:Version.get('2.6'),
-	executables:[Executable.get('python2.6')]
-	)
+		application: python,
+		version:Version.get('2.6'),
+		executables:[
+			Executable.get('python2.6')]
+		)
 
 python_2_6_2 = new Package(
-	application: python,
-	version:Version.get('2.6.2'),
-	executables:[Executable.get('python2.6')]
-	)
+		application: python,
+		version:Version.get('2.6.2'),
+		executables:[
+			Executable.get('python2.6')]
+		)
 
 r_2_5 = new Package(
-	application:r,
-	version:Version.get('2.5.0'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.5.0'),
+		executables:[Executable.get('R')])
 
 r_2_9 = new Package(
-	application:r,
-	version:Version.get('2.9.0'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.9.0'),
+		executables:[Executable.get('R')])
 
 r_2_10 = new Package(
-	application:r,
-	version:Version.get('2.10.0'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.10.0'),
+		executables:[Executable.get('R')])
 
 r_2_11 = new Package(
-	application:r,
-	version:Version.get('2.11.0'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.11.0'),
+		executables:[Executable.get('R')])
 
 r_2_13_1 = new Package(
-	application:r,
-	version:Version.get('2.13.1'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.13.1'),
+		executables:[Executable.get('R')])
 
 r_2_14 = new Package(
-	application:r,
-	version:Version.get('2.14.0'),
-	executables:[Executable.get('R')]
-	)
+		application:r,
+		version:Version.get('2.14.0'),
+		executables:[Executable.get('R')])
 
 rmpisnow_2_9 = new Package(
 		application:rmpisnow,
 		version:Version.get('2.9.0'),
-		executables:[Executable.get('RMPISNOW')]
+		executables:[
+			Executable.get('RMPISNOW')]
 		)
 
 rmpisnow_2_11 = new Package(
-	application:rmpisnow,
-	version:Version.get('2.11.0'),
-	executables:[Executable.get('RMPISNOW')]
-	)
+		application:rmpisnow,
+		version:Version.get('2.11.0'),
+		executables:[Executable.get('RMPISNOW')])
 
 rmpisnow_2_13_1 = new Package(
-	application:rmpisnow,
-	version:Version.get('2.13.1'),
-	executables:[Executable.get('RMPISNOW')]
-	)
+		application:rmpisnow,
+		version:Version.get('2.13.1'),
+		executables:[Executable.get('RMPISNOW')])
 
 sas_9_2 = new Package(
 		application:sas,
@@ -590,8 +594,7 @@ sas_9_2 = new Package(
 szybki_1_3_4 = new Package(
 		application:szybki,
 		version:Version.get('1.3.4'),
-		executables:[Executable.get('szybki')]
-		)
+		executables:[Executable.get('szybki')])
 
 teiresias_18aug2004 = new Package(
 		application:teiresias,
@@ -612,39 +615,142 @@ wrf_1_0 = new Package(
 // queues
 
 /** example:
-<id> = new Queue(
-		gateway:<gateway>,	// required
-		name:'<queuename>',	// required
-		groups: [<list_of_groups>], // at least one value required
-		directories:[<list_of_directories>], // at least one value required
-		packages:[<list_of_packages>], // optional, default is just generic package
-		description:'Description of the queue', // optional, default: 'n/a'
-		hosts:<number_of_hosts_for_this_queue>, // optional, default: Integer.MAX_VALUE
-		memoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
-		cpus:<total_no_of_cpus>, 				// optional, default: Integer.MAX_VALUE
-		virtualMemoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
-		walltimeInMinutes:<walltime>, // optional, default: Integer.MAX_VALUE
-		cpusPerHost:<min_number_of_cpus_per_host>, // optional, default: Integer.MAX_VALUE
-		clockspeedInHz:<clockspeed>, // optional, default: Integer.MAX_VALUE
-*/
+ <id> = new Queue(
+ gateway:<gateway>,	// required
+ name:'<queuename>',	// required
+ groups: [<list_of_groups>], // at least one value required
+ directories:[<list_of_directories>], // at least one value required
+ packages:[<list_of_packages>], // optional, default is just generic package
+ description:'Description of the queue', // optional, default: 'n/a'
+ hosts:<number_of_hosts_for_this_queue>, // optional, default: Integer.MAX_VALUE
+ memoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
+ cpus:<total_no_of_cpus>, 				// optional, default: Integer.MAX_VALUE
+ virtualMemoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
+ walltimeInMinutes:<walltime>, // optional, default: Integer.MAX_VALUE
+ cpusPerHost:<min_number_of_cpus_per_host>, // optional, default: Integer.MAX_VALUE
+ clockspeedInHz:<clockspeed>, // optional, default: Integer.MAX_VALUE
+ */
 
-auckland_default_packages = [beast_1_6_1, java_1_6, mr_bayes_3_1_2, r_2_9, r_2_10, rmpisnow_2_9, unixcommands_5, octave_3_0_3, octave_3_0_5, python_2_4, python_2_6]
+auckland_default_packages = [
+	beast_1_6_1,
+	java_1_6,
+	mr_bayes_3_1_2,
+	r_2_9,
+	r_2_10,
+	rmpisnow_2_9,
+	unixcommands_5,
+	octave_3_0_3,
+	octave_3_0_5,
+	python_2_4,
+	python_2_6
+]
 
-gram5p7_common_packages = [mr_bayes_3_2_1, bayesphylogenies_1_0, modeltest_3_7, beast_1_6_1, clustalw_1_83, clustalwparallel_0_13, paup_4_0_beta, unixcommands_5, blast_2_2_21, mpiblast_1_6, teiresias_18aug2004, java_1_6]
-gram5p7_aix = [sas_9_2, namd_2_6, wrf_1_0, r_2_5, parswms_aug06, python_2_6_2, best_2_3_1] + gram5p7_common_packages
-gram5p7_linux = [lamarc_2_1, r_2_14, meme_4_1, infernal_1_0, python_2_6] + gram5p7_common_packages
+gram5p7_common_packages = [
+	mr_bayes_3_2_1,
+	bayesphylogenies_1_0,
+	modeltest_3_7,
+	beast_1_6_1,
+	clustalw_1_83,
+	clustalwparallel_0_13,
+	paup_4_0_beta,
+	unixcommands_5,
+	blast_2_2_21,
+	mpiblast_1_6,
+	teiresias_18aug2004,
+	java_1_6
+]
+gram5p7_aix = [
+	sas_9_2,
+	namd_2_6,
+	wrf_1_0,
+	r_2_5,
+	parswms_aug06,
+	python_2_6_2,
+	best_2_3_1]
++ gram5p7_common_packages
+gram5p7_linux = [
+	lamarc_2_1,
+	r_2_14,
+	meme_4_1,
+	infernal_1_0,
+	python_2_6]
++ gram5p7_common_packages
 
-gram5bgp_packages = [mr_bayes_3_2_1, namd_2_7b1, mpiblast_1_6]
+gram5bgp_packages = [
+	mr_bayes_3_2_1,
+	namd_2_7b1,
+	mpiblast_1_6
+]
 
-ng2sge_local_software = [mr_bayes_3_1_2, r_2_11, rmpisnow_2_11, unixcommands_5, octave_3_4_2]
-small_ngcompute = [mr_bayes_3_1_2, bayesphylogenies_1_0, lamarc_2_1, modeltest_3_7, beast_1_6_1, clustalw_1_83, clustalwparallel_0_13, paup_4_0_beta, unixcommands_5, java_1_6, meme_4_1, blender_2_49a, r_2_13_1, rmpisnow_2_13_1, python_2_4, best_2_3_1]
+ng2sge_local_software = [
+	mr_bayes_3_1_2,
+	r_2_11,
+	rmpisnow_2_11,
+	unixcommands_5,
+	octave_3_4_2
+]
+small_ngcompute = [
+	mr_bayes_3_1_2,
+	bayesphylogenies_1_0,
+	lamarc_2_1,
+	modeltest_3_7,
+	beast_1_6_1,
+	clustalw_1_83,
+	clustalwparallel_0_13,
+	paup_4_0_beta,
+	unixcommands_5,
+	java_1_6,
+	meme_4_1,
+	blender_2_49a,
+	r_2_13_1,
+	rmpisnow_2_13_1,
+	python_2_4,
+	best_2_3_1
+]
 
-ng2hpc_local_software = [beast_1_6_1, best_2_3_1, blast_2_2_21, bayesphylogenies_1_0, clustalw_1_83, clustalwparallel_0_13, java_1_6, lamarc_2_1, meme_4_1, modeltest_3_7, mr_bayes_3_1_2, namd_2_6, parswms_aug06, paup_4_0_beta, r_2_11, r_2_13_1, r_2_5, r_2_14, sas_9_2, unixcommands_5, wrf_1_0, infernal_1_0, mpiblast_1_6, python_2_4, python_2_5, python_2_6, python_2_6_2, teiresias_18aug2004]
+ng2hpc_local_software = [
+	beast_1_6_1,
+	best_2_3_1,
+	blast_2_2_21,
+	bayesphylogenies_1_0,
+	clustalw_1_83,
+	clustalwparallel_0_13,
+	java_1_6,
+	lamarc_2_1,
+	meme_4_1,
+	modeltest_3_7,
+	mr_bayes_3_1_2,
+	namd_2_6,
+	parswms_aug06,
+	paup_4_0_beta,
+	r_2_11,
+	r_2_13_1,
+	r_2_5,
+	r_2_14,
+	sas_9_2,
+	unixcommands_5,
+	wrf_1_0,
+	infernal_1_0,
+	mpiblast_1_6,
+	python_2_4,
+	python_2_5,
+	python_2_6,
+	python_2_6_2,
+	teiresias_18aug2004
+]
 
 default_gram5 = new Queue(
 		gateway:gram5,
 		name:'default',
-		groups:[demo, grid_dev, nesi, uoa_virt_screening, uoa_acsrc, uoa_vs_jobs, uoa_sbs],
+		groups:[
+			demo,
+			grid_dev,
+			nesi,
+			uoa_virt_screening,
+			uoa_acsrc,
+			uoa_vs_jobs,
+			uoa_sbs
+		],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -654,6 +760,19 @@ default_gram5 = new Queue(
 		memoryInBytes:25265145118,
 		virtualMemoryInBytes:25265145118
 		)
+
+pan_pan = new Queue(
+		gateway:gram5,
+		name:'pan',
+		groups:[demo, nesi],
+		directories:[auckland_pan],
+		packages:auckland_default_packages,
+		description:'Suitable for any jobs by NeSI members',
+		hosts:80,
+		cpus:960,
+		cpusPerHost:12
+		)
+
 
 uoa_gpu = new Queue(
 		gateway:gram5,
@@ -675,8 +794,7 @@ uoa_gold_ce = new Queue(
 		name:'gold',
 		groups:[uoa_vs_jobs],
 		directories:[auckland_home],
-		packages:[gold_5_1]
-		)
+		packages:[gold_5_1])
 
 uoa_mech_ce = new Queue(
 		gateway:gram5,
