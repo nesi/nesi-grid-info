@@ -956,6 +956,7 @@ medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
 		groups:[nesi, bestgrid],
 		name:'medium64',
+                factoryType:'SGE',
 		directories:[canterbury_ng2sge_home],
 		packages: ng2sge_local_software,
 		hosts:16,
