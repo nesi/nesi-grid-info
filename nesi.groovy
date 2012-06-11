@@ -770,7 +770,7 @@ pan_pan = new Queue(
 		hosts:80,
 		cpus:960,
 		cpusPerHost:12,
-		clockspeedInHz:2670000000,
+		clockspeedInHz:2800000000,
 		memoryInBytes:103079215104,
 		virtualMemoryInBytes:103079215104
 		)
