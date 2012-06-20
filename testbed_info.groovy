@@ -36,14 +36,14 @@ akl_fs = new FileSystem(
 		host:'globus.test.nesi.org.nz',
 		protocol:'gsiftp',
 		port:2811,
-		site:testbed
+		site:testbed_info
 		)
 
 df = new FileSystem(
 		host:'irods-dev.ceres.auckland.ac.nz',
 		protocol:'gsiftp',
 		port:2811,
-		site:testbed
+		site:testbed_info
 		)
 
 
@@ -66,7 +66,7 @@ gram52 = Middleware.get("Globus", "5.2");
 
 // gateways
 testbed_gram52 = new Gateway(
-		site:testbed,
+		site:testbed_info,
 		host:'globus.test.nesi.org.nz',
 		middleware:gram52
 		)
