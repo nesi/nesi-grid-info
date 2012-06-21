@@ -197,20 +197,10 @@ auckland_gram5_fs = new FileSystem(
 	site:auckland
 	)
 
-auckland_gram52_fs = new FileSystem(
-	host:'gram52.ceres.auckland.ac.nz',
-	site:auckland
-	)
-
 auckland_df_fs = new FileSystem(
 	host:'df.auckland.ac.nz',
 	site:auckland
 	)
-
-//auckland_ng2_fs = new FileSystem(
-//		host:'ng2.auckland.ac.nz',
-//		site:auckland
-//		)
 
 auckland_pan_fs = new FileSystem(
 	host:'pan.nesi.org.nz',
@@ -242,42 +232,44 @@ canterbury_gram5p7_fs = new FileSystem(
 	site:canterbury
 	)
 
+scenzgrid_fs = new FileSystem(
+	host:'ng2.scenzgrid.org',
+	site:landcare
+	)
+
+
 // directories (make sure to always have a trailing slash for the path element
+auckland_cluster_groups = [
+	bestgrid,
+	demo,
+	grid_dev,
+	nesi,
+	uoa,
+	uoa_comp_chem,
+	uoa_gaussian,
+	uoa_comp_evol,
+	uoa_eng_sci,
+	uoa_math,
+	uoa_mech_eng,
+	uoa_qoptics,
+	uoa_stats,
+	uoa_stats_staff,
+	uoa_stats_students,
+	uoa_vs_jobs
+]
 
 auckland_home = new Directory(
 	filesystem:auckland_gram5_fs,
-	groups:[
-		demo,
-		grid_dev,
-		nesi,
-		uoa,
-		uoa_comp_chem,
-		uoa_gaussian,
-		uoa_comp_evol,
-		uoa_eng_sci,
-		uoa_math,
-		uoa_mech_eng,
-		uoa_qoptics,
-		uoa_stats,
-		uoa_vs_jobs
-	],
-	path:"/~/",
-	volatileDirectory:true
-	)
-
-auckland_home_gt52 = new Directory(
-	filesystem:auckland_gram52_fs,
-	groups:[nesi],
+	groups:auckland_cluster_groups,
 	path:"/~/",
 	volatileDirectory:true
 	)
 
 auckland_pan = new Directory(
 	filesystem:auckland_pan_fs,
-	groups:[nesi],
+	groups:auckland_cluster_groups,
 	volatileDirectory:true
 	)
-
 
 auckland_df_home = new Directory(
 	filesystem:auckland_df_fs,
@@ -307,12 +299,6 @@ auckland_sbs_group = new Directory(
 	volatileDirectory:false,
 	path:"/home/grid-sbs/"
 	)
-
-//auckland_ng2_home = new Directory(
-//	filesystem:auckland_ng2_fs,
-//	groups:[nesi],
-//	path:"/~/"
-//	)
 
 canterbury_ng1_home = new Directory(
 	filesystem:canterbury_ng1_fs,
@@ -347,6 +333,13 @@ canterbury_gram5bgp_home = new Directory(
 	groups:[nesi, bluefern],
 	path:"/~/",
 	volatileDirectory:true
+	)
+
+scenzgrid_home = new Directory(
+	filesystem:scenzgrid_fs,
+	groups:[bestgrid],
+	volatileDirectory:true,
+	path:'/~/'
 	)
 
 globus4 = Middleware.get("Globus", "4.0.0")
@@ -399,6 +392,11 @@ canterbury_gram5bgp = new Gateway(
 	middleware:globus5
 	)
 
+landcare_gram4 = new Gateway(
+	site:landcare,
+	host:"ng2.scenzgrid.org",
+	middleware:globus4
+	)
 
 
 
@@ -418,8 +416,10 @@ java = Application.get('Java')
 lamarc = Application.get('LAMARC')
 meme = Application.get('MEME')
 modeltest = Application.get('ModelTest')
+mono = Application.get('mono')
 mrbayes = Application.get('MrBayes')
 namd = Application.get('NAMD')
+nomad = Application.get('nomad')
 paup = Application.get('PAUP*')
 parswms = Application.get('PARSWMS')
 r = Application.get('R')
@@ -471,6 +471,11 @@ clustalw_1_83 = new Package(
 	version:Version.get('1.83')
 	)
 
+clustalw_2_0_11 = new Package(
+	application:clustalw,
+	version:Version.get('2.0.11')
+	)
+
 clustalwparallel_0_13 = new Package(
 	application:clustalwparallel,
 	version:Version.get('0.13')
@@ -514,6 +519,11 @@ modeltest_3_7 = new Package(
 	version:Version.get('3.7')
 	)
 
+mono_2_6_7 = new Package(
+	application:mono,
+	version:Version.get('2.6.7')
+	)
+
 mpiblast_1_5 = new Package(
 	application:mpiblast,
 	version:Version.get('1.5.0'),
@@ -542,6 +552,11 @@ namd_2_6 = new Package(
 namd_2_7b1 = new Package(
 	application:namd,
 	version:Version.get('2.7b1')
+	)
+
+nomad_3_5_1 = new Package(
+	application:nomad,
+	version:Version.get('3.5.1')
 	)
 
 octave_3_0_3 = new Package(
@@ -613,6 +628,11 @@ r_2_11 = new Package(
 	version:Version.get('2.11.0'),
 	executables:[Executable.get('R')])
 
+r_2_13_0 = new Package(
+	application:r,
+	version:Version.get('2.13.0'),
+	executables:[Executable.get('R')])
+
 r_2_13_1 = new Package(
 	application:r,
 	version:Version.get('2.13.1'),
@@ -621,6 +641,11 @@ r_2_13_1 = new Package(
 r_2_14 = new Package(
 	application:r,
 	version:Version.get('2.14.0'),
+	executables:[Executable.get('R')])
+
+r_2_15 = new Package(
+	application:r,
+	version:Version.get('2.15.0'),
 	executables:[Executable.get('R')])
 
 rmpisnow_2_9 = new Package(
@@ -635,9 +660,19 @@ rmpisnow_2_11 = new Package(
 	version:Version.get('2.11.0'),
 	executables:[Executable.get('RMPISNOW')])
 
+rmpisnow_2_13_0 = new Package(
+	application:rmpisnow,
+	version:Version.get('2.13.0'),
+	executables:[Executable.get('RMPISNOW')])
+
 rmpisnow_2_13_1 = new Package(
 	application:rmpisnow,
 	version:Version.get('2.13.1'),
+	executables:[Executable.get('RMPISNOW')])
+
+rmpisnow_2_15_0 = new Package(
+	application:rmpisnow,
+	version:Version.get('2.15.0'),
 	executables:[Executable.get('RMPISNOW')])
 
 sas_9_2 = new Package(
@@ -677,26 +712,32 @@ wrf_1_0 = new Package(
  packages:[<list_of_packages>], // optional, default is just generic package
  description:'Description of the queue', // optional, default: 'n/a'
  hosts:<number_of_hosts_for_this_queue>, // optional, default: Integer.MAX_VALUE
- memoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
+ memory:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
  cpus:<total_no_of_cpus>, 				// optional, default: Integer.MAX_VALUE
- virtualMemoryInBytes:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
+ virtualMemory:<long_value_for_memory>, // optional, default: Long.MAX_VALUE
  walltimeInMinutes:<walltime>, // optional, default: Integer.MAX_VALUE
  cpusPerHost:<min_number_of_cpus_per_host>, // optional, default: Integer.MAX_VALUE
  clockspeedInHz:<clockspeed>, // optional, default: Integer.MAX_VALUE
  */
 
+// here we collect sets of packages, so we don't have to maintain those lists for every queue
 auckland_default_packages = [
 	beast_1_6_1,
 	java_1_6,
 	mr_bayes_3_1_2,
-	r_2_9,
-	r_2_10,
+	r_2_15,
 	rmpisnow_2_9,
 	unixcommands_5,
-	octave_3_0_3,
 	octave_3_0_5,
-	python_2_4,
 	python_2_6
+]
+
+pan_default_packages = [
+	mr_bayes_3_1_2,
+	nomad_3_5_1,
+	r_2_15,
+	rmpisnow_2_15_0,
+	unixcommands_5
 ]
 
 gram5p7_common_packages = [
@@ -713,6 +754,7 @@ gram5p7_common_packages = [
 	teiresias_18aug2004,
 	java_1_6
 ]
+
 gram5p7_aix = [
 	sas_9_2,
 	namd_2_6,
@@ -721,16 +763,15 @@ gram5p7_aix = [
 	parswms_aug06,
 	python_2_6_2,
 	best_2_3_1
-]
-+ gram5p7_common_packages
+]+ gram5p7_common_packages
+
 gram5p7_linux = [
 	lamarc_2_1,
 	r_2_14,
 	meme_4_1,
 	infernal_1_0,
 	python_2_6
-]
-+ gram5p7_common_packages
+]+ gram5p7_common_packages
 
 gram5bgp_packages = [
 	mr_bayes_3_2_1,
@@ -745,6 +786,7 @@ ng2sge_local_software = [
 	unixcommands_5,
 	octave_3_4_2
 ]
+
 small_ngcompute = [
 	mr_bayes_3_1_2,
 	bayesphylogenies_1_0,
@@ -795,10 +837,51 @@ ng2hpc_local_software = [
 	teiresias_18aug2004
 ]
 
+scenz_packages = [
+	clustalw_2_0_11,
+	java_1_6,
+	mr_bayes_3_1_2,
+	python_2_4,
+	r_2_13_0,
+	rmpisnow_2_13_0,
+	unixcommands_5
+]
+
+pan_pan = new Queue(
+	gateway:pan,
+	name:'pan',
+	groups:[bestgrid, nesi],
+	directories:[auckland_pan],
+	packages:pan_default_packages,
+	description:'Suitable for any jobs by NeSI members',
+	hosts:80,
+	cpus:960,
+	cpusPerHost:12,
+	clockspeedInHz:2800000000,
+	memory:103079215104,
+	virtualMemory:103079215104
+	)
+
+pan_gpu = new Queue(
+	gateway:pan,
+	name:'gpu',
+	groups:[bestgrid, nesi],
+	directories:[auckland_pan],
+	packages:pan_default_packages,
+	description:'GPU nodes on the Pan cluster',
+	hosts:2,
+	cpus:24,
+	cpusPerHost:12,
+	clockspeedInHz:2800000000,
+	memory:103079215104,
+	virtualMemory:103079215104
+	)
+
 default_gram5 = new Queue(
 	gateway:gram5,
 	name:'default',
 	groups:[
+		bestgrid,
 		demo,
 		grid_dev,
 		nesi,
@@ -813,25 +896,37 @@ default_gram5 = new Queue(
 	hosts:21,
 	cpus:252,
 	cpusPerHost:12,
-	memoryInBytes:25265145118,
-	virtualMemoryInBytes:25265145118
+	memory:25265145118,
+	virtualMemory:25265145118
 	)
 
-pan_pan = new Queue(
-	gateway:pan,
-	name:'pan',
-	groups:[demo, nesi],
-	directories:[auckland_pan],
+demo_gram5 = new Queue(
+	gateway:gram5,
+	name:'demo',
+	groups:[demo],
+	directories:[auckland_home],
 	packages:auckland_default_packages,
-	description:'Suitable for any jobs by NeSI members',
-	hosts:80,
-	cpus:960,
+	description:'Test queue for demo group users',
+	hosts:21,
+	cpus:252,
 	cpusPerHost:12,
-	clockspeedInHz:2800000000,
-	memoryInBytes:103079215104,
-	virtualMemoryInBytes:103079215104
+	memory:25265145118,
+	virtualMemory:25265145118
 	)
 
+test_gram5 = new Queue(
+	gateway:gram5,
+	name:'test',
+	groups:[grid_dev],
+	directories:[auckland_home],
+	packages:auckland_default_packages,
+	description:'Test queue for grid developers',
+	hosts:21,
+	cpus:252,
+	cpusPerHost:12,
+	memory:25265145118,
+	virtualMemory:25265145118
+	)
 
 uoa_gpu = new Queue(
 	gateway:gram5,
@@ -844,8 +939,8 @@ uoa_gpu = new Queue(
 	cpus:16,
 	cpusPerHost:16,
 	clockspeedInHz:2340000000,
-	memoryInBytes:50637664419,
-	virtualMemoryInBytes:50637664419
+	memory:50637664419,
+	virtualMemory:50637664419
 	)
 
 uoa_gold_ce = new Queue(
@@ -860,7 +955,13 @@ uoa_mech_ce = new Queue(
 	name:'uoamech',
 	groups:[uoa_mech_eng],
 	directories:[auckland_home],
-	packages:auckland_default_packages
+	packages:auckland_default_packages,
+	hosts:4,
+	cpus:48,
+	cpusPerHost:12,
+	clockspeedInHz:2670000000,
+	memory:2147483648,
+	description:'MechEng node'
 	)
 
 uoa_math_ce = new Queue(
@@ -872,8 +973,8 @@ uoa_math_ce = new Queue(
 	hosts:1,
 	cpus:40,
 	cpusPerHost:40,
-	memoryInBytes:541316203151,
-	virtualMemoryInBytes:541316203151,
+	memory:541316203151,
+	virtualMemory:541316203151,
 	clockspeedInHz:1950000000,
 	description:'Queue for math node'
 	)
@@ -881,16 +982,46 @@ uoa_math_ce = new Queue(
 uoa_stats_ce = new Queue(
 	gateway:gram5,
 	name:'uoastats',
-	groups:[uoa_stats],
+	groups:[uoa_stats_staff],
 	packages:auckland_default_packages,
 	directories:[auckland_home],
 	hosts:1,
 	cpus:40,
 	cpusPerHost:40,
-	memoryInBytes:541316203151,
-	virtualMemoryInBytes:541316203151,
+	memory:541316203151,
+	virtualMemory:541316203151,
 	clockspeedInHz:1950000000,
-	description:'Queue for stats node'
+	description:'Queue for stats node (staff)'
+	)
+
+uoa_pan_comp_chem_ce = new Queue(
+	gateway:pan,
+	name:'chem',
+	groups:[uoa_comp_chem],
+	directories:[auckland_pan],
+	packages:pan_default_packages,
+	hosts:1,
+	cpusPerHost:40,
+	cpus:40,
+	memory:549755813888,
+	virtualMemory:549755813888,
+	clockspeedInHz:2700000000,
+	description:'Queue for comp chem node on Pan'
+	)
+
+uoa_stats_students_ce = new Queue(
+	gateway:gram5,
+	name:'sstudents',
+	groups:[uoa_stats_students],
+	packages:auckland_default_packages,
+	directories:[auckland_home],
+	hosts:1,
+	cpus:40,
+	cpusPerHost:40,
+	memory:541316203151,
+	virtualMemory:541316203151,
+	clockspeedInHz:1950000000,
+	description:'Queue for stats node (students)'
 	)
 
 uoa_comp_evol_ce = new Queue(
@@ -902,10 +1033,10 @@ uoa_comp_evol_ce = new Queue(
 	hosts:5,
 	cpusPerHost:12,
 	cpus:60,
-	memoryInBytes:10468982784,
-	virtualMemoryInBytes:10468982784,
+	memory:10468982784,
+	virtualMemory:10468982784,
 	clockspeedInHz:2600000000,
-	description:'Queue for computational evolution cluster'
+	description:'Queue for computational evolution users'
 	)
 
 uoa_comp_chem_ce = new Queue(
@@ -913,7 +1044,13 @@ uoa_comp_chem_ce = new Queue(
 	name:'uoacompchem',
 	groups:[uoa_comp_chem],
 	directories:[auckland_home],
-	packages:auckland_default_packages
+	packages:auckland_default_packages,
+	description:'Queue for comp_chem users',
+	hosts:21,
+	cpus:252,
+	cpusPerHost:12,
+	memory:25265145118,
+	virtualMemory:25265145118
 	)
 
 uoa_eng_sci_ce = new Queue(
@@ -925,10 +1062,10 @@ uoa_eng_sci_ce = new Queue(
 	hosts:2,
 	cpusPerHost:12,
 	cpus:24,
-	memoryInBytes:25265145118,
-	virtualMemoryInBytes:25265145118,
+	memory:25265145118,
+	virtualMemory:25265145118,
 	clockspeedInHz:2610000000,
-	description:'Queue for engineering sciences cluster'
+	description:'Queue for engineering sciences users'
 	)
 
 uoa_q_optics_ce = new Queue(
@@ -940,10 +1077,10 @@ uoa_q_optics_ce = new Queue(
 	hosts:4,
 	cpusPerHost:12,
 	cpus:48,
-	memoryInBytes:25265145118,
-	virtualMemoryInBytes:25265145118,
+	memory:25265145118,
+	virtualMemory:25265145118,
 	clockspeedInHz:2610000000,
-	description:'Queue for engineering sciences cluster'
+	description:'Queue for quantum optics users'
 	)
 
 canterbury_p7aix = new Queue(
@@ -955,8 +1092,8 @@ canterbury_p7aix = new Queue(
 	hosts:11,
 	cpus:352,
 	cpusPerHost:32,
-	memoryInBytes:137438953472,
-	virtualMemoryInBytes:137438953472,
+	memory:137438953472,
+	virtualMemory:137438953472,
 	clockspeedInHz:3300000000,
 	walltimeInMinutes:4320,
 	description:'Power7 running AIX, 32 CPUs and 128GB RAM per node, InfiniBand - for memory intensive or parallel jobs. 72 hours wall clock limit.'
@@ -971,8 +1108,8 @@ canterbury_p7linux = new Queue(
 	hosts:2,
 	cpus:64,
 	cpusPerHost:32,
-	memoryInBytes:137438953472,
-	virtualMemoryInBytes:137438953472,
+	memory:137438953472,
+	virtualMemory:137438953472,
 	clockspeedInHz:3300000000,
 	walltimeInMinutes:4320,
 	description:'Power7 running SLES 11.1 Linux, 32 CPUs and 128GB RAM per node - for memory intensive or parallel jobs. 72 hours wall clock limit.'
@@ -987,8 +1124,8 @@ canterbury_bgp = new Queue(
 	hosts:2048,
 	cpus:8192,
 	cpusPerHost:4,
-	memoryInBytes:4294967296,
-	virtualMemoryInBytes:4294967296,
+	memory:4294967296,
+	virtualMemory:4294967296,
 	clockspeedInHz:850000000,
 	walltimeInMinutes:4320,
 	description:'BlueGene/P. Available to NeSI users with BlueGene/P allocation.  Only suitable for highly scalable jobs.'
@@ -1004,8 +1141,8 @@ small_canterbury_ng2 = new Queue(
 	hosts:1,
 	cpus:4,
 	cpusPerHost:4,
-	memoryInBytes:2147483648,
-	virtualMemoryInBytes:2147483648,
+	memory:2147483648,
+	virtualMemory:2147483648,
 	clockspeedInHz:3000000000,
 	walltimeInMinutes:30240,
 	description:'Suitable for testing and serial jobs'
@@ -1021,10 +1158,25 @@ medium64_oldesparky_canterbury_ng2sge = new Queue(
 	hosts:16,
 	cpus:88,
 	cpusPerHost:8,
-	memoryInBytes:8589934592,
-	virtualMemoryInBytes:8589934592,
+	memory:8589934592,
+	virtualMemory:8589934592,
 	clockspeedInHz:2000000000,
 	walltimeInMinutes:14400,
 	description:'x86_64 AMD cluster, 88 cores over 16 nodes (4-way and 8-way), suitable for serial and medium-size parallel jobs'
 	)
 
+all_q_ng2_scenzgrid = new Queue(
+	gateway:landcare_gram4,
+	groups:[bestgrid],
+	name:'all.q',
+	packages:scenz_packages,
+	factoryType:'SGE',
+	directories:[scenzgrid_home],
+	description:'Cluster for landcare users',
+	hosts:12,
+	cpus:96,
+	cpusPerHost:8,
+	memory:34359738368,
+	virtualMemory:34359738368,
+	clockspeedInHz:2800000000,
+	)
