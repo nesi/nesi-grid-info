@@ -109,7 +109,7 @@ uoa_comp_sci = new Group(
 	fqan = '/nz/uoa/comp-sci'
 	)
 
-uoa_comp_sci_research(
+uoa_comp_sci_research = new Group(
 	vo = nz,
 	fqan = '/nz/uoa/comp-sci/research'
 	)

@@ -13,7 +13,7 @@ class ConfigTester {
 		if (args.length == 0 ) {
 			println 'No url specified, using default testbed config...'
 			args = [
-				'https://raw.github.com/nesi/nesi-grid-info/develop/testbed.groovy'
+				'https://raw.github.com/nesi/nesi-grid-info/develop/testbed_info.groovy'
 			]
 		}
 
