@@ -435,6 +435,9 @@ teiresias = Application.get('teiresias')
 wrf = Application.get('WRF')
 
 
+// modules
+python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
+
 // packages
 abaqus_68ef2 = new Package(
 	application:abaqus,
@@ -608,6 +611,14 @@ python_2_6_2 = new Package(
 		Executable.get('python2.6')]
 	)
 
+python_2_7 = new Package(
+	application: python,
+	version:Version.get('2.7'),
+	module:python_2_7_virtualenv,
+	executables:[
+		Executable.get('python2.7')]
+	)
+
 r_2_5 = new Package(
 	application:r,
 	version:Version.get('2.5.0'),
@@ -737,7 +748,8 @@ pan_default_packages = [
 	nomad_3_5_1,
 	r_2_15,
 	rmpisnow_2_15_0,
-	unixcommands_5
+	unixcommands_5,
+	python_2_7
 ]
 
 gram5p7_common_packages = [
