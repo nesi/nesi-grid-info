@@ -21,12 +21,6 @@ nz = new VO(
 	port = 15000,
 	hostDN = '/C=NZ/O=BeSTGRID/OU=The University of Auckland/CN=voms.bestgrid.org'
 	)
-arcs = new VO(
-	voName = 'ARCS',
-	host = 'vomrs.arcs.org.au',
-	port = 15001,
-	hostDN = '/C=AU/O=APACGrid/OU=ARCS/CN=vomrs.arcs.org.au'
-	)
 
 // groups
 bestgrid = new Group(
