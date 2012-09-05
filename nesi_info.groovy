@@ -453,6 +453,11 @@ blast_2_2_21 = new Package(
 		version:Version.get('2.2.21')
 		)
 
+blast_2_2_26 = new Package(
+		application:blast,
+		version:Version.get('2.2.26')
+		)
+
 bayesphylogenies_1_0 = new Package(
 		application:bayesphylogenies,
 		version:Version.get('1.0')
@@ -738,6 +743,7 @@ auckland_default_packages = [
 ]
 
 pan_default_packages = [
+	blast_2_2_26,
 	mpiblast_1_6,
 	mr_bayes_3_1_2,
 	nomad_3_5_1,
