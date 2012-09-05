@@ -734,7 +734,7 @@ wrf_1_0 = new Package(
 auckland_default_packages = [
 	beast_1_6_1,
 	java_1_6,
-	mr_bayes_3_1_2,
+	mr_bayes_3_2_1,
 	r_2_15,
 	rmpisnow_2_9,
 	unixcommands_5,
@@ -745,7 +745,7 @@ auckland_default_packages = [
 pan_default_packages = [
 	blast_2_2_26,
 	mpiblast_1_6,
-	mr_bayes_3_1_2,
+	mr_bayes_3_2_1,
 	nomad_3_5_1,
 	r_2_15,
 	rmpisnow_2_15_0,
