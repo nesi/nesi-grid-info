@@ -872,8 +872,8 @@ pan_pan = new Queue(
 		cpus:960,
 		cpusPerHost:12,
 		clockspeedInHz:2800000000,
-		memory:103079215104,
-		virtualMemory:103079215104
+		memory:137438953472,
+		virtualMemory:137438953472
 		)
 
 pan_gpu = new Queue(
