@@ -248,11 +248,11 @@ auckland_cluster_groups = [
 	uoa_qoptics,
 	uoa_stats,
 	uoa_stats_staff,
-	uoa_stats_students,
-	uoa_vs_jobs,
-	uoa_sbs,
-	uoa_acsrc,
-	uoa_virt_screening
+	uoa_stats_students
+	//	uoa_vs_jobs,
+	//	uoa_sbs,
+	//	uoa_acsrc,
+	//	uoa_virt_screening
 ]
 
 auckland_home = new Directory(
