@@ -273,7 +273,7 @@ auckland_df_home = new Directory(
 		)
 
 auckland_vs_group = new Directory(
-		filesystem:auckland_gram5_fs,
+		filesystem:auckland_pan_fs,
 		groups:[uoa_virt_screening],
 		volatileDirectory:false,
 		path:"/home/grid-vs/",
@@ -281,14 +281,14 @@ auckland_vs_group = new Directory(
 		)
 
 auckland_acsrc_group = new Directory(
-		filesystem:auckland_gram5_fs,
+		filesystem:auckland_pan_fs,
 		groups:[uoa_acsrc],
 		volatileDirectory:false,
 		path:"/home/grid-acsrc/"
 		)
 
 auckland_sbs_group = new Directory(
-		filesystem:auckland_gram5_fs,
+		filesystem:auckland_pan_fs,
 		groups:[uoa_sbs],
 		volatileDirectory:false,
 		path:"/home/grid-sbs/"
@@ -750,7 +750,8 @@ pan_default_packages = [
 	r_2_15,
 	rmpisnow_2_15_0,
 	unixcommands_5,
-	python_2_7
+	python_2_7,
+	gold_5_1
 ]
 
 gram5p7_common_packages = [
@@ -957,7 +958,7 @@ uoa_gpu = new Queue(
 		)
 
 uoa_gold_ce = new Queue(
-		gateway:gram5,
+		gateway:pan,
 		name:'gold',
 		groups:[uoa_vs_jobs],
 		directories:[auckland_home],
