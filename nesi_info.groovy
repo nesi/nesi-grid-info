@@ -249,7 +249,10 @@ auckland_cluster_groups = [
 	uoa_stats,
 	uoa_stats_staff,
 	uoa_stats_students,
-	uoa_vs_jobs
+	uoa_vs_jobs,
+	uoa_sbs,
+	uoa_acsrc,
+	uoa_virt_screening
 ]
 
 auckland_home = new Directory(
@@ -898,11 +901,7 @@ default_gram5 = new Queue(
 			bestgrid,
 			demo,
 			grid_dev,
-			nesi,
-			uoa_virt_screening,
-			uoa_acsrc,
-			uoa_vs_jobs,
-			uoa_sbs
+			nesi
 		],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
