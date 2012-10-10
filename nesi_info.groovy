@@ -70,6 +70,11 @@ nesi00000 = new Group(
 		fqan = "/nz/nesi/projects/nesi00000"
 		)
 
+nesi00000 = new Group(
+		vo = nz,
+		fqan = "/nz/nesi/projects/nesi00002"
+		)
+
 nesi00028 = new Group(
 		vo = nz,
 		fqan = "/nz/nesi/projects/nesi00028"
@@ -250,6 +255,7 @@ auckland_cluster_groups = [
 	grid_dev,
 	nesi,
 	nesi00000,
+	nesi00002,
 	nesi00028,
 	uoa,
 	uoa_comp_chem,
@@ -880,7 +886,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
-		groups:[bestgrid, nesi, nesi00028,nesi00000],
+		groups:[bestgrid, nesi, nesi00002, nesi00028,nesi00000],
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -895,7 +901,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
-		groups:[bestgrid, nesi, nesi00028, nesi00000],
+		groups:[bestgrid, nesi, nesi00002, nesi00028, nesi00000],
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster',
