@@ -70,7 +70,7 @@ nesi00000 = new Group(
 		fqan = "/nz/nesi/projects/nesi00000"
 		)
 
-nesi00000 = new Group(
+nesi00002 = new Group(
 		vo = nz,
 		fqan = "/nz/nesi/projects/nesi00002"
 		)
