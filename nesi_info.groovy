@@ -2,7 +2,7 @@ import grisu.jcommons.model.info.*
 
 // variables
 
-project_groups = [0,2,13,28,31]
+akl_project_groups = [0,2,13,28,31]
 
 // sites
 auckland = new Site(
@@ -69,7 +69,7 @@ nesi = new Group(
 		)
 
 def nesi_akl_groups = []
-project_groups.each {
+akl_project_groups.each {
 	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+String.format("%05d", it)))
 }
 
