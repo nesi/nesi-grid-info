@@ -1,5 +1,8 @@
 import grisu.jcommons.model.info.*
 
+// variables
+
+project_groups = [0,2,13,28,31]
 
 // sites
 auckland = new Site(
@@ -65,30 +68,11 @@ nesi = new Group(
 		fqan = "/nz/nesi"
 		)
 
-nesi00000 = new Group(
-		vo = nz,
-		fqan = "/nz/nesi/projects/nesi00000"
-		)
+def nesi_akl_groups = []
+project_groups.each {
+	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/"+String.format("%05d", it)))
+}
 
-nesi00002 = new Group(
-		vo = nz,
-		fqan = "/nz/nesi/projects/nesi00002"
-		)
-
-nesi00013 = new Group(
-		vo = nz,
-		fqan = "/nz/nesi/projects/nesi00013"
-		)
-
-nesi00028 = new Group(
-		vo = nz,
-		fqan = "/nz/nesi/projects/nesi00028"
-		)
-
-nesi00031 = new Group(
-		vo = nz,
-		fqan = "/nz/nesi/projects/nesi00031"
-		)
 
 test = new Group(
 		vo = nz,
@@ -257,13 +241,6 @@ scenzgrid_fs = new FileSystem(
 		site:landcare
 		)
 
-nesi_akl_groups = [
-	nesi00000,
-	nesi00002,
-	nesi00013,
-	nesi00028,
-	nesi00031
-]
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
 	bestgrid,
