@@ -75,6 +75,11 @@ nesi00002 = new Group(
 		fqan = "/nz/nesi/projects/nesi00002"
 		)
 
+nesi00013 = new Group(
+		vo = nz,
+		fqan = "/nz/nesi/projects/nesi00013"
+		)
+
 nesi00028 = new Group(
 		vo = nz,
 		fqan = "/nz/nesi/projects/nesi00028"
@@ -252,17 +257,19 @@ scenzgrid_fs = new FileSystem(
 		site:landcare
 		)
 
-
+nesi_akl_groups = [
+	nesi00000,
+	nesi00002,
+	nesi00013,
+	nesi00028,
+	nesi00031
+]
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
 	bestgrid,
 	demo,
 	grid_dev,
 	nesi,
-	nesi00000,
-	nesi00002,
-	nesi00028,
-	nesi00031,
 	uoa,
 	uoa_comp_chem,
 	uoa_gaussian,
@@ -278,7 +285,7 @@ auckland_cluster_groups = [
 	//	uoa_sbs,
 	//	uoa_acsrc,
 	//	uoa_virt_screening
-]
+] + nesi_akl_groups
 
 auckland_home = new Directory(
 		filesystem:auckland_gram5_fs,
@@ -892,7 +899,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
-		groups:[bestgrid, nesi, nesi00002, nesi00028,nesi00031,nesi00000],
+		groups:[bestgrid, nesi] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -907,7 +914,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
-		groups:[bestgrid, nesi, nesi00002, nesi00028, nesi00031,nesi00000],
+		groups:[bestgrid, nesi] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster',
