@@ -70,7 +70,7 @@ nesi = new Group(
 
 def nesi_akl_groups = []
 project_groups.each {
-	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/"+String.format("%05d", it)))
+	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+String.format("%05d", it)))
 }
 
 
