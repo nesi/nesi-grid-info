@@ -4,6 +4,7 @@ import grisu.jcommons.model.info.*
 
 // the numbers of the merit groups that have access to the auckland cluster
 akl_project_groups = [2,13,28,31,35,99999]
+uoc_project_groups = [99999]
 
 // sites
 auckland = new Site(
@@ -72,6 +73,10 @@ nesi = new Group(
 def nesi_akl_groups = []
 akl_project_groups.each {
 	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+String.format("%05d", it)))
+}
+def nesi_uoc_groups = []
+uoc_project_groups.each {
+	nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+String.format("%05d", it)))
 }
 
 
@@ -337,7 +342,7 @@ canterbury_ng2sge_home = new Directory(
 
 canterbury_gram5bgp_home = new Directory(
 		filesystem:canterbury_gram5bgp_fs,
-		groups:[nesi, bluefern],
+		groups:[nesi, bluefern] + nesi_uoc_groups,
 		path:"/~/",
 		volatileDirectory:true
 		)
@@ -620,16 +625,14 @@ python_2_6_2 = new Package(
 		application: python,
 		version:Version.get('2.6.2'),
 		executables:[
-			Executable.get('python2.6')]
-		)
+			Executable.get('python2.6')]		)
 
 python_2_7 = new Package(
 		application: python,
 		version:Version.get('2.7'),
 		module:python_2_7_virtualenv,
 		executables:[
-			Executable.get('python2.7')]
-		)
+			Executable.get('python2.7')])
 
 r_2_5 = new Package(
 		application:r,
@@ -1110,7 +1113,7 @@ canterbury_p7aix = new Queue(
 		gateway:canterbury_gram5p7,
 		directories:[canterbury_gram5p7_home],
 		name:'p7aix',
-		groups:[nesi, bestgrid, bluefern],
+		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
 		packages:gram5p7_aix,
 		hosts:11,
 		cpus:352,
@@ -1126,7 +1129,7 @@ canterbury_p7linux = new Queue(
 		gateway:canterbury_gram5p7,
 		directories:[canterbury_gram5p7_home],
 		name:'p7linux',
-		groups:[nesi, bestgrid, bluefern],
+		groups:[nesi, bestgrid, bluefern]  + nesi_uoc_groups,
 		packages:gram5p7_linux,
 		hosts:2,
 		cpus:64,
