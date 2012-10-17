@@ -328,7 +328,7 @@ canterbury_ng2_home = new Directory(
 
 canterbury_gram5p7_home = new Directory(
 		filesystem:canterbury_gram5p7_fs,
-		groups:[nesi, bestgrid, bluefern],
+		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
 		path:"/~/",
 		volatileDirectory:true
 		)
@@ -342,7 +342,7 @@ canterbury_ng2sge_home = new Directory(
 
 canterbury_gram5bgp_home = new Directory(
 		filesystem:canterbury_gram5bgp_fs,
-		groups:[nesi, bluefern] + nesi_uoc_groups,
+		groups:[nesi, bluefern],
 		path:"/~/",
 		volatileDirectory:true
 		)
