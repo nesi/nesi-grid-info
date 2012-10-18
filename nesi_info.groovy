@@ -559,11 +559,13 @@ mpiblast_1_6 = new Package(
 mr_bayes_3_1_2 = new Package(
 		application:mrbayes,
 		version:Version.get('3.1.2'),
+		module:Module.create('mrbayes/3.1.2'),
 		executables:[Executable.get('mb')])
 
 mr_bayes_3_2_1 = new Package(
 		application:mrbayes,
 		version:Version.get('3.2.1'),
+		module:Module.create('mrbayes/3.2.1'),
 		executables:[Executable.get('mb')])
 
 namd_2_6 = new Package(
