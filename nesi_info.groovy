@@ -421,6 +421,7 @@ beast = Application.get('BEAST')
 best = Application.get('BEST')
 bayesphylogenies = Application.get('BayesPhylogenies')
 blast = Application.get('BLAST')
+blastplus = Application.get('BLAST+')
 blender = Application.get('Blender')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
@@ -476,6 +477,12 @@ blast_2_2_21 = new Package(
 blast_2_2_26 = new Package(
 		application:blast,
 		version:Version.get('2.2.26')
+		)
+
+blastplus_2_2_27 = new Package(
+		application:blastplus,
+		module:Module.create('blast+/2.2.27'),
+		version:Version.get('2.2.27')
 		)
 
 bayesphylogenies_1_0 = new Package(
@@ -800,6 +807,7 @@ gram5p7_aix = [
 ]+ gram5p7_common_packages
 
 gram5p7_linux = [
+	blastplus_2_2_27,
 	lamarc_2_1,
 	r_2_14,
 	meme_4_1,
