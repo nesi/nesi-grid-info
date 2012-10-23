@@ -3,7 +3,7 @@ import grisu.jcommons.model.info.*
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
-akl_project_groups = [2,13,28,31,35,99999]
+akl_project_groups = [2,13,28,30,31,35,99999]
 uoc_project_groups = []
 
 // sites
@@ -82,10 +82,7 @@ uoc_project_groups.each {
 nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
 
 
-test = new Group(
-		vo = nz,
-		fqan = '/nz/test'
-		)
+
 
 uoa = new Group(
 		vo = nz,
