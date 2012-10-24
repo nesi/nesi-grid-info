@@ -422,6 +422,7 @@ blender = Application.get('Blender')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
 gold = Application.get('Gold')
+gromacs = Application.get('GROMACS')
 infernal = Application.get('infernal')
 java = Application.get('Java')
 lamarc = Application.get('LAMARC')
@@ -448,6 +449,7 @@ wrf = Application.get('WRF')
 
 // modules
 python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
+module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -505,6 +507,15 @@ gold_5_1 = new Package(
 		version:Version.get('5.1'),
 		executables:[
 			Executable.get('parallel_gold_auto')]
+		)
+
+gromacs_4_5_4 = new Package(
+		application:gromacs,
+		version:Version.get('4.5.4'),
+		module:module_gromacs_4_5_4,
+		executable:[
+			Executable.get('mdrun', Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi'))
+		]
 		)
 
 ilog_12_2 = new Package(
@@ -766,7 +777,8 @@ pan_default_packages = [
 	rmpisnow_2_15_0,
 	unixcommands_5,
 	python_2_7,
-	gold_5_1
+	gold_5_1,
+	gromacs_4_5_4
 ]
 
 gram5p7_common_packages = [
