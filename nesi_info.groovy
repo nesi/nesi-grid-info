@@ -513,8 +513,8 @@ gromacs_4_5_4 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.4'),
 		module:module_gromacs_4_5_4,
-		executable:[
-			Executable.get('mdrun', Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi'))
+		executables:[
+			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
 		]
 		)
 
