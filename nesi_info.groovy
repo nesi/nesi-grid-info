@@ -1,5 +1,7 @@
 import grisu.jcommons.model.info.*
 
+
+
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
@@ -419,6 +421,7 @@ best = Application.get('BEST')
 bayesphylogenies = Application.get('BayesPhylogenies')
 blast = Application.get('BLAST')
 blender = Application.get('Blender')
+cegma = Application.get('cegma')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
 gold = Application.get('Gold')
@@ -449,7 +452,9 @@ wrf = Application.get('WRF')
 
 // modules
 python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
+module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
+
 
 // packages
 abaqus_68ef2 = new Package(
@@ -486,6 +491,12 @@ blender_2_49a = new Package(
 		application:blender,
 		version:Version.get('2.49a'),
 		executables:[Executable.get('blender')])
+
+cegma_2_4 = new Package(
+		application:cegma,
+		version:Version.get('2.4'),
+		module:module_cegma_2_4,
+		executables:[Executable.get('cegma')])
 
 clustalw_1_83 = new Package(
 		application:clustalw,
@@ -778,7 +789,8 @@ pan_default_packages = [
 	unixcommands_5,
 	python_2_7,
 	gold_5_1,
-	gromacs_4_5_4
+	gromacs_4_5_4,
+	cegma_2_4
 ]
 
 gram5p7_common_packages = [
