@@ -1,21 +1,28 @@
 import grisu.jcommons.model.info.*
-import grisu.jcommons.utils.WalltimeUtils;
+import grisu.model.info.dto.Application
+import grisu.model.info.dto.Directory
+import grisu.model.info.dto.Executable
+import grisu.model.info.dto.Gateway
+import grisu.model.info.dto.Middleware
+import grisu.model.info.dto.Site
+import grisu.model.info.dto.VO
+import antlr.Version
 
 
 
 // sites
 
 testbed = new Site(
-	name = 'Testbed'
-	)
+		name = 'Testbed'
+		)
 
 // vos
 test = new VO(
-	voName = 'test',
-	host = 'voms.test.bestgrid.org',
-	port = 15000,
-	hostDN = '/C=nz/O=org/O=nesi/OU=test/OU=local/CN=voms.test.bestgrid.org'
-	)
+		voName = 'test',
+		host = 'voms.test.bestgrid.org',
+		port = 15000,
+		hostDN = '/C=nz/O=org/O=nesi/OU=test/OU=local/CN=voms.test.bestgrid.org'
+		)
 
 // groups
 none = Group.NO_VO_GROUP
@@ -80,6 +87,10 @@ python = new Application(
 		name:'Python'
 		)
 
+r = new Application(
+		name:'R'
+		)
+
 unixcommands = new Application(
 		name:'UnixCommands'
 		)
@@ -93,6 +104,7 @@ exe_ls = Executable.get('ls')
 exe_diff = Executable.get('diff')
 exe_echo = Executable.get('echo')
 exe_sh = Executable.get('sh')
+exe_r = Executable.get('R')
 
 // packages
 unixcommands_01 = new Package(
@@ -113,26 +125,32 @@ python26 = new Package(
 		executables: [exe_python]
 		)
 
+r_2_15_1 = new Package(
+		application:r,
+		version:Version.get('2.15.1'),
+		executables: [exe_r]
+		)
+
 // updaters
 defaultUpdater = new DefaultQueueUpdater()
 
 // queues
 batch = new Queue(
-	gateway:testbed_gram52,
-	name:'batch',
-	groups:[nesi,demo],
-	directories:[akl_home],
-	packages:[java15,python26,unixcommands_01],
-	updater:defaultUpdater
-	)
+		gateway:testbed_gram52,
+		name:'batch',
+		groups:[nesi,demo],
+		directories:[akl_home],
+		packages:[java15,python26,unixcommands_01,r_2_15_1],
+		updater:defaultUpdater
+		)
 
 test1 = new Queue(
-	gateway:testbed_gram52,
-	name:'test1',
-	groups:[nesi, none],
-	directories:[akl_home],
-	packages:[java15],
-	updater:defaultUpdater,
-	walltimeInMinutes:10
-	)
+		gateway:testbed_gram52,
+		name:'test1',
+		groups:[nesi, none],
+		directories:[akl_home],
+		packages:[java15,r_2_15_1],
+		updater:defaultUpdater,
+		walltimeInMinutes:10
+		)
 
