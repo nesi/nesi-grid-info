@@ -1,4 +1,11 @@
 import grisu.jcommons.model.info.*
+import grisu.model.info.dto.Application
+import grisu.model.info.dto.Directory
+import grisu.model.info.dto.Executable
+import grisu.model.info.dto.Gateway
+import grisu.model.info.dto.Middleware
+import grisu.model.info.dto.Site
+import grisu.model.info.dto.VO
 
 
 
@@ -35,14 +42,14 @@ akl_fs = new FileSystem(
 		host:'globus.test.nesi.org.nz',
 		protocol:'gsiftp',
 		port:2811,
-		site:testbed_info
+		site:testbed
 		)
 
 df = new FileSystem(
 		host:'irods-dev.ceres.auckland.ac.nz',
 		protocol:'gsiftp',
 		port:2811,
-		site:testbed_info
+		site:testbed
 		)
 
 
