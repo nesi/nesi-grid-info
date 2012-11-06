@@ -1,12 +1,4 @@
 import grisu.jcommons.model.info.*
-import grisu.model.info.dto.Application
-import grisu.model.info.dto.Directory
-import grisu.model.info.dto.Executable
-import grisu.model.info.dto.Gateway
-import grisu.model.info.dto.Middleware
-import grisu.model.info.dto.Site
-import grisu.model.info.dto.VO
-
 
 
 // sites
@@ -72,7 +64,7 @@ gram52 = Middleware.get("Globus", "5.2");
 
 // gateways
 testbed_gram52 = new Gateway(
-		site:testbed_info,
+		site:testbed,
 		host:'globus.test.nesi.org.nz',
 		middleware:gram52
 		)
