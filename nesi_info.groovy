@@ -2,6 +2,7 @@ import grisu.jcommons.model.info.*
 
 
 
+
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
@@ -772,8 +773,8 @@ auckland_default_packages = [
 	beast_1_6_1,
 	java_1_6,
 	mr_bayes_3_2_1,
-	r_2_15,
-	rmpisnow_2_9,
+	//	r_2_15,
+	//	rmpisnow_2_9,
 	unixcommands_5,
 	octave_3_0_5,
 	python_2_6
