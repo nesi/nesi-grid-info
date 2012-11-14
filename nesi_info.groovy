@@ -7,7 +7,7 @@ import grisu.jcommons.model.info.*
 
 // the numbers of the merit groups that have access to the auckland cluster
 akl_project_groups = [2,13,28,30,31,35,99999]
-uoc_project_groups = []
+uoc_project_groups = [31]
 
 // sites
 auckland = new Site(
@@ -421,6 +421,7 @@ beast = Application.get('BEAST')
 best = Application.get('BEST')
 bayesphylogenies = Application.get('BayesPhylogenies')
 blast = Application.get('BLAST')
+blastplus = Application.get('BLAST+')
 blender = Application.get('Blender')
 cegma = Application.get('cegma')
 clustalw = Application.get('ClustalW')
@@ -481,6 +482,12 @@ blast_2_2_21 = new Package(
 blast_2_2_26 = new Package(
 		application:blast,
 		version:Version.get('2.2.26')
+		)
+
+blastplus_2_2_27 = new Package(
+		application:blastplus,
+		module:Module.create('blast+/2.2.27'),
+		version:Version.get('2.2.27')
 		)
 
 bayesphylogenies_1_0 = new Package(
@@ -579,11 +586,13 @@ mpiblast_1_6 = new Package(
 mr_bayes_3_1_2 = new Package(
 		application:mrbayes,
 		version:Version.get('3.1.2'),
+		module:Module.create('mrbayes/3.1.2'),
 		executables:[Executable.get('mb')])
 
 mr_bayes_3_2_1 = new Package(
 		application:mrbayes,
 		version:Version.get('3.2.1'),
+		module:Module.create('mrbayes/3.2.1'),
 		executables:[Executable.get('mb')])
 
 namd_2_6 = new Package(
@@ -820,6 +829,7 @@ gram5p7_aix = [
 ]+ gram5p7_common_packages
 
 gram5p7_linux = [
+	blastplus_2_2_27,
 	lamarc_2_1,
 	r_2_14,
 	meme_4_1,
