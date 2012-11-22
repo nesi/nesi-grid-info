@@ -918,9 +918,9 @@ pan_pan = new Queue(
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
-		hosts:80,
-		cpus:960,
-		cpusPerHost:12,
+		hosts:156,
+		cpus:2096,
+		cpusPerHost:15,
 		clockspeedInHz:2800000000,
 		memory:137438953472,
 		virtualMemory:137438953472
