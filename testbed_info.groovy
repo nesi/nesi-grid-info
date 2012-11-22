@@ -8,7 +8,7 @@ testbed = new Site(
 		)
 
 // vos
-test = new VO(
+test_vo = new VO(
 		voName = 'test',
 		host = 'voms.test.bestgrid.org',
 		port = 15000,
@@ -19,13 +19,13 @@ test = new VO(
 none = Group.NO_VO_GROUP
 
 nesi = new Group(
-		vo = test,
+		vo = test_vo,
 		fqan = "/test/nesi"
 		)
 
 // groups
 demo = new Group(
-		vo = test,
+		vo = test_vo,
 		fqan = "/test/demo"
 		)
 
