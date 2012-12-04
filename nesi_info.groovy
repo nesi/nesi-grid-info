@@ -73,6 +73,8 @@ nesi = new Group(
 		fqan = "/nz/nesi"
 		)
 
+
+
 def nesi_akl_groups = []
 akl_project_groups.each {
 	nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+String.format("%05d", it)))
@@ -351,7 +353,7 @@ canterbury_gram5bgp_home = new Directory(
 
 scenzgrid_home = new Directory(
 		filesystem:scenzgrid_fs,
-		groups:[bestgrid],
+		groups:[bestgrid,landcare_users],
 		volatileDirectory:true,
 		path:'/~/'
 		)
@@ -914,7 +916,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
-		groups:[bestgrid, nesi] + nesi_akl_groups,
+		groups:[bestgrid, nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -929,7 +931,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
-		groups:[bestgrid, nesi] + nesi_akl_groups,
+		groups:[bestgrid, nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster',
@@ -948,7 +950,8 @@ default_gram5 = new Queue(
 			bestgrid,
 			demo,
 			grid_dev,
-			nesi
+			nesi,
+			uoa
 		],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
@@ -991,7 +994,7 @@ test_gram5 = new Queue(
 uoa_gpu = new Queue(
 		gateway:gram5,
 		name:'gpu',
-		groups:[nesi],
+		groups:[nesi,uoa],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
 		description:'Suitable for any jobs using the CUDA GPU framework. If you would like to use an alternative framework please contact eresearch-admin@list.auckland.ac.nz',
@@ -1194,7 +1197,7 @@ canterbury_bgp = new Queue(
 
 small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
-		groups:[nesi, bestgrid],
+		groups:[nesi, bestgrid, bluefern],
 		name:'small',
 		directories:[canterbury_ng2_home],
 		packages: small_ngcompute,
@@ -1210,7 +1213,7 @@ small_canterbury_ng2 = new Queue(
 
 medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
-		groups:[nesi, bestgrid],
+		groups:[nesi, bestgrid, bluefern],
 		name:'medium64',
 		factoryType:'SGE',
 		directories:[canterbury_ng2sge_home],
@@ -1227,7 +1230,7 @@ medium64_oldesparky_canterbury_ng2sge = new Queue(
 
 all_q_ng2_scenzgrid = new Queue(
 		gateway:landcare_gram4,
-		groups:[bestgrid],
+		groups:[bestgrid,landcare_users],
 		name:'all.q',
 		packages:scenz_packages,
 		factoryType:'SGE',
