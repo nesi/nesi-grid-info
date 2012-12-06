@@ -203,6 +203,11 @@ uoa_sbs = new Group(
 		fqan = '/nz/virtual-screening/sbs-structural-biology'
 		)
 
+uoo = new Group(
+		vo = nz,
+		fqan = '/nz/uoo'
+		)
+
 
 
 // filesystems
@@ -267,7 +272,8 @@ auckland_cluster_groups = [
 	uoa_qoptics,
 	uoa_stats,
 	uoa_stats_staff,
-	uoa_stats_students
+	uoa_stats_students,
+	uoo
 	//	uoa_vs_jobs,
 	//	uoa_sbs,
 	//	uoa_acsrc,
@@ -916,7 +922,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
-		groups:[bestgrid, nesi, uoa] + nesi_akl_groups,
+		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -931,7 +937,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
-		groups:[bestgrid, nesi, uoa] + nesi_akl_groups,
+		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster',
