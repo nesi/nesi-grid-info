@@ -287,11 +287,11 @@ auckland_home = new Directory(
 		volatileDirectory:true
 		)
 
-auckland_pan = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:auckland_cluster_groups,
-		volatileDirectory:true
-		)
+//auckland_pan = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:auckland_cluster_groups,
+//		volatileDirectory:true
+//		)
 
 auckland_df_home = new Directory(
 		filesystem:auckland_df_fs,
@@ -300,27 +300,27 @@ auckland_df_home = new Directory(
 		volatileDirectory:false
 		)
 
-auckland_vs_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_virt_screening],
-		volatileDirectory:false,
-		path:"/home/grid-vs/",
-		shared:false
-		)
-
-auckland_acsrc_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_acsrc],
-		volatileDirectory:false,
-		path:"/home/grid-acsrc/"
-		)
-
-auckland_sbs_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_sbs],
-		volatileDirectory:false,
-		path:"/home/grid-sbs/"
-		)
+//auckland_vs_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_virt_screening],
+//		volatileDirectory:false,
+//		path:"/home/grid-vs/",
+//		shared:false
+//		)
+//
+//auckland_acsrc_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_acsrc],
+//		volatileDirectory:false,
+//		path:"/home/grid-acsrc/"
+//		)
+//
+//auckland_sbs_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_sbs],
+//		volatileDirectory:false,
+//		path:"/home/grid-sbs/"
+//		)
 
 canterbury_ng1_home = new Directory(
 		filesystem:canterbury_ng1_fs,
@@ -919,35 +919,35 @@ scenz_packages = [
 	unixcommands_5
 ]
 
-pan_pan = new Queue(
-		gateway:pan,
-		name:'pan',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		description:'Suitable for any jobs by NeSI members',
-		hosts:156,
-		cpus:2096,
-		cpusPerHost:15,
-		clockspeedInHz:2800000000,
-		memory:137438953472,
-		virtualMemory:137438953472
-		)
-
-pan_gpu = new Queue(
-		gateway:pan,
-		name:'gpu',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		description:'GPU nodes on the Pan cluster',
-		hosts:2,
-		cpus:24,
-		cpusPerHost:12,
-		clockspeedInHz:2800000000,
-		memory:103079215104,
-		virtualMemory:103079215104
-		)
+//pan_pan = new Queue(
+//		gateway:pan,
+//		name:'pan',
+//		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		description:'Suitable for any jobs by NeSI members',
+//		hosts:156,
+//		cpus:2096,
+//		cpusPerHost:15,
+//		clockspeedInHz:2800000000,
+//		memory:137438953472,
+//		virtualMemory:137438953472
+//		)
+//
+//pan_gpu = new Queue(
+//		gateway:pan,
+//		name:'gpu',
+//		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		description:'GPU nodes on the Pan cluster',
+//		hosts:2,
+//		cpus:24,
+//		cpusPerHost:12,
+//		clockspeedInHz:2800000000,
+//		memory:103079215104,
+//		virtualMemory:103079215104
+//		)
 
 default_gram5 = new Queue(
 		gateway:gram5,
@@ -1012,12 +1012,12 @@ uoa_gpu = new Queue(
 		virtualMemory:50637664419
 		)
 
-uoa_gold_ce = new Queue(
-		gateway:pan,
-		name:'gold',
-		groups:[uoa_vs_jobs],
-		directories:[auckland_home],
-		packages:[gold_5_1])
+//uoa_gold_ce = new Queue(
+//		gateway:pan,
+//		name:'gold',
+//		groups:[uoa_vs_jobs],
+//		directories:[auckland_home],
+//		packages:[gold_5_1])
 
 uoa_mech_ce = new Queue(
 		gateway:gram5,
@@ -1063,20 +1063,20 @@ uoa_stats_ce = new Queue(
 		description:'Queue for stats node (staff)'
 		)
 
-uoa_pan_comp_chem_ce = new Queue(
-		gateway:pan,
-		name:'chem',
-		groups:[uoa_comp_chem],
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		hosts:1,
-		cpusPerHost:40,
-		cpus:40,
-		memory:549755813888,
-		virtualMemory:549755813888,
-		clockspeedInHz:2700000000,
-		description:'Queue for comp chem node on Pan'
-		)
+//uoa_pan_comp_chem_ce = new Queue(
+//		gateway:pan,
+//		name:'chem',
+//		groups:[uoa_comp_chem],
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		hosts:1,
+//		cpusPerHost:40,
+//		cpus:40,
+//		memory:549755813888,
+//		virtualMemory:549755813888,
+//		clockspeedInHz:2700000000,
+//		description:'Queue for comp chem node on Pan'
+//		)
 
 uoa_stats_students_ce = new Queue(
 		gateway:gram5,
