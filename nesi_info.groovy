@@ -442,6 +442,7 @@ lamarc = Application.get('LAMARC')
 meme = Application.get('MEME')
 modeltest = Application.get('ModelTest')
 mono = Application.get('mono')
+mothur = Application.get('mothur')
 mrbayes = Application.get('MrBayes')
 namd = Application.get('NAMD')
 nomad = Application.get('nomad')
@@ -464,7 +465,7 @@ wrf = Application.get('WRF')
 python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
-
+module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -579,6 +580,11 @@ modeltest_3_7 = new Package(
 mono_2_6_7 = new Package(
 		application:mono,
 		version:Version.get('2.6.7')
+		)
+
+mothur_1_6_0 = new Package(
+		application:mothur,
+		version:Version.get('1.6.0')
 		)
 
 mpiblast_1_5 = new Package(
@@ -808,7 +814,8 @@ pan_default_packages = [
 	python_2_7,
 	gold_5_1,
 	gromacs_4_5_4,
-	cegma_2_4
+	cegma_2_4,
+	mothur_1_6_0
 ]
 
 gram5p7_common_packages = [
