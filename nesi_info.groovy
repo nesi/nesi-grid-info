@@ -765,13 +765,13 @@ teiresias_18aug2004 = new Package(
 
 ultrabeast_0_1 = new Package(
 		application:ultrabeast,
+		module:module_ultrabeast_0_1,
 		version:Version.get('0.1')
 		)
 
 unixcommands_5 = new Package(
 		application:unixcommands,
 		version:Version.get('5'),
-		module:module_ultrabeast_0_1,
 		executables:Executable.getList('ls', 'cat', 'diff', 'echo','pwd')
 		)
 
