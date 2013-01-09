@@ -458,6 +458,7 @@ octave = Application.get('octave')
 python = Application.get('python')
 szybki = Application.get('szybki')
 teiresias = Application.get('teiresias')
+ultrabeast = Application.get('UltraBEAST')
 wrf = Application.get('WRF')
 
 
@@ -466,6 +467,7 @@ python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
+module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -761,6 +763,11 @@ teiresias_18aug2004 = new Package(
 		version:Version.get('18AUG2004')
 		)
 
+ultrabeast_0_1 = new Package(
+		application:ultrabeast,
+		version:Version.get('0.1')
+		)
+
 unixcommands_5 = new Package(
 		application:unixcommands,
 		version:Version.get('5'),
@@ -815,7 +822,8 @@ pan_default_packages = [
 	gold_5_1,
 	gromacs_4_5_4,
 	cegma_2_4,
-	mothur_1_6_0
+	mothur_1_6_0,
+	ultrabeast_0_1
 ]
 
 gram5p7_common_packages = [
