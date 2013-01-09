@@ -771,6 +771,7 @@ ultrabeast_0_1 = new Package(
 unixcommands_5 = new Package(
 		application:unixcommands,
 		version:Version.get('5'),
+		module:module_ultrabeast_0_1,
 		executables:Executable.getList('ls', 'cat', 'diff', 'echo','pwd')
 		)
 
