@@ -935,35 +935,35 @@ scenz_packages = [
 	unixcommands_5
 ]
 
-pan_pan = new Queue(
-		gateway:pan,
-		name:'pan',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		description:'Suitable for any jobs by NeSI members',
-		hosts:156,
-		cpus:2096,
-		cpusPerHost:15,
-		clockspeedInHz:2800000000,
-		memory:137438953472,
-		virtualMemory:137438953472
-		)
+//pan_pan = new Queue(
+//		gateway:pan,
+//		name:'pan',
+//		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		description:'Suitable for any jobs by NeSI members',
+//		hosts:156,
+//		cpus:2096,
+//		cpusPerHost:15,
+//		clockspeedInHz:2800000000,
+//		memory:137438953472,
+//		virtualMemory:137438953472
+//		)
 
-pan_gpu = new Queue(
-		gateway:pan,
-		name:'gpu',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		description:'GPU nodes on the Pan cluster',
-		hosts:2,
-		cpus:24,
-		cpusPerHost:12,
-		clockspeedInHz:2800000000,
-		memory:103079215104,
-		virtualMemory:103079215104
-		)
+//pan_gpu = new Queue(
+//		gateway:pan,
+//		name:'gpu',
+//		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		description:'GPU nodes on the Pan cluster',
+//		hosts:2,
+//		cpus:24,
+//		cpusPerHost:12,
+//		clockspeedInHz:2800000000,
+//		memory:103079215104,
+//		virtualMemory:103079215104
+//		)
 
 default_gram5 = new Queue(
 		gateway:gram5,
