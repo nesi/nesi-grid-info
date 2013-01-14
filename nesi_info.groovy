@@ -971,9 +971,7 @@ default_gram5 = new Queue(
 		groups:[
 			bestgrid,
 			demo,
-			grid_dev,
-			nesi,
-			uoa
+			grid_dev
 		],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
@@ -1016,7 +1014,7 @@ test_gram5 = new Queue(
 uoa_gpu = new Queue(
 		gateway:gram5,
 		name:'gpu',
-		groups:[nesi,uoa],
+		groups:[bestgrid],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
 		description:'Suitable for any jobs using the CUDA GPU framework. If you would like to use an alternative framework please contact eresearch-admin@list.auckland.ac.nz',
