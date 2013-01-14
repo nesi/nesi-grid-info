@@ -287,11 +287,11 @@ auckland_home = new Directory(
 		volatileDirectory:true
 		)
 
-auckland_pan = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:auckland_cluster_groups,
-		volatileDirectory:true
-		)
+//auckland_pan = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:auckland_cluster_groups,
+//		volatileDirectory:true
+//		)
 
 auckland_df_home = new Directory(
 		filesystem:auckland_df_fs,
@@ -300,27 +300,27 @@ auckland_df_home = new Directory(
 		volatileDirectory:false
 		)
 
-auckland_vs_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_virt_screening],
-		volatileDirectory:false,
-		path:"/home/grid-vs/",
-		shared:false
-		)
+//auckland_vs_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_virt_screening],
+//		volatileDirectory:false,
+//		path:"/home/grid-vs/",
+//		shared:false
+//		)
 
-auckland_acsrc_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_acsrc],
-		volatileDirectory:false,
-		path:"/home/grid-acsrc/"
-		)
+//auckland_acsrc_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_acsrc],
+//		volatileDirectory:false,
+//		path:"/home/grid-acsrc/"
+//		)
 
-auckland_sbs_group = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:[uoa_sbs],
-		volatileDirectory:false,
-		path:"/home/grid-sbs/"
-		)
+//auckland_sbs_group = new Directory(
+//		filesystem:auckland_pan_fs,
+//		groups:[uoa_sbs],
+//		volatileDirectory:false,
+//		path:"/home/grid-sbs/"
+//		)
 
 canterbury_ng1_home = new Directory(
 		filesystem:canterbury_ng1_fs,
@@ -1077,20 +1077,20 @@ uoa_stats_ce = new Queue(
 		description:'Queue for stats node (staff)'
 		)
 
-uoa_pan_comp_chem_ce = new Queue(
-		gateway:pan,
-		name:'chem',
-		groups:[uoa_comp_chem],
-		directories:[auckland_pan],
-		packages:pan_default_packages,
-		hosts:1,
-		cpusPerHost:40,
-		cpus:40,
-		memory:549755813888,
-		virtualMemory:549755813888,
-		clockspeedInHz:2700000000,
-		description:'Queue for comp chem node on Pan'
-		)
+//uoa_pan_comp_chem_ce = new Queue(
+//		gateway:pan,
+//		name:'chem',
+//		groups:[uoa_comp_chem],
+//		directories:[auckland_pan],
+//		packages:pan_default_packages,
+//		hosts:1,
+//		cpusPerHost:40,
+//		cpus:40,
+//		memory:549755813888,
+//		virtualMemory:549755813888,
+//		clockspeedInHz:2700000000,
+//		description:'Queue for comp chem node on Pan'
+//		)
 
 uoa_stats_students_ce = new Queue(
 		gateway:gram5,
