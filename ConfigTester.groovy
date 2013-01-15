@@ -3,8 +3,8 @@ import grisu.grin.YnfoManager
 import grisu.grin.model.Grid
 
 @GrabResolver(name='nesi-stable', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public/')
-@GrabResolver(name='nesi-snapshot', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/')
-@Grab(group='nz.nesi', module='grin', version='0.1-SNAPSHOT', changing=true)
+//@GrabResolver(name='nesi-snapshot', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/')
+@Grab(group='nz.nesi', module='grin', version='0.1.3', changing=false)
 
 class ConfigTester {
 
