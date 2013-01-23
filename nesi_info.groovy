@@ -455,6 +455,7 @@ unixcommands = Application.get('UnixCommands')
 ilog = Application.get('ilog')
 mpiblast = Application.get('mpiBLAST')
 octave = Application.get('octave')
+phyml = Application.get('phyml')
 python = Application.get('python')
 szybki = Application.get('szybki')
 teiresias = Application.get('teiresias')
@@ -467,6 +468,7 @@ python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
+module_phyml_20120412 = Module.create('phyml/20120412')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 
 // packages
@@ -651,6 +653,14 @@ paup_4_0_beta = new Package(
 		version:Version.get('4.0 beta')
 		)
 
+phyml_20120412 = new Package(
+		application: phyml,
+		version:Version.get('20120412'),
+		module:module_phyml_20120412,
+		executables:[
+			Executable.get('phyml')])
+
+
 python_2_4 = new Package(
 		application: python,
 		version:Version.get('2.4'),
@@ -813,18 +823,19 @@ auckland_default_packages = [
 
 pan_default_packages = [
 	blast_2_2_26,
+	cegma_2_4,
+	gold_5_1,
+	gromacs_4_5_4,
+	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
+	phyml_20120412,
+	python_2_7,
 	r_2_15,
 	rmpisnow_2_15_0,
-	unixcommands_5,
-	python_2_7,
-	gold_5_1,
-	gromacs_4_5_4,
-	cegma_2_4,
-	mothur_1_6_0,
-	ultrabeast_0_1
+	ultrabeast_0_1,
+	unixcommands_5
 ]
 
 gram5p7_common_packages = [
