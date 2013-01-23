@@ -467,6 +467,7 @@ wrf = Application.get('WRF')
 python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
+module_gromacs_4_5_5 = Module.create('gromacs/4.5.5')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
@@ -545,6 +546,14 @@ gromacs_4_5_4 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.4'),
 		module:module_gromacs_4_5_4,
+		executables:[
+			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
+		]
+		)
+gromacs_4_5_5 = new Package(
+		application:gromacs,
+		version:Version.get('4.5.5'),
+		module:module_gromacs_4_5_5,
 		executables:[
 			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
 		]
@@ -826,6 +835,7 @@ pan_default_packages = [
 	cegma_2_4,
 	gold_5_1,
 	gromacs_4_5_4,
+	gromacs_4_5_5,
 	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
