@@ -458,6 +458,7 @@ mpiblast = Application.get('mpiBLAST')
 octave = Application.get('octave')
 phyml = Application.get('phyml')
 python = Application.get('python')
+sas = Application.get('sas')
 szybki = Application.get('szybki')
 teiresias = Application.get('teiresias')
 ultrabeast = Application.get('UltraBEAST')
@@ -473,6 +474,7 @@ module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
+module_sas_9_3 = Module.create('sas/9.3')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -780,6 +782,12 @@ sas_9_2 = new Package(
 		version:Version.get('9.2')
 		)
 
+sas_9_3 = new Package(
+		application:sas,
+		version:Version.get('9.3'),
+		module:module_sas_9_3
+		)
+
 szybki_1_3_4 = new Package(
 		application:szybki,
 		version:Version.get('1.3.4'),
@@ -852,6 +860,7 @@ pan_default_packages = [
 	phyml_20120412,
 	python_2_7,
 	r_2_15,
+	sas_9_2,
 	rmpisnow_2_15_0,
 	ultrabeast_0_1,
 	unixcommands_5
