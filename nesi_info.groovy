@@ -860,7 +860,7 @@ pan_default_packages = [
 	phyml_20120412,
 	python_2_7,
 	r_2_15,
-	sas_9_2,
+	sas_9_3,
 	rmpisnow_2_15_0,
 	ultrabeast_0_1,
 	unixcommands_5
