@@ -431,6 +431,7 @@ bayesphylogenies = Application.get('BayesPhylogenies')
 blast = Application.get('BLAST')
 blastplus = Application.get('BLAST+')
 blender = Application.get('Blender')
+bowtie2 = Application.get('bowtie2')
 cegma = Application.get('cegma')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
@@ -471,6 +472,7 @@ module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
+module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -513,6 +515,12 @@ blender_2_49a = new Package(
 		application:blender,
 		version:Version.get('2.49a'),
 		executables:[Executable.get('blender')])
+
+bowtie2_2_0_6 = new Package(
+		application:bowtie2,
+		version:Version.get('2.0.6'),
+		module:module_bowtie2_2_0_6,
+		executables:[Executable.get('bowtie2')])
 
 cegma_2_4 = new Package(
 		application:cegma,
@@ -832,6 +840,7 @@ auckland_default_packages = [
 
 pan_default_packages = [
 	blast_2_2_26,
+	bowtie2_2_0_6,
 	cegma_2_4,
 	gold_5_1,
 	gromacs_4_5_4,
