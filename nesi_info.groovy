@@ -451,7 +451,6 @@ paup = Application.get('PAUP*')
 parswms = Application.get('PARSWMS')
 r = Application.get('R')
 rmpisnow = Application.get('RMPISNOW')
-sas = Application.get('SAS')
 unixcommands = Application.get('UnixCommands')
 ilog = Application.get('ilog')
 mpiblast = Application.get('mpiBLAST')
@@ -472,6 +471,7 @@ module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
+module_phyml_20121208 = Module.create('phyml/20120412-patch-20121208')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
 module_sas_9_3 = Module.create('sas/9.3')
@@ -679,6 +679,13 @@ phyml_20120412 = new Package(
 		executables:[
 			Executable.get('phyml')])
 
+phyml_20121208 = new Package(
+		application: phyml,
+		version:Version.get('20120412'),
+		module:module_phyml_20121208,
+		executables:[
+			Executable.get('phyml-mpi')])
+
 
 python_2_4 = new Package(
 		application: python,
@@ -858,6 +865,7 @@ pan_default_packages = [
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
 	phyml_20120412,
+	phyml_20121208,
 	python_2_7,
 	r_2_15,
 	sas_9_3,
