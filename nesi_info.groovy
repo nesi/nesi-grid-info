@@ -681,7 +681,7 @@ phyml_20120412 = new Package(
 
 phyml_20121208 = new Package(
 		application: phyml,
-		version:Version.get('20120412'),
+		version:Version.get('20121208'),
 		module:module_phyml_20121208,
 		executables:[
 			Executable.get('phyml-mpi')])
