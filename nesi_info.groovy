@@ -259,7 +259,6 @@ scenzgrid_fs = new FileSystem(
 
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
-	bestgrid,
 	demo,
 	grid_dev,
 	nesi,
@@ -470,6 +469,7 @@ python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
+module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_phyml_20121208 = Module.create('phyml/20120412-patch-20121208')
@@ -565,6 +565,15 @@ gromacs_4_5_5 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.5'),
 		module:module_gromacs_4_5_5,
+		executables:[
+			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
+		]
+		)
+
+gromacs_4_6 = new Package(
+		application:gromacs,
+		version:Version.get('4.6'),
+		module:module_gromacs_4_6,
 		executables:[
 			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
 		]
@@ -986,7 +995,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members',
@@ -1001,7 +1010,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
-		groups:[bestgrid, nesi, uoa, uoo] + nesi_akl_groups,
+		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster',
@@ -1017,7 +1026,6 @@ default_gram5 = new Queue(
 		gateway:gram5,
 		name:'default',
 		groups:[
-			bestgrid,
 			demo,
 			grid_dev
 		],
@@ -1062,7 +1070,7 @@ test_gram5 = new Queue(
 uoa_gpu = new Queue(
 		gateway:gram5,
 		name:'gpu',
-		groups:[bestgrid],
+		groups:[demo],
 		directories:[auckland_home],
 		packages:auckland_default_packages,
 		description:'Suitable for any jobs using the CUDA GPU framework. If you would like to use an alternative framework please contact eresearch-admin@list.auckland.ac.nz',
