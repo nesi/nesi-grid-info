@@ -870,6 +870,7 @@ pan_default_packages = [
 	gold_5_1,
 	gromacs_4_5_4,
 	gromacs_4_5_5,
+	gromacs_4_6,
 	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
