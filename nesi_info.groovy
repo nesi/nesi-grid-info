@@ -465,7 +465,8 @@ wrf = Application.get('WRF')
 
 
 // modules
-python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
+module_python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
+module_python_2_6_virtualenv = Module.create('python/2.6_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
@@ -710,6 +711,7 @@ python_2_5 = new Package(
 python_2_6 = new Package(
 		application: python,
 		version:Version.get('2.6'),
+		module:module_python_2_6_virtualenv,
 		executables:[
 			Executable.get('python2.6')]
 		)
@@ -723,7 +725,7 @@ python_2_6_2 = new Package(
 python_2_7 = new Package(
 		application: python,
 		version:Version.get('2.7'),
-		module:python_2_7_virtualenv,
+		module:module_python_2_7_virtualenv,
 		executables:[
 			Executable.get('python2.7')])
 
@@ -875,6 +877,8 @@ pan_default_packages = [
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
+	python_2_6,
+	python_2_7,
 	phyml_20120412,
 	phyml_20121208,
 	python_2_7,
