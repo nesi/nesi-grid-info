@@ -1,8 +1,6 @@
 import grisu.jcommons.model.info.*
 
 
-
-
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
@@ -72,7 +70,6 @@ nesi = new Group(
 		vo = nz,
 		fqan = "/nz/nesi"
 		)
-
 
 
 def nesi_akl_groups = []
@@ -284,12 +281,14 @@ auckland_home = new Directory(
 		filesystem:auckland_gram5_fs,
 		groups:auckland_cluster_groups,
 		path:"/~/",
+		alias:"gram5",
 		volatileDirectory:true
 		)
 
 auckland_pan = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:auckland_cluster_groups,
+		alias:"pan",
 		volatileDirectory:true
 		)
 
@@ -297,6 +296,7 @@ auckland_df_home = new Directory(
 		filesystem:auckland_df_fs,
 		groups:[nesi],
 		path:"/~/",
+		alias:"datafabric",
 		volatileDirectory:false
 		)
 
