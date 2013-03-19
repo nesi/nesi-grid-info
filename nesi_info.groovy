@@ -583,7 +583,7 @@ gromacs_4_6 = new Package(
 		)
 hagfish_2013_03_14 = new Package(
 		application:hagfish,
-		version:Version.get(2013_03_14'),
+		version:Version.get('2013_03_14'),
 		module:module_hagfish_2013_03_14,
 		executables:[
 			Executable.get('hagfish_blockcompplot'),Executable.get('hagfish_blockcompplot2'),Executable.get('hagfish_blockplot'),Executable.get('hagfish_circos'),Executable.get('hagfish_compplot'),Executable.get('hagfish_compplot2')
