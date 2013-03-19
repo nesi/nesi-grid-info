@@ -437,6 +437,7 @@ clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
 gold = Application.get('Gold')
 gromacs = Application.get('GROMACS')
+hagfish = Application.get('hagfish')
 infernal = Application.get('infernal')
 java = Application.get('Java')
 lamarc = Application.get('LAMARC')
@@ -471,6 +472,7 @@ module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
+module_hagfish_2013_03_14 = Module.create('hagfish/2012_03_14')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_phyml_20121208 = Module.create('phyml/20120412-patch-20121208')
@@ -577,6 +579,14 @@ gromacs_4_6 = new Package(
 		module:module_gromacs_4_6,
 		executables:[
 			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
+		]
+		)
+hagfish_2013_03_14 = new Package(
+		application:hagfish,
+		version:Version.get(2013_03_14'),
+		module:module_hagfish_2013_03_14,
+		executables:[
+			Executable.get('hagfish_blockcompplot'),Executable.get('hagfish_blockcompplot2'),Executable.get('hagfish_blockplot'),Executable.get('hagfish_circos'),Executable.get('hagfish_compplot'),Executable.get('hagfish_compplot2')
 		]
 		)
 
@@ -873,6 +883,7 @@ pan_default_packages = [
 	gromacs_4_5_4,
 	gromacs_4_5_5,
 	gromacs_4_6,
+	hagfish_2013_03_14,
 	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
