@@ -1038,6 +1038,21 @@ pan_gpu = new Queue(
 		virtualMemory:103079215104
 		)
 
+pan_stats = new Queue(
+	gateway:pan,
+	name:'stats',
+	groups:[uoa_stats_staff, uoa_stats_students],
+	directories:[auckland_pan],
+	packages:pan_default_packages,
+	description:'Suitable for jobs by the statistics department',
+	hosts:156,
+	cpus:2096,
+	cpusPerHost:15,
+	clockspeedInHz:2800000000,
+	memory:137438953472,
+	virtualMemory:137438953472
+	)
+
 default_gram5 = new Queue(
 		gateway:gram5,
 		name:'default',
