@@ -50,15 +50,15 @@ akl_home = new Directory(
 		filesystem:akl_fs,
 		groups:[nesi, demo, none],
 		path:"/~/",
-		shared:false,
-		volatileDirectory:false)
+		options:[shared:false,volatileDirectory:false]
+		)
 
 df_home = new Directory(
 		filesystem:df,
 		groups:[none],
 		path:"/~/",
-		shared:false,
-		volatileDirectory:false)
+		options:[shared:false,volatileDirectory:false]
+		)
 
 gram52 = Middleware.get("Globus", "5.2");
 
