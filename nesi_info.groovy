@@ -1040,7 +1040,7 @@ pan_gpu = new Queue(
 
 pan_stats = new Queue(
 	gateway:pan,
-	name:'stats',
+	name:'stat',
 	groups:[uoa_stats_staff, uoa_stats_students],
 	directories:[auckland_pan],
 	packages:pan_default_packages,
