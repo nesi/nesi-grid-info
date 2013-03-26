@@ -471,6 +471,7 @@ module_python_2_6_virtualenv = Module.create('python/2.6_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
+module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-sandybridge')
 module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
 module_hagfish_2013_03_14 = Module.create('hagfish/2013_03_14')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
@@ -567,7 +568,7 @@ gromacs_4_5_4 = new Package(
 gromacs_4_5_5 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.5'),
-		module:module_gromacs_4_5_5,
+		module:module_gromacs_4_5_5_opt,
 		executables:[
 			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
 		]
