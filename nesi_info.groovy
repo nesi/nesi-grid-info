@@ -477,6 +477,7 @@ module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-
 module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
 module_hagfish_2013_03_14 = Module.create('hagfish/2013_03_14')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
+module_openbugs_3_2_2 = Module.create('OpenBUGS/3.2.2')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_phyml_20121208 = Module.create('phyml/20120412-patch-20121208')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
@@ -696,6 +697,7 @@ octave_3_4_2 = new Package(
 openbugs_3_2_2 = new Package(
 		application:openbugs,
 		version:Version.get('3.2.2'),
+		module:module_openbugs_3_2_2,
 		executables:[Executable.get('OpenBUGS')])
 
 parswms_aug06 = new Package(
