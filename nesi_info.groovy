@@ -435,6 +435,7 @@ bowtie2 = Application.get('bowtie2')
 cegma = Application.get('cegma')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
+gcc = Application.get('gcc')
 gold = Application.get('Gold')
 gromacs = Application.get('GROMACS')
 hagfish = Application.get('hagfish')
@@ -448,6 +449,7 @@ mothur = Application.get('mothur')
 mrbayes = Application.get('MrBayes')
 namd = Application.get('NAMD')
 nomad = Application.get('nomad')
+openbugs = Application.get('OpenBUGS')
 paup = Application.get('PAUP*')
 parswms = Application.get('PARSWMS')
 r = Application.get('R')
@@ -548,6 +550,13 @@ clustalw_2_0_11 = new Package(
 clustalwparallel_0_13 = new Package(
 		application:clustalwparallel,
 		version:Version.get('0.13')
+		)
+
+gcc_4_7_2 = new Package(
+		application:gcc,
+		version:Version.get('4.7.2'),
+		executables:[
+			Executable.get('gcc')]
 		)
 
 gold_5_1 = new Package(
@@ -683,6 +692,11 @@ octave_3_4_2 = new Package(
 		application:octave,
 		version:Version.get('3.4.2'),
 		executables:[Executable.get('octave')])
+
+openbugs_3_2_2 = new Package(
+		application:openbugs,
+		version:Version.get('3.2.2'),
+		executables:[Executable.get('OpenBUGS')])
 
 parswms_aug06 = new Package(
 		application:parswms,
@@ -880,6 +894,7 @@ pan_default_packages = [
 	blast_2_2_26,
 	bowtie2_2_0_6,
 	cegma_2_4,
+	gcc_4_7_2,
 	gold_5_1,
 	gromacs_4_5_4,
 	gromacs_4_5_5,
@@ -889,6 +904,7 @@ pan_default_packages = [
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
+	openbugs_3_2_2,
 	python_2_6,
 	python_2_7,
 	phyml_20120412,
@@ -1054,86 +1070,6 @@ pan_stats = new Queue(
 	virtualMemory:137438953472
 	)
 
-default_gram5 = new Queue(
-		gateway:gram5,
-		name:'default',
-		groups:[
-			demo,
-			grid_dev
-		],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		description:'Suitable for any jobs by NeSI members',
-		hosts:21,
-		cpus:252,
-		cpusPerHost:12,
-		memory:25265145118,
-		virtualMemory:25265145118
-		)
-
-demo_gram5 = new Queue(
-		gateway:gram5,
-		name:'demo',
-		groups:[demo],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		description:'Test queue for demo group users',
-		hosts:21,
-		cpus:252,
-		cpusPerHost:12,
-		memory:25265145118,
-		virtualMemory:25265145118
-		)
-
-test_gram5 = new Queue(
-		gateway:gram5,
-		name:'test',
-		groups:[grid_dev],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		description:'Test queue for grid developers',
-		hosts:21,
-		cpus:252,
-		cpusPerHost:12,
-		memory:25265145118,
-		virtualMemory:25265145118
-		)
-
-uoa_gpu = new Queue(
-		gateway:gram5,
-		name:'gpu',
-		groups:[demo],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		description:'Suitable for any jobs using the CUDA GPU framework. If you would like to use an alternative framework please contact eresearch-admin@list.auckland.ac.nz',
-		hosts:2,
-		cpus:16,
-		cpusPerHost:16,
-		clockspeedInHz:2340000000,
-		memory:50637664419,
-		virtualMemory:50637664419
-		)
-
-uoa_gold_ce = new Queue(
-		gateway:pan,
-		name:'gold',
-		groups:[uoa_vs_jobs],
-		directories:[auckland_home],
-		packages:[gold_5_1])
-
-uoa_mech_ce = new Queue(
-		gateway:gram5,
-		name:'uoamech',
-		groups:[uoa_mech_eng],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		hosts:4,
-		cpus:48,
-		cpusPerHost:12,
-		clockspeedInHz:2670000000,
-		memory:2147483648,
-		description:'MechEng node'
-		)
 
 uoa_math_ce = new Queue(
 		gateway:gram5,
@@ -1150,20 +1086,6 @@ uoa_math_ce = new Queue(
 		description:'Queue for math node'
 		)
 
-uoa_stats_ce = new Queue(
-		gateway:gram5,
-		name:'uoastats',
-		groups:[uoa_stats_staff],
-		packages:auckland_default_packages,
-		directories:[auckland_home],
-		hosts:1,
-		cpus:40,
-		cpusPerHost:40,
-		memory:541316203151,
-		virtualMemory:541316203151,
-		clockspeedInHz:1950000000,
-		description:'Queue for stats node (staff)'
-		)
 
 uoa_pan_comp_chem_ce = new Queue(
 		gateway:pan,
@@ -1180,79 +1102,7 @@ uoa_pan_comp_chem_ce = new Queue(
 		description:'Queue for comp chem node on Pan'
 		)
 
-uoa_stats_students_ce = new Queue(
-		gateway:gram5,
-		name:'sstudents',
-		groups:[uoa_stats_students],
-		packages:auckland_default_packages,
-		directories:[auckland_home],
-		hosts:1,
-		cpus:40,
-		cpusPerHost:40,
-		memory:541316203151,
-		virtualMemory:541316203151,
-		clockspeedInHz:1950000000,
-		description:'Queue for stats node (students)'
-		)
 
-uoa_comp_evol_ce = new Queue(
-		gateway:gram5,
-		name:'uoaevol',
-		groups:[uoa_comp_evol],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		hosts:5,
-		cpusPerHost:12,
-		cpus:60,
-		memory:10468982784,
-		virtualMemory:10468982784,
-		clockspeedInHz:2600000000,
-		description:'Queue for computational evolution users'
-		)
-
-uoa_comp_chem_ce = new Queue(
-		gateway:gram5,
-		name:'uoacompchem',
-		groups:[uoa_comp_chem],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		description:'Queue for comp_chem users',
-		hosts:21,
-		cpus:252,
-		cpusPerHost:12,
-		memory:25265145118,
-		virtualMemory:25265145118
-		)
-
-uoa_eng_sci_ce = new Queue(
-		gateway:gram5,
-		name:'uoaengsci',
-		groups:[uoa_eng_sci],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		hosts:2,
-		cpusPerHost:12,
-		cpus:24,
-		memory:25265145118,
-		virtualMemory:25265145118,
-		clockspeedInHz:2610000000,
-		description:'Queue for engineering sciences users'
-		)
-
-uoa_q_optics_ce = new Queue(
-		gateway:gram5,
-		name:'uoaqoptics',
-		groups:[uoa_qoptics],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		hosts:4,
-		cpusPerHost:12,
-		cpus:48,
-		memory:25265145118,
-		virtualMemory:25265145118,
-		clockspeedInHz:2610000000,
-		description:'Queue for quantum optics users'
-		)
 
 canterbury_p7aix = new Queue(
 		gateway:canterbury_gram5p7,
