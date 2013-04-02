@@ -1038,8 +1038,8 @@ pan_pan = new Queue(
 		cpus:2096,
 		cpusPerHost:15,
 		clockspeedInHz:2800000000,
-		memory:137438953472,
-		virtualMemory:137438953472
+		memory:549755813888,
+		virtualMemory:549755813888
 		)
 
 pan_gpu = new Queue(
@@ -1053,8 +1053,8 @@ pan_gpu = new Queue(
 		cpus:24,
 		cpusPerHost:12,
 		clockspeedInHz:2800000000,
-		memory:103079215104,
-		virtualMemory:103079215104
+		memory:549755813888,
+		virtualMemory:549755813888
 		)
 
 pan_stats = new Queue(
@@ -1068,8 +1068,8 @@ pan_stats = new Queue(
 	cpus:2096,
 	cpusPerHost:15,
 	clockspeedInHz:2800000000,
-	memory:137438953472,
-	virtualMemory:137438953472
+	memory:549755813888,
+	virtualMemory:549755813888
 	)
 
 
