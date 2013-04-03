@@ -915,6 +915,7 @@ auckland_default_packages = [
 
 pan_default_packages = [
 	blast_2_2_26,
+	blastplus_2_2_27,
 	bowtie2_2_0_6,
 	cegma_2_4,
 	gcc_4_7_2,
