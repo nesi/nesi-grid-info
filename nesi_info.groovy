@@ -435,6 +435,7 @@ bowtie2 = Application.get('bowtie2')
 cegma = Application.get('cegma')
 clustalw = Application.get('ClustalW')
 clustalwparallel = Application.get('ClustalW Parallel')
+gaussian = Application.get('Gaussian')
 gcc = Application.get('gcc')
 gold = Application.get('Gold')
 gromacs = Application.get('GROMACS')
@@ -471,6 +472,8 @@ wrf = Application.get('WRF')
 module_python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_python_2_6_virtualenv = Module.create('python/2.6_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
+module_gaussian_b_01 = Module.create('g09/B.01')
+module_gaussian_c_01 = Module.create('g09/C.01')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-sandybridge')
@@ -567,6 +570,23 @@ gold_5_1 = new Package(
 			Executable.get('parallel_gold_auto')]
 		)
 
+gaussian_b_01 = new Package(
+	application:gaussian,
+	version:Version.get('B.01'),
+	module:module_gaussian_b_01,
+	executables:[
+		Executable.get('g09')
+	]
+	)
+gaussian_c_01 = new Package(
+	application:gaussian,
+	version:Version.get('C.01'),
+	module:module_gaussian_c_01,
+	executables:[
+		Executable.get('g09')
+	]
+	)
+
 gromacs_4_5_4 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.4'),
@@ -575,6 +595,7 @@ gromacs_4_5_4 = new Package(
 			Executable.get('mdrun'), Executable.get('mdrun_mpi'), Executable.get('grompp'), Executable.get('grompp_mpi')
 		]
 		)
+
 gromacs_4_5_5 = new Package(
 		application:gromacs,
 		version:Version.get('4.5.5'),
@@ -898,6 +919,8 @@ pan_default_packages = [
 	cegma_2_4,
 	gcc_4_7_2,
 	gold_5_1,
+	gaussian_b_01,
+	gaussian_c_01,
 	gromacs_4_5_4,
 	gromacs_4_5_5,
 	gromacs_4_6,
