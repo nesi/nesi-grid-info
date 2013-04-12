@@ -282,14 +282,14 @@ auckland_home = new Directory(
 		groups:auckland_cluster_groups,
 		path:"/~/",
 		alias:"gram5",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:false]
 		)
 
 auckland_pan = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:auckland_cluster_groups,
 		alias:"pan",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 auckland_df_home = new Directory(
@@ -297,28 +297,27 @@ auckland_df_home = new Directory(
 		groups:[nesi],
 		path:"/~/",
 		alias:"datafabric",
-		volatileDirectory:false
+		options:[volatileDirectory:false, globusOnline:true]
 		)
 
 auckland_vs_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_virt_screening],
-		volatileDirectory:false,
 		path:"/home/grid-vs/",
-		shared:false
+		options:[volatileDirectory:false, globusOnline:true, shared:false]
 		)
 
 auckland_acsrc_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_acsrc],
-		volatileDirectory:false,
+		options:[volatileDirectory:false, globusOnline:true],
 		path:"/home/grid-acsrc/"
 		)
 
 auckland_sbs_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_sbs],
-		volatileDirectory:false,
+		options:[volatileDirectory:false, globusOnline:true],
 		path:"/home/grid-sbs/"
 		)
 
@@ -326,41 +325,41 @@ canterbury_ng1_home = new Directory(
 		filesystem:canterbury_ng1_fs,
 		groups:[nesi, bestgrid],
 		path:"/~/",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 canterbury_ng2_home = new Directory(
 		filesystem:canterbury_ng2_fs,
 		groups:[nesi, bestgrid],
 		path:"/~/",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 canterbury_gram5p7_home = new Directory(
 		filesystem:canterbury_gram5p7_fs,
 		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
 		path:"/~/",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 canterbury_ng2sge_home = new Directory(
 		filesystem:canterbury_ng2sge_fs,
 		groups:[nesi, bestgrid],
 		path:"/~/",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 canterbury_gram5bgp_home = new Directory(
 		filesystem:canterbury_gram5bgp_fs,
 		groups:[nesi, bluefern],
 		path:"/~/",
-		volatileDirectory:true
+		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 scenzgrid_home = new Directory(
 		filesystem:scenzgrid_fs,
 		groups:[bestgrid,landcare_users],
-		volatileDirectory:true,
+		options:[volatileDirectory:true, globusOnline:true],
 		path:'/~/'
 		)
 

@@ -4,7 +4,7 @@ import grisu.grin.model.Grid
 
 @GrabResolver(name='nesi-stable', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public/')
 //@GrabResolver(name='nesi-snapshot', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/')
-@Grab(group='nz.nesi', module='grin', version='0.2.1', changing=false)
+@Grab(group='nz.nesi', module='grin', version='0.2.2', changing=false)
 
 class ConfigTester {
 
