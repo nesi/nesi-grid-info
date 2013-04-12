@@ -443,6 +443,7 @@ hagfish = Application.get('hagfish')
 infernal = Application.get('infernal')
 java = Application.get('Java')
 lamarc = Application.get('LAMARC')
+matlab = Application.get('matlab')
 meme = Application.get('MEME')
 modeltest = Application.get('ModelTest')
 mono = Application.get('mono')
@@ -453,6 +454,7 @@ nomad = Application.get('nomad')
 openbugs = Application.get('OpenBUGS')
 paup = Application.get('PAUP*')
 parswms = Application.get('PARSWMS')
+qiime = Application.get('Qiime')
 r = Application.get('R')
 rmpisnow = Application.get('RMPISNOW')
 unixcommands = Application.get('UnixCommands')
@@ -479,10 +481,16 @@ module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-sandybridge')
 module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
 module_hagfish_2013_03_14 = Module.create('hagfish/2013_03_14')
+module_matlab_uoaabi = Module.create('matlab/matlab-uoaabi')
+module_matlab_uoafoe = Module.create('matlab/matlab-uoafoe')
+module_matlab_uoafos = Module.create('matlab/matlab-uoafos')
+module_matlab_uoamath = Module.create('matlab/matlab-uoamath')
+module_matlab_uoo = Module.create('matlab/matlab-uoo')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_openbugs_3_2_2 = Module.create('OpenBUGS/3.2.2')
 module_phyml_20120412 = Module.create('phyml/20120412')
 module_phyml_20121208 = Module.create('phyml/20120412-patch-20121208')
+module_qiime_1_4_0 = Module.create('qiime/1.4.0')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
 module_sas_9_3 = Module.create('sas/9.3')
@@ -643,6 +651,38 @@ lamarc_2_1 = new Package(
 		version:Version.get('2.1')
 		)
 
+matlab_uoaabi = new Package(
+	application:matlab,
+	version:Version.get('uoaabi'),
+	module:module_matlab_uoaabi,
+	executables:Executable.getList('matlab', 'matlabcmd')
+	)
+matlab_uoafoe = new Package(
+	application:matlab,
+	version:Version.get('uoafoe'),
+	module:module_matlab_uoafoe,
+	executables:Executable.getList('matlab', 'matlabcmd')
+	)
+matlab_uoafos = new Package(
+	application:matlab,
+	version:Version.get('uoafos'),
+	module:module_matlab_uoafos,
+	executables:Executable.getList('matlab', 'matlabcmd')
+	)
+matlab_uoamath = new Package(
+	application:matlab,
+	version:Version.get('uoamath'),
+	module:module_matlab_uoamath,
+	executables:Executable.getList('matlab', 'matlabcmd')
+	)
+matlab_uoo = new Package(
+	application:matlab,
+	version:Version.get('uoo'),
+	module:module_matlab_uoo,
+	executables:Executable.getList('matlab', 'matlabcmd')
+	)
+
+
 meme_4_1 = new Package(
 		application:meme,
 		version:Version.get('4.1.0')
@@ -768,7 +808,8 @@ python_2_6_2 = new Package(
 		application: python,
 		version:Version.get('2.6.2'),
 		executables:[
-			Executable.get('python2.6')]		)
+			Executable.get('python2.6')]		
+		)
 
 python_2_7 = new Package(
 		application: python,
@@ -776,6 +817,13 @@ python_2_7 = new Package(
 		module:module_python_2_7_virtualenv,
 		executables:[
 			Executable.get('python2.7')])
+
+qiime_1_4_0 = new Package(
+		application: qiime,
+		version:Version.get('1.4.0'),
+		module:module_qiime_1_4_0,
+		executables:[
+			Executable.get('Qiime')])
 
 r_2_5 = new Package(
 		application:r,
@@ -926,6 +974,11 @@ pan_default_packages = [
 	gromacs_4_5_5,
 	gromacs_4_6,
 	hagfish_2013_03_14,
+	matlab_uoaabi,
+	matlab_uoafoe,
+	matlab_uoafos,
+	matlab_uoamath,
+	matlab_uoo,
 	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
@@ -936,6 +989,7 @@ pan_default_packages = [
 	phyml_20120412,
 	phyml_20121208,
 	python_2_7,
+	qiime_1_4_0,
 	r_2_15,
 	sas_9_3,
 	rmpisnow_2_15_0,
