@@ -43,13 +43,13 @@ class ConfigTester {
 
 		println 'Filesystems:'
 		for ( def fs : grid.getFilesystems() ) {
-			println '\t' + fs.getUrl()
+			println '\t' + fs.toUrl()
 			//			printConnections(fs)
 		}
 
 		println 'Directories:'
 		for ( def dir : grid.getDirectorys() ) {
-			println '\t' + dir.getUrl()
+			println '\t' + dir.toUrl()
 			//			printConnections(dir)
 		}
 

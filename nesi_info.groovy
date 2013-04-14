@@ -1107,6 +1107,7 @@ scenz_packages = [
 pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
+		factoryType:'LL',
 		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
@@ -1122,6 +1123,7 @@ pan_pan = new Queue(
 pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
+		factoryType:'LL',
 		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
@@ -1137,6 +1139,7 @@ pan_gpu = new Queue(
 pan_stats = new Queue(
 	gateway:pan,
 	name:'stat',
+	factoryType:'LL',
 	groups:[uoa_stats_staff, uoa_stats_students],
 	directories:[auckland_pan],
 	packages:pan_default_packages,
@@ -1169,6 +1172,7 @@ uoa_math_ce = new Queue(
 uoa_pan_comp_chem_ce = new Queue(
 		gateway:pan,
 		name:'chem',
+		factoryType:'LL',
 		groups:[uoa_comp_chem],
 		directories:[auckland_pan],
 		packages:pan_default_packages,
