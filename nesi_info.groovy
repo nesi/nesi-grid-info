@@ -208,11 +208,6 @@ uoo = new Group(
 
 
 // filesystems
-auckland_gram5_fs = new FileSystem(
-		host:'gram5.ceres.auckland.ac.nz',
-		site:auckland
-		)
-
 auckland_df_fs = new FileSystem(
 		host:'df.auckland.ac.nz',
 		site:auckland
@@ -277,13 +272,6 @@ auckland_cluster_groups = [
 	//	uoa_virt_screening
 ] + nesi_akl_groups
 
-auckland_home = new Directory(
-		filesystem:auckland_gram5_fs,
-		groups:auckland_cluster_groups,
-		path:"/~/",
-		alias:"gram5",
-		options:[volatileDirectory:true, globusOnline:false]
-		)
 
 auckland_pan = new Directory(
 		filesystem:auckland_pan_fs,
@@ -366,13 +354,6 @@ scenzgrid_home = new Directory(
 globus4 = Middleware.get("Globus", "4.0.0")
 globus5 = Middleware.get("Globus", "5.0")
 
-
-// gateways
-gram5 = new Gateway(
-		site:auckland,
-		host:"gram5.ceres.auckland.ac.nz",
-		middleware:globus5
-		)
 
 // gateways
 pan = new Gateway(
@@ -1111,10 +1092,10 @@ pan_pan = new Queue(
 		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
-		description:'Suitable for any jobs by NeSI members',
-		hosts:156,
-		cpus:2096,
-		cpusPerHost:15,
+		description:'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
+		hosts:203,
+		cpus:2956,
+		cpusPerHost:20,
 		clockspeedInHz:2800000000,
 		memory:549755813888,
 		virtualMemory:549755813888
@@ -1127,7 +1108,7 @@ pan_gpu = new Queue(
 		groups:[nesi, uoa, uoo] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
-		description:'GPU nodes on the Pan cluster',
+		description:'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
 		hosts:2,
 		cpus:24,
 		cpusPerHost:12,
@@ -1146,27 +1127,11 @@ pan_stats = new Queue(
 	description:'Suitable for jobs by the statistics department',
 	hosts:156,
 	cpus:2096,
-	cpusPerHost:15,
+	cpusPerHost:20,
 	clockspeedInHz:2800000000,
 	memory:549755813888,
 	virtualMemory:549755813888
 	)
-
-
-uoa_math_ce = new Queue(
-		gateway:gram5,
-		name:'uoamath',
-		groups:[uoa_math],
-		directories:[auckland_home],
-		packages:auckland_default_packages,
-		hosts:1,
-		cpus:40,
-		cpusPerHost:40,
-		memory:541316203151,
-		virtualMemory:541316203151,
-		clockspeedInHz:1950000000,
-		description:'Queue for math node'
-		)
 
 
 uoa_pan_comp_chem_ce = new Queue(
