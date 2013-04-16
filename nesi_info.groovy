@@ -1208,7 +1208,7 @@ small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
 		groups:[nesi, bestgrid, bluefern],
 		name:'small',
-		factoryType:'LL',
+		factoryType:'PBS',
 		directories:[canterbury_ng2_home],
 		packages: small_ngcompute,
 		hosts:1,
@@ -1217,8 +1217,8 @@ small_canterbury_ng2 = new Queue(
 		memory:2147483648,
 		virtualMemory:2147483648,
 		clockspeedInHz:3000000000,
-		walltimeInMinutes:30240,
-		description:'Suitable for testing and serial jobs'
+		walltimeInMinutes:4320,
+		description:'Suitable for testing and serial and small parallel jobs'
 		)
 
 medium64_oldesparky_canterbury_ng2sge = new Queue(
