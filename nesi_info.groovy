@@ -316,14 +316,14 @@ auckland_sbs_group = new Directory(
 
 canterbury_ng1_home = new Directory(
 		filesystem:canterbury_ng1_fs,
-		groups:[nesi, bestgrid],
+		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true]
 		)
 
 canterbury_ng2_home = new Directory(
 		filesystem:canterbury_ng2_fs,
-		groups:[nesi, bestgrid],
+		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true]
 		)
@@ -344,7 +344,7 @@ canterbury_gram5p7_home = new Directory(
 
 canterbury_ng2sge_home = new Directory(
 		filesystem:canterbury_ng2sge_fs,
-		groups:[nesi, bestgrid],
+		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true]
 		)
@@ -1217,7 +1217,7 @@ canterbury_bgp = new Queue(
 
 small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
-		groups:[nesi, bestgrid],
+		groups:[bestgrid],
 		name:'small',
 		factoryType:'PBS',
 		directories:[canterbury_ng2_home],
@@ -1251,7 +1251,7 @@ grid_aix_canterbury_ng2hpc = new Queue(
 
 medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
-		groups:[nesi, bestgrid],
+		groups:[bestgrid],
 		name:'medium64',
 		factoryType:'SGE',
 		directories:[canterbury_ng2sge_home],
