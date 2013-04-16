@@ -229,6 +229,11 @@ canterbury_ng2_fs = new FileSystem(
 		site:canterbury
 		)
 
+canterbury_ng2hpc_fs = new FileSystem(
+		host:'ng2hpc.canterbury.ac.nz',
+		site:canterbury
+		)
+
 canterbury_ng2sge_fs = new FileSystem(
 		host:'ng2sge.canterbury.ac.nz',
 		site:canterbury
@@ -323,6 +328,13 @@ canterbury_ng2_home = new Directory(
 		options:[volatileDirectory:true, globusOnline:true]
 		)
 
+canterbury_ng2hpc_home = new Directory(
+		filesystem:canterbury_ng2hpc_fs,
+		groups:[bestgrid, bluefern],
+		path:"/~/",
+		options:[volatileDirectory:true, globusOnline:true]
+		)
+
 canterbury_gram5p7_home = new Directory(
 		filesystem:canterbury_gram5p7_fs,
 		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
@@ -369,11 +381,16 @@ canterbury_ng2 = new Gateway(
 		middleware:globus4
 		)
 
-
 canterbury_ng1 = new Gateway(
 		site:canterbury,
 		host:"ng1.canterbury.ac.nz",
 		middleware:globus5
+		)
+
+canterbury_ng2hpc = new Gateway(
+		site:canterbury,
+		host:"ng2hpc.canterbury.ac.nz",
+		middleware:globus4
 		)
 
 canterbury_ng2sge = new Gateway(
@@ -1059,19 +1076,13 @@ ng2hpc_local_software = [
 	namd_2_6,
 	parswms_aug06,
 	paup_4_0_beta,
-	r_2_11,
-	r_2_13_1,
 	r_2_5,
-	r_2_14,
 	sas_9_2,
 	unixcommands_5,
 	wrf_1_0,
 	infernal_1_0,
 	mpiblast_1_6,
-	python_2_4,
 	python_2_5,
-	python_2_6,
-	python_2_6_2,
 	teiresias_18aug2004
 ]
 
@@ -1218,6 +1229,23 @@ small_canterbury_ng2 = new Queue(
 		virtualMemory:2147483648,
 		clockspeedInHz:3000000000,
 		walltimeInMinutes:4320,
+		description:'Suitable for testing and serial and small parallel jobs'
+		)
+
+grid_aix_canterbury_ng2hpc = new Queue(
+		gateway:canterbury_ng2hpc,
+		groups:[bestgrid, bluefern],
+		name:'grid_aix',
+		factoryType:'LL',
+		directories:[canterbury_ng2hpc_home],
+		packages: ng2hpc_local_software,
+		hosts:1,
+		cpus:8,
+		cpusPerHost:8,
+		memory:68719476736,
+		virtualMemory:68719476736,
+		clockspeedInHz:3000000000,
+		walltimeInMinutes:30240,
 		description:'Suitable for testing and serial and small parallel jobs'
 		)
 
