@@ -40,10 +40,6 @@ bluefern = new Group(
 		fqan = '/nz/bluefern'
 		)
 
-demo = new Group(
-		vo = nz,
-		fqan = "/nz/demo"
-		)
 
 grid_dev = new Group(
 		vo = nz,
@@ -256,7 +252,6 @@ canterbury_gram5p7_fs = new FileSystem(
 
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
-	demo,
 	grid_dev,
 	nesi,
 	uoa,
@@ -269,8 +264,7 @@ auckland_cluster_groups = [
 	uoa_qoptics,
 	uoa_stats,
 	uoa_stats_staff,
-	uoa_stats_students,
-	uoo
+	uoa_stats_students
 	//	uoa_vs_jobs,
 	//	uoa_sbs,
 	//	uoa_acsrc,
@@ -1100,7 +1094,7 @@ pan_pan = new Queue(
 		gateway:pan,
 		name:'pan',
 		factoryType:'LL',
-		groups:[nesi, uoa, uoo] + nesi_akl_groups,
+		groups:[nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
@@ -1116,7 +1110,7 @@ pan_gpu = new Queue(
 		gateway:pan,
 		name:'gpu',
 		factoryType:'LL',
-		groups:[nesi, uoa, uoo] + nesi_akl_groups,
+		groups:[nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
 		packages:pan_default_packages,
 		description:'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
