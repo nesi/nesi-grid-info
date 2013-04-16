@@ -1230,7 +1230,7 @@ grid_aix_canterbury_ng2hpc = new Queue(
 		gateway:canterbury_ng2hpc,
 		groups:[bestgrid, bluefern],
 		name:'grid_aix',
-		factoryType:'LL',
+		factoryType:'Loadleveler',
 		directories:[canterbury_ng2hpc_home],
 		packages: ng2hpc_local_software,
 		hosts:1,
