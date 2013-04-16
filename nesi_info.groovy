@@ -249,10 +249,10 @@ canterbury_gram5p7_fs = new FileSystem(
 		site:canterbury
 		)
 
-scenzgrid_fs = new FileSystem(
-		host:'ng2.scenzgrid.org',
-		site:landcare
-		)
+//scenzgrid_fs = new FileSystem(
+//		host:'ng2.scenzgrid.org',
+//		site:landcare
+//		)
 
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
@@ -356,12 +356,12 @@ canterbury_gram5bgp_home = new Directory(
 		options:[volatileDirectory:true, globusOnline:true]
 		)
 
-scenzgrid_home = new Directory(
-		filesystem:scenzgrid_fs,
-		groups:[bestgrid,landcare_users],
-		options:[volatileDirectory:true, globusOnline:true],
-		path:'/~/'
-		)
+//scenzgrid_home = new Directory(
+//		filesystem:scenzgrid_fs,
+//		groups:[bestgrid,landcare_users],
+//		options:[volatileDirectory:true, globusOnline:true],
+//		path:'/~/'
+//		)
 
 globus4 = Middleware.get("Globus", "4.0.0")
 globus5 = Middleware.get("Globus", "5.0")
@@ -411,11 +411,11 @@ canterbury_gram5bgp = new Gateway(
 		middleware:globus5
 		)
 
-landcare_gram4 = new Gateway(
-		site:landcare,
-		host:"ng2.scenzgrid.org",
-		middleware:globus4
-		)
+//landcare_gram4 = new Gateway(
+//		site:landcare,
+//		host:"ng2.scenzgrid.org",
+//		middleware:globus4
+//		)
 
 
 
@@ -1086,15 +1086,15 @@ ng2hpc_local_software = [
 	teiresias_18aug2004
 ]
 
-scenz_packages = [
-	clustalw_2_0_11,
-	java_1_6,
-	mr_bayes_3_1_2,
-	python_2_4,
-	r_2_13_0,
-	rmpisnow_2_13_0,
-	unixcommands_5
-]
+//scenz_packages = [
+//	clustalw_2_0_11,
+//	java_1_6,
+//	mr_bayes_3_1_2,
+//	python_2_4,
+//	r_2_13_0,
+//	rmpisnow_2_13_0,
+//	unixcommands_5
+//]
 
 pan_pan = new Queue(
 		gateway:pan,
@@ -1266,18 +1266,18 @@ medium64_oldesparky_canterbury_ng2sge = new Queue(
 		description:'x86_64 AMD cluster, 88 cores over 16 nodes (4-way and 8-way), suitable for serial and medium-size parallel jobs'
 		)
 
-all_q_ng2_scenzgrid = new Queue(
-		gateway:landcare_gram4,
-		groups:[bestgrid,landcare_users],
-		name:'all.q',
-		packages:scenz_packages,
-		factoryType:'SGE',
-		directories:[scenzgrid_home],
-		description:'Cluster for landcare users',
-		hosts:12,
-		cpus:96,
-		cpusPerHost:8,
-		memory:34359738368,
-		virtualMemory:34359738368,
-		clockspeedInHz:2800000000,
-		)
+//all_q_ng2_scenzgrid = new Queue(
+//		gateway:landcare_gram4,
+//		groups:[bestgrid,landcare_users],
+//		name:'all.q',
+//		packages:scenz_packages,
+//		factoryType:'SGE',
+//		directories:[scenzgrid_home],
+//		description:'Cluster for landcare users',
+//		hosts:12,
+//		cpus:96,
+//		cpusPerHost:8,
+//		memory:34359738368,
+//		virtualMemory:34359738368,
+//		clockspeedInHz:2800000000,
+//		)
