@@ -1217,7 +1217,7 @@ canterbury_bgp = new Queue(
 
 small_canterbury_ng2 = new Queue(
 		gateway:canterbury_ng2,
-		groups:[nesi, bestgrid, bluefern],
+		groups:[nesi, bestgrid],
 		name:'small',
 		factoryType:'PBS',
 		directories:[canterbury_ng2_home],
@@ -1251,7 +1251,7 @@ grid_aix_canterbury_ng2hpc = new Queue(
 
 medium64_oldesparky_canterbury_ng2sge = new Queue(
 		gateway:canterbury_ng2sge,
-		groups:[nesi, bestgrid, bluefern],
+		groups:[nesi, bestgrid],
 		name:'medium64',
 		factoryType:'SGE',
 		directories:[canterbury_ng2sge_home],
