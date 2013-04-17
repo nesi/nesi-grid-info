@@ -313,7 +313,7 @@ canterbury_ng1_home = new Directory(
 		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 canterbury_ng2_home = new Directory(
@@ -321,7 +321,7 @@ canterbury_ng2_home = new Directory(
 		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 canterbury_ng2hpc_home = new Directory(
@@ -329,7 +329,7 @@ canterbury_ng2hpc_home = new Directory(
 		groups:[bestgrid, bluefern],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 canterbury_gram5p7_home = new Directory(
@@ -337,7 +337,7 @@ canterbury_gram5p7_home = new Directory(
 		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 canterbury_ng2sge_home = new Directory(
@@ -345,7 +345,7 @@ canterbury_ng2sge_home = new Directory(
 		groups:[bestgrid],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 canterbury_gram5bgp_home = new Directory(
@@ -353,7 +353,7 @@ canterbury_gram5bgp_home = new Directory(
 		groups:[nesi, bluefern],
 		path:"/~/",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 //scenzgrid_home = new Directory(
