@@ -291,12 +291,14 @@ auckland_vs_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_virt_screening],
 		path:"/home/grid-vs/",
+		alias:"virtual_screening",
 		options:[volatileDirectory:false, globusOnline:true, shared:false]
 		)
 
 auckland_acsrc_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_acsrc],
+		alias:"vs-acsrc",
 		options:[volatileDirectory:false, globusOnline:true],
 		path:"/home/grid-acsrc/"
 		)
@@ -305,6 +307,7 @@ auckland_sbs_group = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:[uoa_sbs],
 		options:[volatileDirectory:false, globusOnline:true],
+		alias:"vs-sbs",
 		path:"/home/grid-sbs/"
 		)
 
@@ -312,6 +315,7 @@ canterbury_ng1_home = new Directory(
 		filesystem:canterbury_ng1_fs,
 		groups:[bestgrid],
 		path:"/~/",
+		alias:"blufern-ng1",
 		options:[volatileDirectory:true, globusOnline:true],
 		available:true
 		)
@@ -320,6 +324,7 @@ canterbury_ng2_home = new Directory(
 		filesystem:canterbury_ng2_fs,
 		groups:[bestgrid],
 		path:"/~/",
+		alias:"bluefern-ng2",
 		options:[volatileDirectory:true, globusOnline:true],
 		available:true
 		)
@@ -336,6 +341,7 @@ canterbury_gram5p7_home = new Directory(
 		filesystem:canterbury_gram5p7_fs,
 		groups:[nesi, bestgrid, bluefern] + nesi_uoc_groups,
 		path:"/~/",
+		alias:"bluefern-p7",
 		options:[volatileDirectory:true, globusOnline:true],
 		available:true
 		)
@@ -344,6 +350,7 @@ canterbury_ng2sge_home = new Directory(
 		filesystem:canterbury_ng2sge_fs,
 		groups:[bestgrid],
 		path:"/~/",
+		alias:"bluefern-sge",
 		options:[volatileDirectory:true, globusOnline:true],
 		available:true
 		)
@@ -352,6 +359,7 @@ canterbury_gram5bgp_home = new Directory(
 		filesystem:canterbury_gram5bgp_fs,
 		groups:[nesi, bluefern],
 		path:"/~/",
+		alias:"bluefern-bgp",
 		options:[volatileDirectory:true, globusOnline:true],
 		available:true
 		)
