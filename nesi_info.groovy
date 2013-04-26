@@ -212,7 +212,8 @@ auckland_df_fs = new FileSystem(
 auckland_pan_fs = new FileSystem(
 		host:'pan.nesi.org.nz',
 		site:auckland,
-		available:true
+		available:true,
+		options:[iperf:true]
 		)
 
 canterbury_ng1_fs = new FileSystem(
