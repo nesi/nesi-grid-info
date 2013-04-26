@@ -989,16 +989,21 @@ pan_default_packages = [
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
 	openbugs_3_2_2,
-	python_2_6,
-	python_2_7,
 	phyml_20120412,
 	phyml_20121208,
+	python_2_6,
 	python_2_7,
 	qiime_1_4_0,
 	r_2_15,
 	sas_9_3,
 	rmpisnow_2_15_0,
 	ultrabeast_0_1,
+	unixcommands_5
+]
+pan_gpu_packages = [
+	gcc_4_7_2,
+	python_2_6,
+	python_2_7,
 	unixcommands_5
 ]
 
@@ -1126,7 +1131,7 @@ pan_gpu = new Queue(
 		factoryType:'LL',
 		groups:[nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
-		packages:pan_default_packages,
+		packages:pan_gpu_packages,
 		description:'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
 		hosts:2,
 		cpus:24,
