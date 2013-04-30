@@ -871,6 +871,11 @@ r_2_15 = new Package(
 		version:Version.get('2.15.0'),
 		executables:[Executable.get('R')])
 
+r_2_15_2 = new Package(
+		application:r,
+		version:Version.get('2.15.2'),
+		executables:[Executable.get('R')])
+
 rmpisnow_2_9 = new Package(
 		application:rmpisnow,
 		version:Version.get('2.9.0'),
@@ -1064,7 +1069,7 @@ small_ngcompute = [
 	java_1_6,
 	meme_4_1,
 	blender_2_49a,
-	r_2_13_1,
+	r_2_15_2,
 	rmpisnow_2_13_1,
 	python_2_4,
 	best_2_3_1
