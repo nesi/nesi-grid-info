@@ -277,7 +277,7 @@ auckland_pan = new Directory(
 		groups:auckland_cluster_groups,
 		alias:"pan",
 		options:[volatileDirectory:true, globusOnline:true],
-		available:false
+		available:true
 		)
 
 auckland_df_home = new Directory(
@@ -294,7 +294,7 @@ auckland_vs_group = new Directory(
 		path:"/home/grid-vs/",
 		alias:"virtual_screening",
 		options:[volatileDirectory:false, globusOnline:true, shared:false],
-		available:false
+		available:true
 		)
 
 auckland_acsrc_group = new Directory(
@@ -303,7 +303,7 @@ auckland_acsrc_group = new Directory(
 		alias:"vs-acsrc",
 		options:[volatileDirectory:false, globusOnline:true],
 		path:"/home/grid-acsrc/",
-		available:false
+		available:true
 		)
 
 auckland_sbs_group = new Directory(
@@ -312,7 +312,7 @@ auckland_sbs_group = new Directory(
 		options:[volatileDirectory:false, globusOnline:true],
 		alias:"vs-sbs",
 		path:"/home/grid-sbs/",
-		available:false
+		available:true
 		)
 
 canterbury_ng1_home = new Directory(
