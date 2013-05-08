@@ -277,7 +277,8 @@ auckland_pan = new Directory(
 		filesystem:auckland_pan_fs,
 		groups:auckland_cluster_groups,
 		alias:"pan",
-		options:[volatileDirectory:true, globusOnline:true]
+		options:[volatileDirectory:true, globusOnline:true],
+		available:true
 		)
 
 auckland_df_home = new Directory(
@@ -293,7 +294,8 @@ auckland_vs_group = new Directory(
 		groups:[uoa_virt_screening],
 		path:"/home/grid-vs/",
 		alias:"virtual_screening",
-		options:[volatileDirectory:false, globusOnline:true, shared:false]
+		options:[volatileDirectory:false, globusOnline:true, shared:false],
+		available:true
 		)
 
 auckland_acsrc_group = new Directory(
@@ -301,7 +303,8 @@ auckland_acsrc_group = new Directory(
 		groups:[uoa_acsrc],
 		alias:"vs-acsrc",
 		options:[volatileDirectory:false, globusOnline:true],
-		path:"/home/grid-acsrc/"
+		path:"/home/grid-acsrc/",
+		available:true
 		)
 
 auckland_sbs_group = new Directory(
@@ -309,7 +312,8 @@ auckland_sbs_group = new Directory(
 		groups:[uoa_sbs],
 		options:[volatileDirectory:false, globusOnline:true],
 		alias:"vs-sbs",
-		path:"/home/grid-sbs/"
+		path:"/home/grid-sbs/",
+		available:true
 		)
 
 canterbury_ng1_home = new Directory(
@@ -487,11 +491,11 @@ module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-sandybridge')
 module_gromacs_4_6 = Module.create('gromacs/4.6.1_ics-2011_mkl_ompi-1.6.0-sandybridge')
 module_hagfish_2013_03_14 = Module.create('hagfish/2013_03_14')
-module_matlab_uoaabi = Module.create('matlab/matlab-uoaabi')
-module_matlab_uoafoe = Module.create('matlab/matlab-uoafoe')
-module_matlab_uoafos = Module.create('matlab/matlab-uoafos')
-module_matlab_uoamath = Module.create('matlab/matlab-uoamath')
-module_matlab_uoo = Module.create('matlab/matlab-uoo')
+//module_matlab_uoaabi = Module.create('matlab/matlab-uoaabi')
+module_matlab_uoafoe = Module.create('MATLAB/UoA-FoE')
+module_matlab_uoafos = Module.create('MATLAB/UoA-FoS')
+//module_matlab_uoamath = Module.create('matlab/matlab-uoamath')
+//module_matlab_uoo = Module.create('matlab/matlab-uoo')
 module_mothur_1_6_0 = Module.create('mothur/1.6.0')
 module_openbugs_3_2_2 = Module.create('OpenBUGS/3.2.2')
 module_phyml_20120412 = Module.create('phyml/20120412')
@@ -657,12 +661,12 @@ lamarc_2_1 = new Package(
 		version:Version.get('2.1')
 		)
 
-matlab_uoaabi = new Package(
-	application:matlab,
-	version:Version.get('uoaabi'),
-	module:module_matlab_uoaabi,
-	executables:Executable.getList('matlab', 'matlabcmd')
-	)
+//matlab_uoaabi = new Package(
+//	application:matlab,
+//	version:Version.get('uoaabi'),
+//	module:module_matlab_uoaabi,
+//	executables:Executable.getList('matlab', 'matlabcmd')
+//	)
 matlab_uoafoe = new Package(
 	application:matlab,
 	version:Version.get('uoafoe'),
@@ -675,18 +679,18 @@ matlab_uoafos = new Package(
 	module:module_matlab_uoafos,
 	executables:Executable.getList('matlab', 'matlabcmd')
 	)
-matlab_uoamath = new Package(
-	application:matlab,
-	version:Version.get('uoamath'),
-	module:module_matlab_uoamath,
-	executables:Executable.getList('matlab', 'matlabcmd')
-	)
-matlab_uoo = new Package(
-	application:matlab,
-	version:Version.get('uoo'),
-	module:module_matlab_uoo,
-	executables:Executable.getList('matlab', 'matlabcmd')
-	)
+//matlab_uoamath = new Package(
+//	application:matlab,
+//	version:Version.get('uoamath'),
+//	module:module_matlab_uoamath,
+//	executables:Executable.getList('matlab', 'matlabcmd')
+//	)
+//matlab_uoo = new Package(
+//	application:matlab,
+//	version:Version.get('uoo'),
+//	module:module_matlab_uoo,
+//	executables:Executable.getList('matlab', 'matlabcmd')
+//	)
 
 
 meme_4_1 = new Package(
@@ -980,26 +984,31 @@ pan_default_packages = [
 	gromacs_4_5_5,
 	gromacs_4_6,
 	hagfish_2013_03_14,
-	matlab_uoaabi,
+//	matlab_uoaabi,
 	matlab_uoafoe,
 	matlab_uoafos,
-	matlab_uoamath,
-	matlab_uoo,
+//	matlab_uoamath,
+//	matlab_uoo,
 	mothur_1_6_0,
 	mpiblast_1_6,
 	mr_bayes_3_2_1,
 	nomad_3_5_1,
 	openbugs_3_2_2,
-	python_2_6,
-	python_2_7,
 	phyml_20120412,
 	phyml_20121208,
+	python_2_6,
 	python_2_7,
 	qiime_1_4_0,
 	r_2_15,
 	sas_9_3,
 	rmpisnow_2_15_0,
 	ultrabeast_0_1,
+	unixcommands_5
+]
+pan_gpu_packages = [
+	gcc_4_7_2,
+	python_2_6,
+	python_2_7,
 	unixcommands_5
 ]
 
@@ -1127,7 +1136,7 @@ pan_gpu = new Queue(
 		factoryType:'LL',
 		groups:[nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
-		packages:pan_default_packages,
+		packages:pan_gpu_packages,
 		description:'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
 		hosts:2,
 		cpus:24,
