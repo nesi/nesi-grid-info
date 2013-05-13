@@ -874,6 +874,11 @@ r_2_15 = new Package(
 		version:Version.get('2.15.0'),
 		executables:[Executable.get('R')])
 
+r_2_15_3 = new Package(
+	application:r,
+	version:Version.get('2.15.3'),
+	executables:[Executable.get('R')])
+
 rmpisnow_2_9 = new Package(
 		application:rmpisnow,
 		version:Version.get('2.9.0'),
@@ -999,6 +1004,7 @@ pan_default_packages = [
 	python_2_7,
 	qiime_1_4_0,
 	r_2_15,
+	r_2_15_3,
 	sas_9_3,
 	rmpisnow_2_15_0,
 	ultrabeast_0_1,
