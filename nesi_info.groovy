@@ -1011,9 +1011,10 @@ pan_default_packages = [
 	python_2_6,
 	python_2_7,
 	qiime_1_4_0,
-//	r_2_15,
+	r_2_15,
 	r_2_15_3,
 	sas_9_3,
+	rmpisnow_2_15_0,
 	rmpisnow_2_15_3,
 	ultrabeast_0_1,
 	unixcommands_5
