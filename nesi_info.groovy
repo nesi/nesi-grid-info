@@ -503,6 +503,7 @@ module_qiime_1_4_0 = Module.create('qiime/1.4.0')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
 module_sas_9_3 = Module.create('sas/9.3')
+module_r_2_15_3 = Module.create('R/2.15.3')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -877,6 +878,7 @@ r_2_15 = new Package(
 r_2_15_3 = new Package(
 	application:r,
 	version:Version.get('2.15.3'),
+	module:module_r_2_15_3,
 	executables:[Executable.get('R')])
 
 rmpisnow_2_9 = new Package(
@@ -902,9 +904,15 @@ rmpisnow_2_13_1 = new Package(
 		executables:[Executable.get('RMPISNOW')])
 
 rmpisnow_2_15_0 = new Package(
-		application:rmpisnow,
-		version:Version.get('2.15.0'),
-		executables:[Executable.get('RMPISNOW')])
+	application:rmpisnow,
+	version:Version.get('2.15.0'),
+	executables:[Executable.get('RMPISNOW')])
+
+rmpisnow_2_15_3 = new Package(
+	application:rmpisnow,
+	version:Version.get('2.15.3'),
+	module:module_r_2_15_3,
+	executables:[Executable.get('RMPISNOW')])
 
 sas_9_2 = new Package(
 		application:sas,
@@ -1003,10 +1011,10 @@ pan_default_packages = [
 	python_2_6,
 	python_2_7,
 	qiime_1_4_0,
-	r_2_15,
+//	r_2_15,
 	r_2_15_3,
 	sas_9_3,
-	rmpisnow_2_15_0,
+	rmpisnow_2_15_3,
 	ultrabeast_0_1,
 	unixcommands_5
 ]
