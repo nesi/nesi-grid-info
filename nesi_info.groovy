@@ -283,7 +283,7 @@ auckland_pan = new Directory(
 auckland_gpfs1m = new Directory(
 	filesystem:auckland_pan_fs,
 	groups:auckland_cluster_groups,
-	path:"/gpfs1m",
+	path:"/tmp",
 	alias:"gpfs1m",
 	options:[volatileDirectory:false, globusOnline:true],
 	available:true
