@@ -273,12 +273,21 @@ auckland_cluster_groups = [
 
 
 auckland_pan = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:auckland_cluster_groups,
-		alias:"pan",
-		options:[volatileDirectory:true, globusOnline:true],
-		available:true
-		)
+	filesystem:auckland_pan_fs,
+	groups:auckland_cluster_groups,
+	alias:"pan",
+	options:[volatileDirectory:true, globusOnline:true],
+	available:true
+	)
+
+auckland_gpfs1m = new Directory(
+	filesystem:auckland_pan_fs,
+	groups:auckland_cluster_groups,
+	path:"/gpfs1m",
+	alias:"gpfs1m",
+	options:[volatileDirectory:false, globusOnline:true],
+	available:true
+	)
 
 auckland_df_home = new Directory(
 		filesystem:auckland_df_fs,
