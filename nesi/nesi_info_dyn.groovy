@@ -409,27 +409,21 @@ canterbury_gram5bgp = new Gateway(
 		middleware:globus5
 		)
 
-pan_default_packages = InfoFileManager.createPackageList('/data/src/config/end-to-end-tests', true)
+pan_default_packages = InfoFileManager.createPackageList('git://github.com/nesi/end-to-end-tests.git', true)
 
-pan_gpu_packages = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/auckland/gpu.list')
-//pan_gpu_packages = [
-//	gcc_4_7_2,
-//	python_2_6,
-//	python_2_7,
-//	unixcommands_5
-//]
+pan_gpu_packages = InfoFileManager.createPackageList('auckland/gpu.list')
 
-gram5p7_aix = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/gram5p7_aix.list')
+gram5p7_aix = InfoFileManager.createPackageList('bluefern/gram5p7_aix.list')
 
-gram5p7_linux = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/gram5p7_linux.list')
+gram5p7_linux = InfoFileManager.createPackageList('bluefern/gram5p7_linux.list')
 
-gram5bgp_packages = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/gram5bgp.list')
+gram5bgp_packages = InfoFileManager.createPackageList('bluefern/gram5bgp.list')
 
-ng2sge_local_software = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/ng2sge.list')
+ng2sge_local_software = InfoFileManager.createPackageList('bluefern/ng2sge.list')
 
-small_ngcompute = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/small_ngcompute.list')
+small_ngcompute = InfoFileManager.createPackageList('bluefern/small_ngcompute.list')
 
-ng2hpc_local_software = InfoFileManager.createPackageList('/data/src/config/nesi-grid-info/nesi/bluefern/ng2hpc.list')
+ng2hpc_local_software = InfoFileManager.createPackageList('bluefern/ng2hpc.list')
 
 
 pan_pan = new Queue(

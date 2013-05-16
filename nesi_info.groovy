@@ -28,7 +28,6 @@ nz = new VO(
 		hostDN = '/C=TW/O=AP/OU=GRID/CN=voms.bestgrid.org'
 		)
 
-
 // groups
 bestgrid = new Group(
 		vo = nz,
@@ -78,7 +77,6 @@ uoc_project_groups.each {
 }
 
 nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
-
 
 
 
