@@ -616,7 +616,7 @@ gaussian_c_01 = new Package(
 gaussian_d_01 = new Package(
 	application:gaussian,
 	version:Version.get('D.01'),
-	module:module_gaussian_c_01,
+	module:module_gaussian_d_01,
 	executables:[
 		Executable.get('g09')
 	]
