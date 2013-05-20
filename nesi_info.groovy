@@ -1007,7 +1007,7 @@ pan_default_packages = [
 	cegma_2_4,
 	gcc_4_7_2,
 	gold_5_1,
-	gaussian_c_01,
+	gaussian_d_01,
 	gromacs_4_5_4,
 	gromacs_4_5_5,
 	gromacs_4_6,
