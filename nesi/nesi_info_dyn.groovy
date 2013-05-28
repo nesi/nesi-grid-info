@@ -409,7 +409,7 @@ canterbury_gram5bgp = new Gateway(
 		middleware:globus5
 		)
 
-pan_default_packages = InfoFileManager.createPackageList('git://github.com/nesi/end-to-end-tests.git', true)
+pan_default_packages = InfoFileManager.createPackageList('git://github.com/nesi/applications.git', true)
 
 pan_gpu_packages = InfoFileManager.createPackageList('auckland/gpu.list')
 
