@@ -212,8 +212,7 @@ auckland_df_fs = new FileSystem(
 auckland_pan_fs = new FileSystem(
 		host:'pan.nesi.org.nz',
 		site:auckland,
-		available:true,
-		options:[iperf:true]
+		available:true
 		)
 
 canterbury_ng1_fs = new FileSystem(
@@ -274,12 +273,21 @@ auckland_cluster_groups = [
 
 
 auckland_pan = new Directory(
-		filesystem:auckland_pan_fs,
-		groups:auckland_cluster_groups,
-		alias:"pan",
-		options:[volatileDirectory:true, globusOnline:true],
-		available:true
-		)
+	filesystem:auckland_pan_fs,
+	groups:auckland_cluster_groups,
+	alias:"pan",
+	options:[volatileDirectory:true, globusOnline:true],
+	available:true
+	)
+
+auckland_gpfs1m = new Directory(
+	filesystem:auckland_pan_fs,
+	groups:auckland_cluster_groups,
+	path:"/gpfs1m",
+	alias:"gpfs1m",
+	options:[volatileDirectory:false, globusOnline:true],
+	available:true
+	)
 
 auckland_df_home = new Directory(
 		filesystem:auckland_df_fs,
@@ -484,8 +492,9 @@ wrf = Application.get('WRF')
 module_python_2_7_virtualenv = Module.create('python/2.7_virtualenv')
 module_python_2_6_virtualenv = Module.create('python/2.6_virtualenv')
 module_cegma_2_4 = Module.create('cegma/2.4')
-module_gaussian_b_01 = Module.create('g09/B.01')
-module_gaussian_c_01 = Module.create('g09/C.01')
+module_gaussian_b_01 = Module.create('Gaussian/B.01')
+module_gaussian_c_01 = Module.create('Gaussian/C.01')
+module_gaussian_d_01 = Module.create('Gaussian/D.01')
 module_gromacs_4_5_4 = Module.create('gromacs/4.5.4')
 module_gromacs_4_5_5 = Module.create('gromacs/4.5.5-gnu')
 module_gromacs_4_5_5_opt = Module.create('gromacs/4.5.5_ics-2011_mkl_ompi-1.6.3-sandybridge')
@@ -504,6 +513,7 @@ module_qiime_1_4_0 = Module.create('qiime/1.4.0')
 module_ultrabeast_0_1 = Module.create('UltraBEAST/0.1')
 module_bowtie2_2_0_6 = Module.create('bowtie2/2.0.6')
 module_sas_9_3 = Module.create('sas/9.3')
+module_r_2_15_3 = Module.create('R/2.15.3')
 
 // packages
 abaqus_68ef2 = new Package(
@@ -600,6 +610,15 @@ gaussian_c_01 = new Package(
 	application:gaussian,
 	version:Version.get('C.01'),
 	module:module_gaussian_c_01,
+	executables:[
+		Executable.get('g09')
+	]
+	)
+
+gaussian_d_01 = new Package(
+	application:gaussian,
+	version:Version.get('D.01'),
+	module:module_gaussian_d_01,
 	executables:[
 		Executable.get('g09')
 	]
@@ -875,10 +894,11 @@ r_2_15 = new Package(
 		version:Version.get('2.15.0'),
 		executables:[Executable.get('R')])
 
-r_2_15_2 = new Package(
-		application:r,
-		version:Version.get('2.15.2'),
-		executables:[Executable.get('R')])
+r_2_15_3 = new Package(
+	application:r,
+	version:Version.get('2.15.3'),
+	module:module_r_2_15_3,
+	executables:[Executable.get('R')])
 
 rmpisnow_2_9 = new Package(
 		application:rmpisnow,
@@ -903,9 +923,15 @@ rmpisnow_2_13_1 = new Package(
 		executables:[Executable.get('RMPISNOW')])
 
 rmpisnow_2_15_0 = new Package(
-		application:rmpisnow,
-		version:Version.get('2.15.0'),
-		executables:[Executable.get('RMPISNOW')])
+	application:rmpisnow,
+	version:Version.get('2.15.0'),
+	executables:[Executable.get('RMPISNOW')])
+
+rmpisnow_2_15_3 = new Package(
+	application:rmpisnow,
+	version:Version.get('2.15.3'),
+	module:module_r_2_15_3,
+	executables:[Executable.get('RMPISNOW')])
 
 sas_9_2 = new Package(
 		application:sas,
@@ -983,8 +1009,7 @@ pan_default_packages = [
 	cegma_2_4,
 	gcc_4_7_2,
 	gold_5_1,
-	gaussian_b_01,
-	gaussian_c_01,
+	gaussian_d_01,
 	gromacs_4_5_4,
 	gromacs_4_5_5,
 	gromacs_4_6,
@@ -1005,8 +1030,10 @@ pan_default_packages = [
 	python_2_7,
 	qiime_1_4_0,
 	r_2_15,
+	r_2_15_3,
 	sas_9_3,
 	rmpisnow_2_15_0,
+	rmpisnow_2_15_3,
 	ultrabeast_0_1,
 	unixcommands_5
 ]
@@ -1078,7 +1105,7 @@ small_ngcompute = [
 	java_1_6,
 	meme_4_1,
 	blender_2_49a,
-	r_2_15_2,
+	r_2_13_1,
 	rmpisnow_2_13_1,
 	python_2_4,
 	best_2_3_1

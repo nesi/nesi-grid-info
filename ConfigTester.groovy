@@ -2,10 +2,10 @@
 import grisu.grin.YnfoManager
 import grisu.grin.model.Grid
 
-//@GrabResolver(name='nesi-stable', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public/')
+@GrabResolver(name='nesi-stable', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public/')
 //@GrabResolver(name='nesi-snapshot', root='http://code.ceres.auckland.ac.nz/nexus/content/groups/public-snapshots/')
 @GrabResolver(name="local", root="file:/data/cache/maven/repository/",	m2Compatible=true)
-@Grab(group='nz.nesi', module='grin', version='0.2.3-SNAPSHOT', changing=true)
+@Grab(group='nz.nesi', module='grin', version='0.4', changing=false)
 
 class ConfigTester {
 
