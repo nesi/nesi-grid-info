@@ -368,7 +368,7 @@ globus5 = Middleware.get("Globus", "5.0")
 // gateways
 pan = new Gateway(
 		site:auckland,
-		host:"pan.nesi.org.nz",
+		host:"gram.uoa.nesi.org.nz",
 		middleware:globus5
 		)
 
