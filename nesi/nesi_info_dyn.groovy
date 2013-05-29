@@ -443,7 +443,7 @@ pan_pan = new Queue(
 		clockspeedInHz:2800000000,
 		memory:549755813888,
 		virtualMemory:549755813888,
-        options:[alias:'pan']
+        options:[alias:'pan,pan:pan.nesi.org.nz']
 		)
 
 pan_gpu = new Queue(
@@ -459,7 +459,8 @@ pan_gpu = new Queue(
 		cpusPerHost:12,
 		clockspeedInHz:2800000000,
 		memory:549755813888,
-		virtualMemory:549755813888
+		virtualMemory:549755813888,
+        options:[alias:'gpu:pan.nesi.org.nz']
 		)
 
 pan_stats = new Queue(
@@ -475,7 +476,8 @@ pan_stats = new Queue(
 	cpusPerHost:20,
 	clockspeedInHz:2800000000,
 	memory:549755813888,
-	virtualMemory:549755813888
+	virtualMemory:549755813888,
+        options:[alias:'stat,stat:pan.nesi.org.nz']
 	)
 
 
@@ -492,7 +494,8 @@ uoa_pan_comp_chem_ce = new Queue(
 		memory:549755813888,
 		virtualMemory:549755813888,
 		clockspeedInHz:2700000000,
-		description:'Queue for comp chem node on Pan'
+		description:'Queue for comp chem node on Pan',
+        options:[alias:'chem,chem:pan.nesi.org.nz']
 		)
 
 
