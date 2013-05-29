@@ -409,7 +409,10 @@ canterbury_gram5bgp = new Gateway(
 		middleware:globus5
 		)
 
-pan_default_packages = InfoFileManager.createPackageList('git://github.com/nesi/applications.git', true)
+def pan_default_packages = InfoFileManager.createPackageList('git://github.com/nesi/applications.git', true)
+def pan_no_modules = InfoFileManager.createPackageList('auckland/pan_no_module.list')
+
+pan_packages = pan_default_packages + pan_no_modules
 
 pan_gpu_packages = InfoFileManager.createPackageList('auckland/gpu.list')
 
@@ -432,7 +435,7 @@ pan_pan = new Queue(
 		factoryType:'LL',
 		groups:[nesi, uoa] + nesi_akl_groups,
 		directories:[auckland_pan],
-		packages:pan_default_packages,
+		packages:pan_packages,
 		description:'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
 		hosts:203,
 		cpus:2956,
@@ -464,7 +467,7 @@ pan_stats = new Queue(
 	factoryType:'LL',
 	groups:[uoa_stats_staff, uoa_stats_students],
 	directories:[auckland_pan],
-	packages:pan_default_packages,
+	packages:pan_packages,
 	description:'Suitable for jobs by the statistics department',
 	hosts:156,
 	cpus:2096,
@@ -481,7 +484,7 @@ uoa_pan_comp_chem_ce = new Queue(
 		factoryType:'LL',
 		groups:[uoa_comp_chem],
 		directories:[auckland_pan],
-		packages:pan_default_packages,
+		packages:pan_packages,
 		hosts:1,
 		cpusPerHost:40,
 		cpus:40,
