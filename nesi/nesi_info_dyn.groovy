@@ -212,7 +212,7 @@ auckland_df_fs = new FileSystem(
 		)
 
 auckland_pan_fs = new FileSystem(
-		host:'pan.nesi.org.nz',
+		host:'gram.uoa.nesi.org.nz',
 		site:auckland,
 		available:true
 		)
