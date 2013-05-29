@@ -442,7 +442,8 @@ pan_pan = new Queue(
 		cpusPerHost:20,
 		clockspeedInHz:2800000000,
 		memory:549755813888,
-		virtualMemory:549755813888
+		virtualMemory:549755813888,
+        options:[alias:'pan']
 		)
 
 pan_gpu = new Queue(
