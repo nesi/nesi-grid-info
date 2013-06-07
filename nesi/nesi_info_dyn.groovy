@@ -210,6 +210,12 @@ auckland_df_fs = new FileSystem(
 )
 
 auckland_pan_fs = new FileSystem(
+        host: 'gram.uoa.nesi.org.nz',
+        site: auckland,
+        available: true
+)
+
+auckland_pan_old_fs = new FileSystem(
         host: 'pan.nesi.org.nz',
         site: auckland,
         available: true
@@ -267,6 +273,14 @@ auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
         groups: auckland_cluster_groups,
         alias: "pan",
+        options: [volatileDirectory: true, globusOnline: true],
+        available: true
+)
+
+auckland_pan_old = new Directory(
+        filesystem: auckland_pan_old_fs,
+        groups: auckland_cluster_groups,
+        alias: "pan_old",
         options: [volatileDirectory: true, globusOnline: true],
         available: true
 )
