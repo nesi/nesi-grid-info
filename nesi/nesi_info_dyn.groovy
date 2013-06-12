@@ -205,8 +205,15 @@ uoo = new Group(
 
 // filesystems
 auckland_df_fs = new FileSystem(
+        host: 'df.auckland.ac.nz',
+        site: auckland,
+        available:false
+)
+
+canterbury_df_fs = new FileSystem(
         host: 'df.bestgrid.org',
-        site: auckland
+        site: canterbury,
+        available:true
 )
 
 auckland_pan_fs = new FileSystem(
@@ -287,6 +294,22 @@ auckland_pan_old = new Directory(
 
 auckland_df_home = new Directory(
         filesystem: auckland_df_fs,
+        groups: [nesi],
+        path: "/~/",
+        alias: "datafabric",
+        options: [volatileDirectory: false, globusOnline: true]
+)
+
+canterbury_df_home = new Directory(
+        filesystem: canterbury_df_fs,
+        groups: [nesi],
+        path: "/~/",
+        alias: "datafabric_chch",
+        options: [volatileDirectory: false, globusOnline: true]
+)
+
+auckland_df_home = new Directory(
+        filesystem: canterbury_df_fs,
         groups: [nesi],
         path: "/~/",
         alias: "datafabric",
