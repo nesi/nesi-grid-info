@@ -205,20 +205,20 @@ uoo = new Group(
 
 // filesystems
 auckland_df_fs = new FileSystem(
-        host: 'df.auckland.ac.nz',
+        host: 'df.bestgrid.org',
         site: auckland
 )
 
 auckland_pan_fs = new FileSystem(
         host: 'gram.uoa.nesi.org.nz',
         site: auckland,
-        available: true
+        available: false
 )
 
 auckland_pan_old_fs = new FileSystem(
         host: 'pan.nesi.org.nz',
         site: auckland,
-        available: true
+        available: false
 )
 
 canterbury_ng1_fs = new FileSystem(
