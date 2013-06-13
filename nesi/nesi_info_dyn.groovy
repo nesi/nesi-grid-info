@@ -308,14 +308,6 @@ canterbury_df_home = new Directory(
         options: [volatileDirectory: false, globusOnline: true]
 )
 
-auckland_df_home = new Directory(
-        filesystem: canterbury_df_fs,
-        groups: [nesi],
-        path: "/~/",
-        alias: "datafabric",
-        options: [volatileDirectory: false, globusOnline: true]
-)
-
 auckland_vs_group = new Directory(
         filesystem: auckland_pan_fs,
         groups: [uoa_virt_screening],
