@@ -207,25 +207,25 @@ uoo = new Group(
 auckland_df_fs = new FileSystem(
         host: 'df.auckland.ac.nz',
         site: auckland,
-        available:false
+        available:true
 )
 
 canterbury_df_fs = new FileSystem(
         host: 'df.bestgrid.org',
         site: canterbury,
-        available:true
+        available:false
 )
 
 auckland_pan_fs = new FileSystem(
         host: 'gram.uoa.nesi.org.nz',
         site: auckland,
-        available: false
+        available: true
 )
 
 auckland_pan_old_fs = new FileSystem(
         host: 'pan.nesi.org.nz',
         site: auckland,
-        available: false
+        available: true
 )
 
 canterbury_ng1_fs = new FileSystem(
