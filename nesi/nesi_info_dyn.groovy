@@ -277,7 +277,7 @@ auckland_cluster_groups = [
 
 
 auckland_pan = new Directory(
-        filesystem: auckland_pan_fs,
+        filesystem: auckland_pan_old_fs,
         groups: auckland_cluster_groups,
         alias: "pan",
         options: [volatileDirectory: true, globusOnline: true],
