@@ -277,7 +277,7 @@ auckland_cluster_groups = [
 
 
 auckland_pan = new Directory(
-        filesystem: auckland_pan_old_fs,
+        filesystem: auckland_pan_fs,
         groups: auckland_cluster_groups,
         alias: "pan",
         options: [volatileDirectory: true, globusOnline: true],
@@ -394,8 +394,8 @@ globus5 = Middleware.get("Globus", "5.0")
 // gateways
 pan = new Gateway(
         site: auckland,
-        //host: "gram.uoa.nesi.org.nz",
-        host: "pan.nesi.org.nz",
+        host: "gram.uoa.nesi.org.nz",
+//        host: "pan.nesi.org.nz",
         middleware: globus5
 )
 
