@@ -7,7 +7,7 @@ import grisu.jcommons.model.info.*
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
-akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 99999]
+akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
 uoc_project_groups = [12, 31]
 
 // sites
