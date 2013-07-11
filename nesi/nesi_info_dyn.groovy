@@ -216,6 +216,12 @@ canterbury_df_fs = new FileSystem(
         available:false
 )
 
+canterbury_df_dev_fs = new FileSystem(
+        host: 'gridgwtest.canterbury.ac.nz',
+        site: canterbury,
+        available:true
+)
+
 auckland_pan_fs = new FileSystem(
         host: 'gram.uoa.nesi.org.nz',
         site: auckland,
@@ -305,6 +311,14 @@ canterbury_df_home = new Directory(
         groups: [nesi],
         path: "/~/",
         alias: "datafabric_chch",
+        options: [volatileDirectory: false, globusOnline: true]
+)
+
+canterbury_df_home = new Directory(
+        filesystem: canterbury_df_fs,
+        groups: [bestgrid],
+        path: "/~/",
+        alias: "datafabric_dev_chch",
         options: [volatileDirectory: false, globusOnline: true]
 )
 
