@@ -207,7 +207,7 @@ uoo = new Group(
 auckland_df_fs = new FileSystem(
         host: 'df.auckland.ac.nz',
         site: auckland,
-        available:false
+        available:true
 )
 
 canterbury_df_fs = new FileSystem(
@@ -237,37 +237,37 @@ auckland_pan_old_fs = new FileSystem(
 canterbury_ng1_fs = new FileSystem(
         host: 'ng1.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 canterbury_ng2_fs = new FileSystem(
         host: 'ng2.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 canterbury_ng2hpc_fs = new FileSystem(
         host: 'ng2hpc.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 canterbury_ng2sge_fs = new FileSystem(
         host: 'ng2sge.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 canterbury_gram5bgp_fs = new FileSystem(
         host: 'gram5bgp.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 canterbury_gram5p7_fs = new FileSystem(
         host: 'gram5p7.canterbury.ac.nz',
         site: canterbury,
-        available: false
+        available: true
 )
 
 // directories (make sure to always have a trailing slash for the path element
