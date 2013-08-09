@@ -219,7 +219,7 @@ canterbury_df_fs = new FileSystem(
 canterbury_df_dev_fs = new FileSystem(
         host: 'gridgwtest.canterbury.ac.nz',
         site: canterbury,
-        available:true
+        available:false
 )
 
 auckland_pan_fs = new FileSystem(
@@ -236,32 +236,38 @@ auckland_pan_old_fs = new FileSystem(
 
 canterbury_ng1_fs = new FileSystem(
         host: 'ng1.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 canterbury_ng2_fs = new FileSystem(
         host: 'ng2.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 canterbury_ng2hpc_fs = new FileSystem(
         host: 'ng2hpc.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 canterbury_ng2sge_fs = new FileSystem(
         host: 'ng2sge.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 canterbury_gram5bgp_fs = new FileSystem(
         host: 'gram5bgp.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 canterbury_gram5p7_fs = new FileSystem(
         host: 'gram5p7.canterbury.ac.nz',
-        site: canterbury
+        site: canterbury,
+        available: false
 )
 
 // directories (make sure to always have a trailing slash for the path element
