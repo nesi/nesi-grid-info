@@ -207,7 +207,7 @@ uoo = new Group(
 auckland_df_fs = new FileSystem(
         host: 'df.auckland.ac.nz',
         site: auckland,
-        available:true
+        available:false
 )
 
 canterbury_df_fs = new FileSystem(
