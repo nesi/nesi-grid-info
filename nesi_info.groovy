@@ -754,6 +754,12 @@ mr_bayes_3_2_1 = new Package(
 		module:Module.create('mrbayes/3.2.1'),
 		executables:[Executable.get('mb')])
 
+mr_bayes_3_2_2 = new Package(
+		application:mrbayes,
+		version:Version.get('3.2.2'),
+		module:Module.create('mrbayes/3.2.2'),
+		executables:[Executable.get('mb')])
+
 namd_2_6 = new Package(
 		application:namd,
 		version:Version.get('2.6')
@@ -1045,7 +1051,7 @@ pan_gpu_packages = [
 ]
 
 gram5p7_common_packages = [
-	mr_bayes_3_2_1,
+	mr_bayes_3_2_2,
 	bayesphylogenies_1_0,
 	modeltest_3_7,
 	beast_1_6_1,
@@ -1079,7 +1085,7 @@ gram5p7_linux = [
 ]+ gram5p7_common_packages
 
 gram5bgp_packages = [
-	mr_bayes_3_2_1,
+	mr_bayes_3_2_2,
 	namd_2_7b1,
 	mpiblast_1_6
 ]
