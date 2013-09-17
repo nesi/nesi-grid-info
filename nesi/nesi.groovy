@@ -1,4 +1,4 @@
-package nesi
+
 
 import nz.org.nesi.gridinfo.InfoFileManager
 import grisu.jcommons.model.info.*
@@ -32,11 +32,21 @@ nz = new VO(
 )
 
 // groups
+bestgrid = new Group(
+        vo = nz,
+        fqan = '/nz/bestgrid'
+)
+
 bluefern = new Group(
         vo = nz,
         fqan = '/nz/bluefern'
 )
 
+
+grid_dev = new Group(
+        vo = nz,
+        fqan = "/nz/grid-dev"
+)
 
 landcare_users = new Group(
         vo = nz,
@@ -54,13 +64,9 @@ landcare_osgeo = new Group(
 )
 
 
-uoa_projects_99998 = new Group(
+nesi = new Group(
         vo = nz,
-        fqan = "/nz/uoa/projects/uoa99998"
-)
-uoa_projects_99999 = new Group(
-        vo = nz,
-        fqan = "/nz/uoa/projects/uoa99999"
+        fqan = "/nz/nesi"
 )
 
 
@@ -76,10 +82,7 @@ uoc_project_groups.each {
 nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
 
 
-nesi = new Group(
-        vo = nz,
-        fqan = '/nz/nesi'
-)
+
 
 uoa = new Group(
         vo = nz,
@@ -225,6 +228,11 @@ auckland_pan_fs = new FileSystem(
         available: true
 )
 
+auckland_pan_old_fs = new FileSystem(
+        host: 'pan.nesi.org.nz',
+        site: auckland,
+        available: false
+)
 
 canterbury_ng1_fs = new FileSystem(
         host: 'ng1.canterbury.ac.nz',
@@ -262,12 +270,10 @@ canterbury_gram5p7_fs = new FileSystem(
         available: true
 )
 
-auckland_project_groups = [
-        uoa_projects_99998,
-        uoa_projects_99999
-]
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
+        grid_dev,
+        nesi,
         uoa,
         uoa_comp_chem,
         uoa_gaussian,
@@ -278,39 +284,23 @@ auckland_cluster_groups = [
         uoa_qoptics,
         uoa_stats,
         uoa_stats_staff,
-        uoa_stats_students,
-] + nesi_akl_groups + auckland_project_groups
+        uoa_stats_students
+] + nesi_akl_groups
 
 
-auckland_proj_99998 = new Directory(
-        filesystem: auckland_pan_fs,
-        groups: [uoa_projects_99998],
-        path: "/gpfs1m/projects/uoa99998/",
-        alias: "uoa99998",
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true
-)
-
-auckland_proj_99999 = new Directory(
-        filesystem: auckland_pan_fs,
-        groups: [uoa_projects_99999],
-        path: "/gpfs1m/projects/uoa99999/",
-        alias: "uoa99999",
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true
-)
-
-auckland_project_directories = [
-        auckland_proj_99998,
-        auckland_proj_99999
-]
-
-auckland_home = new Directory(
+auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
         groups: auckland_cluster_groups,
-        path:'/~/',
         alias: "pan",
-        options: [volatileDirectory: false, globusOnline: true, shared:false],
+        options: [volatileDirectory: true, globusOnline: true],
+        available: true
+)
+
+auckland_pan_old = new Directory(
+        filesystem: auckland_pan_old_fs,
+        groups: auckland_cluster_groups,
+        alias: "pan_old",
+        options: [volatileDirectory: true, globusOnline: true],
         available: true
 )
 
@@ -425,6 +415,7 @@ globus5 = Middleware.get("Globus", "5.0")
 pan = new Gateway(
         site: auckland,
         host: "gram.uoa.nesi.org.nz",
+//        host: "pan.nesi.org.nz",
         middleware: globus5
 )
 
@@ -489,12 +480,12 @@ pan_pan = new Queue(
         gateway: pan,
         name: 'pan',
         factoryType: 'LL',
-        groups: auckland_project_groups + nesi_akl_groups,
-        directories: auckland_project_directories,
+        groups: [nesi, uoa] + nesi_akl_groups,
+        directories: [auckland_pan],
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
-        hosts: 297,
-        cpus: 4436,
+        hosts: 203,
+        cpus: 2956,
         cpusPerHost: 20,
         clockspeedInHz: 2800000000,
         memory: 549755813888,
@@ -510,9 +501,9 @@ pan_gpu = new Queue(
         directories: [auckland_pan],
         packages: pan_gpu_packages,
         description: 'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
-        hosts: 21,
-        cpus: 288,
-        cpusPerHost: 16,
+        hosts: 2,
+        cpus: 24,
+        cpusPerHost: 12,
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
@@ -527,8 +518,8 @@ pan_stats = new Queue(
         directories: [auckland_pan],
         packages: pan_packages,
         description: 'Suitable for jobs by the statistics department',
-        hosts: 297,
-        cpus: 4436,
+        hosts: 156,
+        cpus: 2096,
         cpusPerHost: 20,
         clockspeedInHz: 2800000000,
         memory: 549755813888,
