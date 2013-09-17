@@ -81,6 +81,11 @@ nesi = new Group(
         fqan = '/nz/nesi'
 )
 
+bestgrid = new Group(
+        vo = nz,
+        fqan = '/nz/bestgrid'
+)
+
 uoa = new Group(
         vo = nz,
         fqan = '/nz/uoa'
