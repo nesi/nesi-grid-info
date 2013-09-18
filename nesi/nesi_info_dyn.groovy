@@ -291,17 +291,19 @@ for ( int i in akl_merit_project_numbers) {
     akl_merit_project_directories.add(temp_dir)
 }
 
+def akl_project_numbers = 1..AKL_PROJ_MAX
 
 def akl_project_groups = []
 def akl_project_directories = []
-for ( int i=1;i<AKL_PROJ_MAX;i++) {
+//for ( int i in akl_merit_project_numbers) {
+for ( i in akl_project_numbers ) {
 
     def proj_name = "uoa"+String.format("%05d", i)
 
     def temp_group = new Group(vo = nz, fqan = "/nz/uoa/projects/"+proj_name)
     akl_project_groups.add(temp_group)
 
-    def temp_dir = new Directory(
+    temp_dir = new Directory(
             filesystem: auckland_pan_fs,
             groups: [temp_group],
             path: "/gpfs1m/projects/"+proj_name,
@@ -312,6 +314,26 @@ for ( int i=1;i<AKL_PROJ_MAX;i++) {
 
     akl_project_directories.add(temp_dir)
 }
+for ( i in [99998, 99999] ) {
+
+    def proj_name = "uoa"+String.format("%05d", i)
+
+    def temp_group = new Group(vo = nz, fqan = "/nz/uoa/projects/"+proj_name)
+    akl_project_groups.add(temp_group)
+
+    temp_dir = new Directory(
+            filesystem: auckland_pan_fs,
+            groups: [temp_group],
+            path: "/gpfs1m/projects/"+proj_name,
+            alias: proj_name,
+            options: [volatileDirectory: false, globusOnline: true, shared: true],
+            available: true
+    )
+
+    akl_project_directories.add(temp_dir)
+}
+
+
 
 // all auckland groups
 all_akl_groups = [
@@ -331,7 +353,7 @@ all_akl_groups = [
 
 auckland_home = new Directory(
         filesystem: auckland_pan_fs,
-        groups: all_akl_groups,
+        groups: [uoa],
         path:'/~/',
         alias: "pan",
         options: [volatileDirectory: false, globusOnline: true, shared:false],
