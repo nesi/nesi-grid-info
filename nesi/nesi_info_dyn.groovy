@@ -7,8 +7,10 @@ import grisu.jcommons.model.info.*
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
-akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
-uoc_project_groups = [12, 31]
+akl_merit_project_numbers = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
+uoc_merit_project_numbers = [12, 31]
+
+AKL_PROJ_MAX = 500
 
 // sites
 auckland = new Site(
@@ -63,17 +65,16 @@ uoa_projects_99999 = new Group(
         fqan = "/nz/uoa/projects/uoa99999"
 )
 
-
-def nesi_akl_groups = []
-akl_project_groups.each {
-    nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
-}
+// groups for nesi projects running at Bluefern
 def nesi_uoc_groups = []
-uoc_project_groups.each {
+uoc_merit_project_numbers.each {
     nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
 }
-
 nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
+
+
+// groups for uoa projects
+
 
 
 nesi = new Group(
@@ -267,12 +268,53 @@ canterbury_gram5p7_fs = new FileSystem(
         available: true
 )
 
-auckland_project_groups = [
-        uoa_projects_99998,
-        uoa_projects_99999
-]
-// directories (make sure to always have a trailing slash for the path element
-auckland_cluster_groups = [
+
+
+def akl_merit_groups = []
+def akl_merit_project_directories = []
+for ( int i in akl_merit_project_numbers) {
+
+    def proj_name = "nesi"+String.format("%05d", i)
+
+    def temp_group = new Group(vo = nz, fqan = "/nz/nesi/projects/"+proj_name)
+    akl_merit_groups.add(temp_group)
+
+    def temp_dir = new Directory(
+            filesystem: auckland_pan_fs,
+            groups: [temp_group],
+            path: "/gpfs1m/projects/"+proj_name,
+            alias: proj_name,
+            options: [volatileDirectory: false, globusOnline: true, shared: true],
+            available: true
+    )
+
+    akl_merit_project_directories.add(temp_dir)
+}
+
+
+def akl_project_groups = []
+def akl_project_directories = []
+for ( int i=1;i<AKL_PROJ_MAX;i++) {
+
+    def proj_name = "uoa"+String.format("%05d", i)
+
+    def temp_group = new Group(vo = nz, fqan = "/nz/uoa/projects/"+proj_name)
+    akl_project_groups.add(temp_group)
+
+    def temp_dir = new Directory(
+            filesystem: auckland_pan_fs,
+            groups: [temp_group],
+            path: "/gpfs1m/projects/"+proj_name,
+            alias: proj_name,
+            options: [volatileDirectory: false, globusOnline: true, shared: true],
+            available: true
+    )
+
+    akl_project_directories.add(temp_dir)
+}
+
+// all auckland groups
+all_akl_groups = [
         uoa,
         uoa_comp_chem,
         uoa_gaussian,
@@ -284,35 +326,12 @@ auckland_cluster_groups = [
         uoa_stats,
         uoa_stats_staff,
         uoa_stats_students,
-] + nesi_akl_groups + auckland_project_groups
+] + akl_merit_groups + akl_project_groups
 
-
-auckland_proj_99998 = new Directory(
-        filesystem: auckland_pan_fs,
-        groups: [uoa_projects_99998],
-        path: "/gpfs1m/projects/uoa99998/",
-        alias: "uoa99998",
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true
-)
-
-auckland_proj_99999 = new Directory(
-        filesystem: auckland_pan_fs,
-        groups: [uoa_projects_99999],
-        path: "/gpfs1m/projects/uoa99999/",
-        alias: "uoa99999",
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true
-)
-
-auckland_project_directories = [
-        auckland_proj_99998,
-        auckland_proj_99999
-]
 
 auckland_home = new Directory(
         filesystem: auckland_pan_fs,
-        groups: auckland_cluster_groups,
+        groups: all_akl_groups,
         path:'/~/',
         alias: "pan",
         options: [volatileDirectory: false, globusOnline: true, shared:false],
@@ -494,8 +513,8 @@ pan_pan = new Queue(
         gateway: pan,
         name: 'pan',
         factoryType: 'LL',
-        groups: auckland_project_groups + nesi_akl_groups,
-        directories: auckland_project_directories,
+        groups: akl_project_groups + akl_merit_groups,
+        directories: akl_project_directories + akl_merit_project_directories,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 297,
@@ -511,8 +530,8 @@ pan_gpu = new Queue(
         gateway: pan,
         name: 'gpu',
         factoryType: 'LL',
-        groups: auckland_project_groups + nesi_akl_groups,
-        directories: auckland_project_directories,
+        groups: akl_project_groups + akl_merit_groups,
+        directories: akl_project_directories + akl_merit_project_directories,
         packages: pan_gpu_packages,
         description: 'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 21,
@@ -529,7 +548,7 @@ pan_stats = new Queue(
         name: 'stat',
         factoryType: 'LL',
         groups: [uoa_stats_staff, uoa_stats_students],
-        directories: auckland_project_directories,
+        directories: [auckland_home],
         packages: pan_packages,
         description: 'Suitable for jobs by the statistics department',
         hosts: 297,
@@ -547,7 +566,7 @@ uoa_pan_comp_chem_ce = new Queue(
         name: 'chem',
         factoryType: 'LL',
         groups: [uoa_comp_chem],
-        directories: auckland_project_directories,
+        directories: [auckland_home],
         packages: pan_packages,
         hosts: 1,
         cpusPerHost: 40,
