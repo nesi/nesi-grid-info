@@ -515,7 +515,7 @@ pan_gpu = new Queue(
         options: [alias: 'gpu:pan.nesi.org.nz']
 )
 
-pan_pan = new Queue(
+pan_fhms = new Queue(
         gateway: pan,
         name: 'fhms',
         factoryType: 'LL',
