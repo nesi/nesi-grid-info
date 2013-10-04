@@ -69,6 +69,11 @@ nesi = new Group(
         fqan = "/nz/nesi"
 )
 
+fhms = new Group(
+        vo = nz,
+        fqan = "/nz/nesi/fhms"
+)
+
 
 def nesi_akl_groups = []
 akl_project_groups.each {
@@ -508,6 +513,23 @@ pan_gpu = new Queue(
         memory: 549755813888,
         virtualMemory: 549755813888,
         options: [alias: 'gpu:pan.nesi.org.nz']
+)
+
+pan_pan = new Queue(
+        gateway: pan,
+        name: 'fhms',
+        factoryType: 'LL',
+        groups: [fhms],
+        directories: [auckland_pan],
+        packages: pan_packages,
+        description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
+        hosts: 203,
+        cpus: 2956,
+        cpusPerHost: 20,
+        clockspeedInHz: 2800000000,
+        memory: 549755813888,
+        virtualMemory: 549755813888,
+        options: [alias: 'pan,pan:pan.nesi.org.nz']
 )
 
 pan_stats = new Queue(

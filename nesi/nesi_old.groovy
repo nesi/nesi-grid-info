@@ -106,3 +106,4 @@ pan_gpu = new Queue(
         virtualMemory: 549755813888,
         options: [alias: 'gpu:pan.nesi.org.nz']
 )
+
