@@ -279,6 +279,7 @@ canterbury_gram5p7_fs = new FileSystem(
 auckland_cluster_groups = [
         grid_dev,
         nesi,
+        fhms,
         uoa,
         uoa_comp_chem,
         uoa_gaussian,
