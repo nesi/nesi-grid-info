@@ -74,6 +74,11 @@ fhms = new Group(
         fqan = "/nz/nesi/fhms"
 )
 
+pfr = new Group(
+        vo = nz,
+        fqan = "/nz/pfr"
+)
+
 
 def nesi_akl_groups = []
 akl_project_groups.each {
@@ -280,6 +285,7 @@ auckland_cluster_groups = [
         grid_dev,
         nesi,
         fhms,
+        pfr,
         uoa,
         uoa_comp_chem,
         uoa_gaussian,
