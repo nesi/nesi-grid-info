@@ -285,6 +285,7 @@ auckland_cluster_groups = [
         grid_dev,
         nesi,
         fhms,
+        pfr,
         uoa,
         uoa_comp_chem,
         uoa_gaussian,
