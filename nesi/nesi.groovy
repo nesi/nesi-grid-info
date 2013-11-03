@@ -7,8 +7,10 @@ import grisu.jcommons.model.info.*
 // variables
 
 // the numbers of the merit groups that have access to the auckland cluster
-akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
-uoc_project_groups = [12, 31]
+nesi_akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
+nesi_uoc_project_groups = [12, 31]
+
+akl_project_group_names = (1..500) + 99999
 
 // sites
 auckland = new Site(
@@ -64,11 +66,6 @@ landcare_osgeo = new Group(
 )
 
 
-nesi = new Group(
-        vo = nz,
-        fqan = "/nz/nesi"
-)
-
 fhms = new Group(
         vo = nz,
         fqan = "/nz/nesi/fhms"
@@ -80,19 +77,17 @@ pfr = new Group(
 )
 
 
+// nesi merit groups (Auckland)
 def nesi_akl_groups = []
-akl_project_groups.each {
+nesi_akl_project_groups.each {
     nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
 }
+// nesi merit groups (Canterbury)
 def nesi_uoc_groups = []
-uoc_project_groups.each {
+nesi_uoc_project_groups.each {
     nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
 }
-
 nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
-
-
-
 
 uoa = new Group(
         vo = nz,
@@ -238,12 +233,6 @@ auckland_pan_fs = new FileSystem(
         available: true
 )
 
-auckland_pan_old_fs = new FileSystem(
-        host: 'pan.nesi.org.nz',
-        site: auckland,
-        available: false
-)
-
 canterbury_ng1_fs = new FileSystem(
         host: 'ng1.canterbury.ac.nz',
         site: canterbury,
@@ -280,13 +269,30 @@ canterbury_gram5p7_fs = new FileSystem(
         available: true
 )
 
+// auckland collaborator project groups
+def auckland_cluster_group_names = (1..500) + [99998, 99999]
+def akl_project_groups = []
+def auckland_pan_project_homes = []
+
+auckland_cluster_group_names.each() { name ->
+    def tempName = "uoa"+String.format("%05d", name)
+    def tempGroup = new Group(vo = nz, fqan = "/nz/uoa/projects/"+tempName)
+    akl_project_groups.add(tempGroup)
+    def tempDir = new Directory(
+        filesystem: auckland_pan_fs,
+        groups: [tempGroup],
+        alias: "pan_home_"+name,
+        path: "/gpfs1m/projects/"+tempName,
+        options: [volatileDirectory: false, globusOnline: true, shared: true],
+        available: true)
+    auckland_pan_project_homes.add(tempDir)
+}
+
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
         grid_dev,
-        nesi,
         fhms,
         pfr,
-        uoa,
         uoa_comp_chem,
         uoa_gaussian,
         uoa_comp_evol,
@@ -297,28 +303,20 @@ auckland_cluster_groups = [
         uoa_stats,
         uoa_stats_staff,
         uoa_stats_students
-] + nesi_akl_groups
+] + nesi_akl_groups + akl_project_groups
 
 
 auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
-        groups: auckland_cluster_groups,
+        groups: [uoa],
         alias: "pan",
-        options: [volatileDirectory: true, globusOnline: true],
-        available: true
-)
-
-auckland_pan_old = new Directory(
-        filesystem: auckland_pan_old_fs,
-        groups: auckland_cluster_groups,
-        alias: "pan_old",
-        options: [volatileDirectory: true, globusOnline: true],
+        options: [volatileDirectory: false, globusOnline: true],
         available: true
 )
 
 auckland_df_home = new Directory(
         filesystem: auckland_df_fs,
-        groups: [nesi],
+        groups: [Group.NO_VO_GROUP],
         path: "/~/",
         alias: "datafabric",
         options: [volatileDirectory: false, globusOnline: true]
@@ -326,15 +324,15 @@ auckland_df_home = new Directory(
 
 canterbury_df_home = new Directory(
         filesystem: canterbury_df_fs,
-        groups: [nesi],
+        groups: [Group.NO_VO_GROUP],
         path: "/~/",
         alias: "datafabric_chch",
         options: [volatileDirectory: false, globusOnline: true]
 )
 
-canterbury_df_home = new Directory(
+canterbury_df_dev_home = new Directory(
         filesystem: canterbury_df_fs,
-        groups: [bestgrid],
+        groups: [Group.NO_VO_GROUP],
         path: "/~/",
         alias: "datafabric_dev_chch",
         options: [volatileDirectory: false, globusOnline: true]
@@ -395,7 +393,7 @@ canterbury_ng2hpc_home = new Directory(
 
 canterbury_gram5p7_home = new Directory(
         filesystem: canterbury_gram5p7_fs,
-        groups: [nesi, bestgrid, bluefern] + nesi_uoc_groups,
+        groups: [bestgrid, bluefern] + nesi_uoc_groups,
         path: "/~/",
         alias: "bluefern-p7",
         options: [volatileDirectory: true, globusOnline: true],
@@ -413,7 +411,7 @@ canterbury_ng2sge_home = new Directory(
 
 canterbury_gram5bgp_home = new Directory(
         filesystem: canterbury_gram5bgp_fs,
-        groups: [nesi, bluefern],
+        groups: [bluefern],
         path: "/~/",
         alias: "bluefern-bgp",
         options: [volatileDirectory: true, globusOnline: true],
@@ -492,8 +490,8 @@ pan_pan = new Queue(
         gateway: pan,
         name: 'pan',
         factoryType: 'LL',
-        groups: [nesi, uoa, fhms, pfr] + nesi_akl_groups,
-        directories: [auckland_pan],
+        groups: auckland_cluster_groups,
+        directories: auckland_pan_project_homes + auckland_pan,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 203,
@@ -509,8 +507,8 @@ pan_gpu = new Queue(
         gateway: pan,
         name: 'gpu',
         factoryType: 'LL',
-        groups: [nesi, uoa] + nesi_akl_groups,
-        directories: [auckland_pan],
+        groups: auckland_cluster_groups,
+        directories: auckland_pan_project_homes + auckland_pan,
         packages: pan_gpu_packages,
         description: 'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 2,
@@ -581,7 +579,7 @@ canterbury_p7aix = new Queue(
         directories: [canterbury_gram5p7_home],
         name: 'p7aix',
         factoryType: 'LL',
-        groups: [nesi, bestgrid, bluefern] + nesi_uoc_groups,
+        groups: [bestgrid, bluefern] + nesi_uoc_groups,
         packages: gram5p7_aix,
         hosts: 11,
         cpus: 352,
@@ -598,7 +596,7 @@ canterbury_p7linux = new Queue(
         directories: [canterbury_gram5p7_home],
         name: 'p7linux',
         factoryType: 'LL',
-        groups: [nesi, bestgrid, bluefern] + nesi_uoc_groups,
+        groups: [bestgrid, bluefern] + nesi_uoc_groups,
         packages: gram5p7_linux,
         hosts: 2,
         cpus: 64,
@@ -615,7 +613,7 @@ canterbury_bgp = new Queue(
         directories: [canterbury_gram5bgp_home],
         name: 'bgp',
         factoryType: 'LL',
-        groups: [nesi, bluefern],
+        groups: [bluefern],
         packages: gram5bgp_packages,
         hosts: 2048,
         cpus: 8192,
