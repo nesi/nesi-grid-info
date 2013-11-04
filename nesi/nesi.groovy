@@ -65,6 +65,10 @@ landcare_osgeo = new Group(
         fqan = "/nz/landcare/osgeo"
 )
 
+nesi = new Group(
+        vo = nz,
+        fqan = "/nz/nesi"
+)
 
 fhms = new Group(
         vo = nz,
@@ -273,7 +277,6 @@ canterbury_gram5p7_fs = new FileSystem(
 def auckland_cluster_group_names = (1..500) + [99998, 99999]
 def akl_project_groups = []
 def auckland_pan_project_user_subfolder = []
-def auckland_pan_project_homes = []
 
 auckland_cluster_group_names.each() { name ->
     def tempName = "uoa"+String.format("%05d", name)
@@ -287,17 +290,7 @@ auckland_cluster_group_names.each() { name ->
             options: [volatileDirectory: false, globusOnline: true, shared: true],
             available: true)
     auckland_pan_project_user_subfolder.add(tempDir)
-    def tempDirProj = new Directory(
-            filesystem: auckland_pan_fs,
-            groups: [tempGroup],
-            alias: "pan_home_"+name,
-            path: "/gpfs1m/projects/"+tempName,
-            options: [volatileDirectory: false, globusOnline: true, shared: false],
-            available: true)
-    auckland_pan_project_homes.add(tempDirProj)
 }
-
-pan_project_folders = auckland_pan_project_homes
 
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
@@ -327,7 +320,7 @@ auckland_pan = new Directory(
 
 auckland_df_home = new Directory(
         filesystem: auckland_df_fs,
-        groups: [Group.NO_VO_GROUP],
+        groups: [nesi],
         path: "/~/",
         alias: "datafabric",
         options: [volatileDirectory: false, globusOnline: true]
@@ -335,7 +328,7 @@ auckland_df_home = new Directory(
 
 canterbury_df_home = new Directory(
         filesystem: canterbury_df_fs,
-        groups: [Group.NO_VO_GROUP],
+        groups: [nesi],
         path: "/~/",
         alias: "datafabric_chch",
         options: [volatileDirectory: false, globusOnline: true]
@@ -343,7 +336,7 @@ canterbury_df_home = new Directory(
 
 canterbury_df_dev_home = new Directory(
         filesystem: canterbury_df_fs,
-        groups: [Group.NO_VO_GROUP],
+        groups: [nesi],
         path: "/~/",
         alias: "datafabric_dev_chch",
         options: [volatileDirectory: false, globusOnline: true]
