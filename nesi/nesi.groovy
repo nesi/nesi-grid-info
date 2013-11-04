@@ -272,6 +272,7 @@ canterbury_gram5p7_fs = new FileSystem(
 // auckland collaborator project groups
 def auckland_cluster_group_names = (1..500) + [99998, 99999]
 def akl_project_groups = []
+def auckland_pan_project_user_subfolder = []
 def auckland_pan_project_homes = []
 
 auckland_cluster_group_names.each() { name ->
@@ -279,14 +280,24 @@ auckland_cluster_group_names.each() { name ->
     def tempGroup = new Group(vo = nz, fqan = "/nz/uoa/projects/"+tempName)
     akl_project_groups.add(tempGroup)
     def tempDir = new Directory(
-        filesystem: auckland_pan_fs,
-        groups: [tempGroup],
-        alias: "pan_home_"+name,
-        path: "/gpfs1m/projects/"+tempName,
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true)
-    auckland_pan_project_homes.add(tempDir)
+            filesystem: auckland_pan_fs,
+            groups: [tempGroup],
+            alias: "pan_home_"+name,
+            path: "/gpfs1m/projects/"+tempName,
+            options: [volatileDirectory: false, globusOnline: true, shared: true],
+            available: true)
+    auckland_pan_project_user_subfolder.add(tempDir)
+    def tempDirProj = new Directory(
+            filesystem: auckland_pan_fs,
+            groups: [tempGroup],
+            alias: "pan_home_"+name,
+            path: "/gpfs1m/projects/"+tempName,
+            options: [volatileDirectory: false, globusOnline: true, shared: false],
+            available: true)
+    auckland_pan_project_homes.add(tempDirProj)
 }
+
+pan_project_folders = auckland_pan_project_homes
 
 // directories (make sure to always have a trailing slash for the path element
 auckland_cluster_groups = [
@@ -491,7 +502,7 @@ pan_pan = new Queue(
         name: 'pan',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_homes + auckland_pan,
+        directories: auckland_pan_project_user_subfolder + auckland_pan,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 203,
@@ -508,7 +519,7 @@ pan_gpu = new Queue(
         name: 'gpu',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_homes + auckland_pan,
+        directories: auckland_pan_project_user_subfolder + auckland_pan,
         packages: pan_gpu_packages,
         description: 'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 2,
