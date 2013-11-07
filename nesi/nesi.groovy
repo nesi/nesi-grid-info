@@ -423,12 +423,17 @@ canterbury_gram5bgp_home = new Directory(
 globus4 = Middleware.get("Globus", "4.0.0")
 globus5 = Middleware.get("Globus", "5.0")
 
+gram52_akl = new Middleware(
+        name: 'Globus',
+        version: '5.2',
+        options: [prologEpilogAvailable: false]
+)
+
 // gateways
 pan = new Gateway(
         site: auckland,
         host: "gram.uoa.nesi.org.nz",
-//        host: "pan.nesi.org.nz",
-        middleware: globus5
+        middleware: globus52_akl
 )
 
 
