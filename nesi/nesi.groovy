@@ -270,7 +270,7 @@ def nesi_akl_groups = []
 def nesi_auckland_pan_project_user_subfolder = []
 merit_project_group_names.each { name ->
     def tempName = "nesi"+String.format("%05d", name)
-    def tempGroup = new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+tempName)
+    def tempGroup = new Group(vo = nz, fqan = "/nz/nesi/projects/"+tempName)
     nesi_akl_groups.add(tempGroup)
     def tempDir = new Directory(
             filesystem: auckland_pan_fs,
