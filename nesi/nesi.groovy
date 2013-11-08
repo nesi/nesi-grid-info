@@ -520,7 +520,7 @@ pan_pan = new Queue(
         name: 'pan',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_user_subfolder + uoa_vs_jobs + nesi_auckland_pan_project_user_subfolder,
+        directories: auckland_pan_project_user_subfolder + auckland_vs_jobs_group + nesi_auckland_pan_project_user_subfolder,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 203,
