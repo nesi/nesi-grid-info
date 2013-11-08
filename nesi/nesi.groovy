@@ -6,12 +6,6 @@ import grisu.jcommons.model.info.*
 
 // variables
 
-// the numbers of the merit groups that have access to the auckland cluster
-nesi_akl_project_groups = [2, 11, 12, 13, 28, 30, 31, 35, 39, 60, 99999]
-nesi_uoc_project_groups = [12, 31]
-
-akl_project_group_names = (1..500) + 99999
-
 // sites
 auckland = new Site(
         name = 'Auckland'
@@ -79,19 +73,6 @@ pfr = new Group(
         vo = nz,
         fqan = "/nz/pfr"
 )
-
-
-// nesi merit groups (Auckland)
-def nesi_akl_groups = []
-nesi_akl_project_groups.each {
-    nesi_akl_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
-}
-// nesi merit groups (Canterbury)
-def nesi_uoc_groups = []
-nesi_uoc_project_groups.each {
-    nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
-}
-nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
 
 uoa = new Group(
         vo = nz,
@@ -273,6 +254,35 @@ canterbury_gram5p7_fs = new FileSystem(
         available: true
 )
 
+
+// nesi merit groups (Auckland)
+def merit_project_group_names = (1..300)
+
+// nesi merit groups (Canterbury)
+def nesi_uoc_groups = []
+merit_project_group_names.each {
+    nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/nesi" + String.format("%05d", it)))
+}
+nesi_uoc_groups.add(new Group(vo = nz, fqan = "/nz/nesi/projects/test99999"))
+
+
+def nesi_akl_groups = []
+def nesi_auckland_pan_project_user_subfolder = []
+merit_project_group_names.each { name ->
+    def tempName = "nesi"+String.format("%05d", name)
+    def tempGroup = new Group(vo = nz, fqan = "/nz/nesi/projects/nesi"+tempName)
+    nesi_akl_groups.add(tempGroup)
+    def tempDir = new Directory(
+            filesystem: auckland_pan_fs,
+            groups: [tempGroup],
+            alias: "pan_home_"+name,
+            path: "/gpfs1m/projects/"+tempName,
+            options: [volatileDirectory: false, globusOnline: true, shared: true],
+            available: true)
+
+    nesi_auckland_pan_project_user_subfolder.add(tempDir)
+}
+
 // auckland collaborator project groups
 def auckland_cluster_group_names = (1..500) + [99998, 99999]
 def akl_project_groups = []
@@ -306,7 +316,8 @@ auckland_cluster_groups = [
         uoa_qoptics,
         uoa_stats,
         uoa_stats_staff,
-        uoa_stats_students
+        uoa_stats_students,
+        uoa_virt_screening
 ] + nesi_akl_groups + akl_project_groups
 
 
@@ -347,7 +358,7 @@ auckland_vs_group = new Directory(
         groups: [uoa_virt_screening],
         path: "/home/grid-vs/",
         alias: "virtual_screening",
-        options: [volatileDirectory: false, globusOnline: true, shared: false],
+        options: [volatileDirectory: false, globusOnline: true, shared: true],
         available: true
 )
 
@@ -438,7 +449,6 @@ pan = new Gateway(
         middleware: gram52_akl
 )
 
-
 canterbury_ng2 = new Gateway(
         site: canterbury,
         host: "ng2.canterbury.ac.nz",
@@ -500,7 +510,7 @@ pan_pan = new Queue(
         name: 'pan',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_user_subfolder + auckland_pan,
+        directories: auckland_pan_project_user_subfolder + auckland_vs_group + nesi_auckland_pan_project_user_subfolder,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 203,
@@ -517,7 +527,7 @@ pan_gpu = new Queue(
         name: 'gpu',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_user_subfolder + auckland_pan,
+        directories: auckland_pan_project_user_subfolder + auckland_vs_group,
         packages: pan_gpu_packages,
         description: 'GPU nodes on the Pan cluster. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 2,
