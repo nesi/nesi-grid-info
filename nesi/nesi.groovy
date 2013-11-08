@@ -428,7 +428,7 @@ globus5 = Middleware.get("Globus", "5.0")
 gram52_akl = new Middleware(
         name: 'Globus',
         version: '5.2',
-        options: [prologEpilogAvailable: false]
+        options: [prologEpilogAvailable: true]
 )
 
 // gateways
