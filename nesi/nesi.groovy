@@ -365,7 +365,7 @@ auckland_vs_group = new Directory(
 
 auckland_vs_jobs_group = new Directory(
         filesystem: auckland_pan_fs,
-        groups: [uoa_virt_screening],
+        groups: [uoa_vs_jobs],
         path: "/~/",
         alias: "virtual_screening",
         options: [volatileDirectory: false, globusOnline: true, shared: false],
