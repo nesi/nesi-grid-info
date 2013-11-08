@@ -435,7 +435,7 @@ gram52_akl = new Middleware(
 pan = new Gateway(
         site: auckland,
         host: "gram.uoa.nesi.org.nz",
-        middleware: globus52_akl
+        middleware: gram52_akl
 )
 
 
