@@ -317,7 +317,8 @@ auckland_cluster_groups = [
         uoa_stats,
         uoa_stats_staff,
         uoa_stats_students,
-        uoa_virt_screening
+        uoa_virt_screening,
+        uoa_vs_jobs
 ] + nesi_akl_groups + akl_project_groups
 
 
@@ -359,6 +360,15 @@ auckland_vs_group = new Directory(
         path: "/home/grid-vs/",
         alias: "virtual_screening",
         options: [volatileDirectory: false, globusOnline: true, shared: true],
+        available: true
+)
+
+auckland_vs_jobs_group = new Directory(
+        filesystem: auckland_pan_fs,
+        groups: [uoa_virt_screening],
+        path: "/~/",
+        alias: "virtual_screening",
+        options: [volatileDirectory: false, globusOnline: true, shared: false],
         available: true
 )
 
@@ -510,7 +520,7 @@ pan_pan = new Queue(
         name: 'pan',
         factoryType: 'LL',
         groups: auckland_cluster_groups,
-        directories: auckland_pan_project_user_subfolder + auckland_vs_group + nesi_auckland_pan_project_user_subfolder,
+        directories: auckland_pan_project_user_subfolder + uoa_vs_jobs + nesi_auckland_pan_project_user_subfolder,
         packages: pan_packages,
         description: 'Suitable for any jobs by NeSI members. Contains nodes with \'westmere\' and \'sandybridge\' architecture. More information: https://wiki.auckland.ac.nz/display/CERES/NeSI+Pan+Cluster',
         hosts: 203,
