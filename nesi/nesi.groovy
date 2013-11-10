@@ -326,6 +326,7 @@ auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
         groups: [uoa],
         alias: "pan",
+        path: "/~/",
         options: [volatileDirectory: false, globusOnline: true],
         available: true
 )
