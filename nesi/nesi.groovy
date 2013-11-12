@@ -278,12 +278,8 @@ pan_projects.each() { collaborator, groups_numbers ->
 
     groups_numbers.each() { name ->
         def tempName = collaborator + String.format("%05d", name)
-        def tempGroup = null
-        if ( "nesi".equals(name) ) {
-            tempGroup = new Group(vo = nz, fqan = "/nz/nesi/projects/" + tempName)
-        } else {
-            tempGroup = new Group(vo = nz, fqan = "/nz/uoa/projects/" + tempName)
-        }
+
+        def tempGroup = new Group(vo = nz, fqan = "/nz/"+name+"/projects/" + tempName)
 
         pan_project_groups.add(tempGroup)
 
