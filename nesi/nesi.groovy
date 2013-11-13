@@ -213,7 +213,7 @@ canterbury_df_dev_fs = new FileSystem(
 auckland_pan_fs = new FileSystem(
         host: 'gram.uoa.nesi.org.nz',
         site: auckland,
-        available: true
+        available: false
 )
 
 canterbury_ng1_fs = new FileSystem(
