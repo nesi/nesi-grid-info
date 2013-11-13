@@ -319,8 +319,7 @@ auckland_pan = new Directory(
         groups: [uoa],
         alias: "pan",
         path: "/~/",
-        options: [volatileDirectory: false, globusOnline: true],
-        available: true
+        options: [volatileDirectory: false, globusOnline: true]
 )
 
 auckland_df_home = new Directory(
@@ -352,8 +351,7 @@ auckland_vs_group = new Directory(
         groups: [uoa_virt_screening],
         path: "/home/grid-vs/",
         alias: "virtual_screening",
-        options: [volatileDirectory: false, globusOnline: true, shared: true],
-        available: true
+        options: [volatileDirectory: false, globusOnline: true, shared: true]
 )
 
 auckland_vs_jobs_group = new Directory(
@@ -361,8 +359,7 @@ auckland_vs_jobs_group = new Directory(
         groups: [uoa_vs_jobs],
         path: "/~/",
         alias: "virtual_screening",
-        options: [volatileDirectory: false, globusOnline: true, shared: false],
-        available: true
+        options: [volatileDirectory: false, globusOnline: true, shared: false]
 )
 
 auckland_acsrc_group = new Directory(
@@ -370,8 +367,7 @@ auckland_acsrc_group = new Directory(
         groups: [uoa_acsrc],
         alias: "vs-acsrc",
         options: [volatileDirectory: false, globusOnline: true],
-        path: "/home/grid-acsrc/",
-        available: true
+        path: "/home/grid-acsrc/"
 )
 
 auckland_sbs_group = new Directory(
@@ -379,8 +375,7 @@ auckland_sbs_group = new Directory(
         groups: [uoa_sbs],
         options: [volatileDirectory: false, globusOnline: true],
         alias: "vs-sbs",
-        path: "/home/grid-sbs/",
-        available: true
+        path: "/home/grid-sbs/"
 )
 
 canterbury_ng1_home = new Directory(
