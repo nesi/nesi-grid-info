@@ -3,7 +3,7 @@ import grisu.jcommons.model.info.*
 
 
 // variables
-auckland_available = false
+def auckland_available = false
 
 // sites
 auckland = new Site(
@@ -525,8 +525,7 @@ pan_pan = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'pan,pan:pan.nesi.org.nz'],
-        available: auckland_available
+        options: [alias: 'pan,pan:pan.nesi.org.nz']
 )
 
 pan_gpu = new Queue(
@@ -543,8 +542,7 @@ pan_gpu = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'gpu:pan.nesi.org.nz'],
-        available: auckland_available
+        options: [alias: 'gpu:pan.nesi.org.nz']
 )
 
 pan_fhms = new Queue(
@@ -561,8 +559,7 @@ pan_fhms = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'pan,pan:pan.nesi.org.nz'],
-        available: auckland_available
+        options: [alias: 'pan,pan:pan.nesi.org.nz']
 )
 
 pan_stats = new Queue(
@@ -579,8 +576,7 @@ pan_stats = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'stat,stat:pan.nesi.org.nz'],
-        available: auckland_available
+        options: [alias: 'stat,stat:pan.nesi.org.nz']
 )
 
 
@@ -598,8 +594,7 @@ uoa_pan_comp_chem_ce = new Queue(
         virtualMemory: 549755813888,
         clockspeedInHz: 2700000000,
         description: 'Queue for comp chem node on Pan',
-        options: [alias: 'chem,chem:pan.nesi.org.nz'],
-        available: auckland_available
+        options: [alias: 'chem,chem:pan.nesi.org.nz']
 )
 
 
