@@ -3,6 +3,7 @@ import grisu.jcommons.model.info.*
 
 
 // variables
+auckland_available = false
 
 // sites
 auckland = new Site(
@@ -213,7 +214,7 @@ canterbury_df_dev_fs = new FileSystem(
 auckland_pan_fs = new FileSystem(
         host: 'gram.uoa.nesi.org.nz',
         site: auckland,
-        available: false
+        available: auckland_available
 )
 
 canterbury_ng1_fs = new FileSystem(
@@ -289,7 +290,8 @@ pan_projects.each() { collaborator, groups_numbers ->
                 alias: "pan_home_" + name,
                 path: "/gpfs1m/projects/" + tempName,
                 options: [volatileDirectory: false, globusOnline: false, shared: true],
-                available: true)
+                available: auckland_available
+        )
         pan_project_folders.add(tempDir)
     }
 
@@ -319,7 +321,8 @@ auckland_pan = new Directory(
         groups: [uoa],
         alias: "pan",
         path: "/~/",
-        options: [volatileDirectory: false, globusOnline: true]
+        options: [volatileDirectory: false, globusOnline: true],
+        available: auckland_available
 )
 
 auckland_df_home = new Directory(
@@ -351,7 +354,8 @@ auckland_vs_group = new Directory(
         groups: [uoa_virt_screening],
         path: "/home/grid-vs/",
         alias: "virtual_screening",
-        options: [volatileDirectory: false, globusOnline: true, shared: true]
+        options: [volatileDirectory: false, globusOnline: true, shared: true],
+        available: auckland_available
 )
 
 auckland_vs_jobs_group = new Directory(
@@ -359,7 +363,8 @@ auckland_vs_jobs_group = new Directory(
         groups: [uoa_vs_jobs],
         path: "/~/",
         alias: "virtual_screening",
-        options: [volatileDirectory: false, globusOnline: true, shared: false]
+        options: [volatileDirectory: false, globusOnline: true, shared: false],
+        available: auckland_available
 )
 
 auckland_acsrc_group = new Directory(
@@ -367,7 +372,8 @@ auckland_acsrc_group = new Directory(
         groups: [uoa_acsrc],
         alias: "vs-acsrc",
         options: [volatileDirectory: false, globusOnline: true],
-        path: "/home/grid-acsrc/"
+        path: "/home/grid-acsrc/",
+        available: auckland_available
 )
 
 auckland_sbs_group = new Directory(
@@ -375,7 +381,8 @@ auckland_sbs_group = new Directory(
         groups: [uoa_sbs],
         options: [volatileDirectory: false, globusOnline: true],
         alias: "vs-sbs",
-        path: "/home/grid-sbs/"
+        path: "/home/grid-sbs/",
+        available: auckland_available
 )
 
 canterbury_ng1_home = new Directory(
@@ -444,7 +451,8 @@ gram52_akl = new Middleware(
 pan = new Gateway(
         site: auckland,
         host: "gram.uoa.nesi.org.nz",
-        middleware: gram52_akl
+        middleware: gram52_akl,
+        available: auckland_available
 )
 
 canterbury_ng2 = new Gateway(
@@ -517,7 +525,8 @@ pan_pan = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'pan,pan:pan.nesi.org.nz']
+        options: [alias: 'pan,pan:pan.nesi.org.nz'],
+        available: auckland_available
 )
 
 pan_gpu = new Queue(
@@ -534,7 +543,8 @@ pan_gpu = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'gpu:pan.nesi.org.nz']
+        options: [alias: 'gpu:pan.nesi.org.nz'],
+        available: auckland_available
 )
 
 pan_fhms = new Queue(
@@ -551,7 +561,8 @@ pan_fhms = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'pan,pan:pan.nesi.org.nz']
+        options: [alias: 'pan,pan:pan.nesi.org.nz'],
+        available: auckland_available
 )
 
 pan_stats = new Queue(
@@ -568,7 +579,8 @@ pan_stats = new Queue(
         clockspeedInHz: 2800000000,
         memory: 549755813888,
         virtualMemory: 549755813888,
-        options: [alias: 'stat,stat:pan.nesi.org.nz']
+        options: [alias: 'stat,stat:pan.nesi.org.nz'],
+        available: auckland_available
 )
 
 
@@ -586,7 +598,8 @@ uoa_pan_comp_chem_ce = new Queue(
         virtualMemory: 549755813888,
         clockspeedInHz: 2700000000,
         description: 'Queue for comp chem node on Pan',
-        options: [alias: 'chem,chem:pan.nesi.org.nz']
+        options: [alias: 'chem,chem:pan.nesi.org.nz'],
+        available: auckland_available
 )
 
 
