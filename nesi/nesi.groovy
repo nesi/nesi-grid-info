@@ -63,6 +63,11 @@ nesi = new Group(
         fqan = "/nz/nesi"
 )
 
+nesi_merit = new Group(
+        vo = nz,
+        fqan = "/nz/nesi/projects"
+)
+
 fhms = new Group(
         vo = nz,
         fqan = "/nz/nesi/fhms"
@@ -318,7 +323,7 @@ auckland_cluster_groups = [
 
 auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
-        groups: [uoa, landcare_users, uoo, nesi],
+        groups: [uoa, landcare_users, uoo, nesi_merit],
         alias: "pan",
         path: "/~/",
         options: [volatileDirectory: false, globusOnline: true],
