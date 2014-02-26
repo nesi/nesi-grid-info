@@ -323,7 +323,7 @@ auckland_cluster_groups = [
 
 auckland_pan = new Directory(
         filesystem: auckland_pan_fs,
-        groups: [uoa, landcare_users, uoo, nesi_merit, uoa_stats, uoa_stats_staff, uoa_stats_students],
+        groups: [uoa, landcare_users, uoo, nesi_merit],
         alias: "pan",
         path: "/~/",
         options: [volatileDirectory: false, globusOnline: true],
