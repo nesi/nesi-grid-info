@@ -23,7 +23,8 @@ nz = new VO(
         voName = 'nz',
         host = 'voms.bestgrid.org',
         port = 15000,
-        hostDN = '/C=TW/O=AP/OU=GRID/CN=voms.bestgrid.org'
+        //hostDN = '/C=TW/O=AP/OU=GRID/CN=voms.bestgrid.org'
+        hostDN = '/C=nz/O=org/O=nesi/OU=test/OU=local/CN=voms.bestgrid.org'
 )
 
 // groups
