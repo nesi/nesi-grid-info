@@ -3,7 +3,7 @@ import grisu.jcommons.model.info.*
 
 
 // variables
-def auckland_available = false
+def auckland_available = true
 
 // sites
 auckland = new Site(
